@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 44889956}
   - component: {fileID: 44889958}
   - component: {fileID: 44889957}
+  - component: {fileID: 44889959}
   m_Layer: 0
   m_Name: plot1Rectangle
   m_TagString: plot1
@@ -232,6 +233,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &44889959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44889955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6794412bf696f2f4e94c6eec8528d572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plot: {fileID: 564527850}
 --- !u!1 &46122726
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce8b4a02e7a5b848992c2d7bca34376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}
 --- !u!114 &361412469
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager
+public class LevelManager : MonoBehaviour
 {
     public void getNextLevel(int currentLevel, string direction)
     {
