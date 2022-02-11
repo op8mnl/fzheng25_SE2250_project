@@ -137,7 +137,7 @@ public class ScottController : MonoBehaviour
         {
             scottAnim.SetTrigger("Beam");
             Invoke("toggleVisibility",1.25f);
-            StartCoroutine(nextLevel(2f, 0, "right"));
+            StartCoroutine(nextLevel(1.5f, 0, "right"));
         }
         
     }
