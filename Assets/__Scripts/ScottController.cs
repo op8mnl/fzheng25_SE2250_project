@@ -8,7 +8,6 @@ public class ScottController : MonoBehaviour
     public float speed; //speed
     public float jump; //jump
     private Rigidbody2D _scott; //scott player
-    private SpriteRenderer _scottRenderer;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
     private bool _inPortal = false;
@@ -22,9 +21,11 @@ public class ScottController : MonoBehaviour
         //get components
         _scott = GetComponent<Rigidbody2D>();
         scottAnim = GetComponent<Animator>();
-        
     }
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -154,7 +155,7 @@ public class ScottController : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
 
         //Do the action after the delay time has finished.
-        
+        //GetComponent<LevelManager>().getNextLevel(currentLevel, direction);
         StopAllCoroutines();
     }
 

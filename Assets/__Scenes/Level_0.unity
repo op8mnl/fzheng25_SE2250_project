@@ -338,8 +338,6 @@ GameObject:
   m_Component:
   - component: {fileID: 361412467}
   - component: {fileID: 361412466}
-  - component: {fileID: 361412468}
-  - component: {fileID: 361412469}
   m_Layer: 0
   m_Name: house
   m_TagString: Untagged
@@ -412,31 +410,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &361412468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361412465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bce8b4a02e7a5b848992c2d7bca34376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &361412469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361412465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7679d1a2d817fb6419ce5833ff5c2657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}
 --- !u!1 &416303493
 GameObject:
   m_ObjectHideFlags: 0

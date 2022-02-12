@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public void getNextLevel(int currentLevel, string direction)
+    public int currentLevel;
+
+    public void Awake()
     {
-        if (currentLevel == 0 && direction == "right")
+        DontDestroyOnLoad(this);
+    }
+    public void setNextLevel(string direction)
+    {
+        if (direction == "right")
         {
             currentLevel++;
         }
@@ -15,10 +21,16 @@ public class LevelManager : MonoBehaviour
         {
             currentLevel--;
         }
-        SceneManager.LoadScene(currentLevel);
     }
-    public void getNextLevel(int level)
+    public void getNextLevel()
     {
-        SceneManager.LoadScene(level);
+        
+        SceneManager.LoadScene(currentLevel);
+        GetComponent<SpawnScott>().spawnScott();
     }
+    public void setNextLevel(int currentLevel)
+    { 
+        this.currentLevel = currentLevel;
+    }
+
 }
