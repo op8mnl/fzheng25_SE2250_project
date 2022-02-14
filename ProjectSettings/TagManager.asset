@@ -9,6 +9,8 @@ TagManager:
   - plot2
   - plot3
   - portal1
+  - basicAttack
+  - strike
   layers:
   - Default
   - TransparentFX

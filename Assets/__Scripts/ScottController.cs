@@ -8,6 +8,8 @@ public class ScottController : MonoBehaviour
     public float speed; //speed
     public float jump; //jump
     private Rigidbody2D _scott; //scott player
+    private PolygonCollider2D basicAttack;
+    private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
     private bool _inPortal = false;
@@ -21,6 +23,8 @@ public class ScottController : MonoBehaviour
         //get components
         _scott = GetComponent<Rigidbody2D>();
         scottAnim = GetComponent<Animator>();
+        basicAttack = GameObject.FindGameObjectWithTag("basicAttack").GetComponent<PolygonCollider2D>();
+        strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
     }
     private void Awake()
     {
@@ -72,6 +76,16 @@ public class ScottController : MonoBehaviour
             scottAnim.SetBool("IsWalking", false);
         }
 
+        //Crouch animation
+        if(Input.GetAxis("Vertical") < 0 && _inPortal == false && scottAnim.GetBool("IsWalking")==false)
+        {
+            scottAnim.SetBool("IsCrouch", true);
+        }
+        else
+        {
+            scottAnim.SetBool("IsCrouch", false);
+        }
+
         //get input for player to jump, add impulse force for jump
         if (Input.GetButtonDown("Jump") && Mathf.Abs(_scott.velocity.y) < 0.001f)
         {
@@ -92,15 +106,30 @@ public class ScottController : MonoBehaviour
         if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(0).IsName("Scott_BasicAttack"))
         {
             scottAnim.SetTrigger("BasicAttack");
+            basicAttack.enabled = true;
+            StartCoroutine(DisableBasicAttackCollider());
         }
 
         //Attack 2 Animations
         if (Input.GetButtonDown("Attack2") && !scottAnim.GetCurrentAnimatorStateInfo(0).IsName("Scott_Strike"))
         {
             scottAnim.SetTrigger("Strike");
+            strike.enabled = true;
+            StartCoroutine (DisableStrikeCollider());
         }
     }
-
+    private IEnumerator DisableStrikeCollider()
+    {
+        yield return new WaitForSeconds(0.03f);
+        strike.enabled = false;
+        StopCoroutine(DisableStrikeCollider());
+    }
+    private IEnumerator DisableBasicAttackCollider()
+    {
+        yield return new WaitForSeconds(0.04f);
+        basicAttack.enabled = false;
+        StopCoroutine(DisableBasicAttackCollider());
+    }
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Hill"))
