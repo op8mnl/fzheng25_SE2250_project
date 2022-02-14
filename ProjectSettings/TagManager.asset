@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - Foreground
   - 
   - 
   - 
@@ -54,4 +54,10 @@ TagManager:
     locked: 0
   - name: Scott
     uniqueID: 3948489249
+    locked: 0
+  - name: Foreground
+    uniqueID: 1261655979
+    locked: 0
+  - name: Ground
+    uniqueID: 427909081
     locked: 0
