@@ -11,6 +11,7 @@ TagManager:
   - portal1
   - basicAttack
   - strike
+  - frog
   layers:
   - Default
   - TransparentFX
