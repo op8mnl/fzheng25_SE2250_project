@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410359865}
-  - component: {fileID: 1410359866}
+  - component: {fileID: 524718676393820302}
   m_Layer: 0
   m_Name: BasicAttack
   m_TagString: basicAttack
@@ -446,7 +446,7 @@ Transform:
   m_Father: {fileID: 3114250723668659135}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1410359866
+--- !u!60 &524718676393820302
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -471,18 +471,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.6839685, y: -0.65355825}
-      - {x: 1.6361713, y: -0.33402514}
-      - {x: 1.45436, y: -0.040857077}
-      - {x: 1.1936417, y: 0.1866939}
-      - {x: 0.9214382, y: 0.33601665}
-      - {x: 0.18432236, y: 0.43679416}
-      - {x: -0.61601734, y: 0.2659881}
-      - {x: -0.96272564, y: -0.06389928}
-      - {x: -1.1456184, y: -0.653553}
-      - {x: -1.0383496, y: -0.7680565}
-      - {x: 0.6287457, y: -0.9318981}
-      - {x: 1.6269035, y: -0.81739455}
+    - - {x: -0.58425903, y: 0.36938477}
+      - {x: -1.1923285, y: -0.8242686}
+      - {x: -1.063005, y: -0.95327365}
+      - {x: 1.8119065, y: -0.95740867}
+      - {x: 1.2014532, y: 0.373928}
 --- !u!1 &1888192566
 GameObject:
   m_ObjectHideFlags: 0

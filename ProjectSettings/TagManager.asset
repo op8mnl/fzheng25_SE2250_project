@@ -12,6 +12,7 @@ TagManager:
   - basicAttack
   - strike
   - frog
+  - Ground
   layers:
   - Default
   - TransparentFX

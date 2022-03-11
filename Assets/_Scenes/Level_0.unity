@@ -1549,6 +1549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 100
+  speed: 100
+  jumpHeight: 100
 --- !u!1 &815325602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2384,7 +2386,7 @@ GameObject:
   - component: {fileID: 1840324426}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
