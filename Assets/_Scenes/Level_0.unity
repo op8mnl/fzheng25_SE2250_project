@@ -1531,26 +1531,6 @@ Transform:
   m_Father: {fileID: 649706712}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &695176682 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1735948547548930661, guid: 4ac7b737050a7444895bfd62eb88e433, type: 3}
-  m_PrefabInstance: {fileID: 1735948546868113295}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &695176688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695176682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e600395b30197f04c9fc4abe2769207e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 100
-  speed: 100
-  jumpHeight: 100
 --- !u!1 &815325602
 GameObject:
   m_ObjectHideFlags: 0

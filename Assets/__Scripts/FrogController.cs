@@ -12,6 +12,7 @@ public class FrogController : MonoBehaviour
     private bool shouldJump;
     private bool isLanded;
     private bool hitScan;
+    public GameObject scott;
     Animator frog;
 
     // Start is called before the first frame update
@@ -31,10 +32,11 @@ public class FrogController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("basicAttack"))
+        if (other.gameObject.CompareTag("basicAttack")|| other.gameObject.CompareTag("Player")|| other.gameObject.CompareTag("strike"))
         {
             hitScan = true;
         }
+        
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -42,6 +44,14 @@ public class FrogController : MonoBehaviour
         {
             hit();
             hitScan = false;
+        }
+        if (other.gameObject.CompareTag("strike") && hitScan == true)
+        {
+
+        }
+        if(other.gameObject.CompareTag("Player") && hitScan == true)
+        {
+            scott.GetComponent<ScottController>().takeDamage(10f);
         }
     }
     private void hit() {
@@ -95,7 +105,7 @@ public class FrogController : MonoBehaviour
     }
     void getShouldJump()
     {
-        int rand = Random.Range(1, 1000);
+        float rand = Random.Range(1, 1000);
         rand = rand / (1+(count/1000));
         
         if (rand < 1)
