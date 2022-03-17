@@ -7,28 +7,33 @@ public class ScottController : MonoBehaviour
 {
     public float speed; //speed
     public float jump; //jump
+    public GameObject healthManager;
     private Rigidbody2D _scott; //scott player
     private PolygonCollider2D basicAttack;
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
     private bool _inPortal = false;
+    public float _healthPoints;
+
     
-    
-    
+
+
     Animator scottAnim; //animator
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         //get components
         _scott = GetComponent<Rigidbody2D>();
         scottAnim = GetComponent<Animator>();
         basicAttack = GameObject.FindGameObjectWithTag("basicAttack").GetComponent<PolygonCollider2D>();
         strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
+        _healthPoints = 100f;
     }
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        
     }
     // Update is called once per frame
     void Update()
@@ -38,8 +43,10 @@ public class ScottController : MonoBehaviour
         Attack();
 
         Beam();
-    }
 
+        
+    }
+    
     //flip the direction of the player sprite
     private void Flip()
     {
@@ -77,7 +84,7 @@ public class ScottController : MonoBehaviour
         }
 
         //Crouch animation
-        if(Input.GetAxis("Vertical") < 0 && _inPortal == false && scottAnim.GetBool("IsWalking")==false)
+        if (Input.GetAxis("Vertical") < 0 && _inPortal == false && scottAnim.GetBool("IsWalking") == false)
         {
             scottAnim.SetBool("IsCrouch", true);
         }
@@ -92,16 +99,17 @@ public class ScottController : MonoBehaviour
             if (_isOnHill)
             {
                 Vector3 targetVelocity = new Vector2(move * 10f, _scott.velocity.y);
-                _scott.AddForce(new Vector2(0, jump*_scott.gravityScale/2), ForceMode2D.Impulse); 
-            }else
+                _scott.AddForce(new Vector2(0, jump * _scott.gravityScale / 2), ForceMode2D.Impulse);
+            } else
             {
                 _scott.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             }
-            
+
         }
     }
     private void Attack()
     {
+       
         //Attack 1 Animations
         if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(0).IsName("Scott_BasicAttack"))
         {
@@ -115,7 +123,7 @@ public class ScottController : MonoBehaviour
         {
             scottAnim.SetTrigger("Strike");
             strike.enabled = true;
-            StartCoroutine (DisableStrikeCollider());
+            StartCoroutine(DisableStrikeCollider());
         }
     }
     private IEnumerator DisableStrikeCollider()
@@ -148,10 +156,10 @@ public class ScottController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("portal1"))
-        { 
-            _inPortal = true; 
+        {
+            _inPortal = true;
         }
-            
+
     }
     void OnTriggerExit2D(Collider2D other)
     {
@@ -166,17 +174,21 @@ public class ScottController : MonoBehaviour
         if (_inPortal == true && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
-            Invoke("toggleVisibility",1.25f);
+            Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, 0, "right"));
         }
-        
+
     }
     void toggleVisibility()
     {
         GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
-        
+
     }
- 
+
+    public void takeDamage(float damage){
+        _healthPoints -= damage;
+        healthManager.GetComponent<healthManager>().healthUpdate(_healthPoints);
+    }
 
     IEnumerator nextLevel(float delayTime,int currentLevel, string direction)
     {

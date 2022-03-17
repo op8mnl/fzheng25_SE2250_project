@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1735948547548930660}
   - component: {fileID: 1735948547548930656}
   - component: {fileID: 6868644247465742026}
-  - component: {fileID: 5941090864330827734}
+  - component: {fileID: 3851242952667045781}
   m_Layer: 0
   m_Name: Frog
   m_TagString: frog
@@ -169,19 +169,19 @@ CircleCollider2D:
   m_Offset: {x: -0.05, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.45
---- !u!70 &5941090864330827734
-CapsuleCollider2D:
+--- !u!114 &3851242952667045781
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735948547548930661}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 56b61c0838602834a9acba2e2be6be76, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05391848, y: 0.05}
-  m_Size: {x: 0.6356853, y: 0.6356853}
-  m_Direction: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e600395b30197f04c9fc4abe2769207e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 100
+  speed: 100
+  jumpHeight: 100
+  scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}

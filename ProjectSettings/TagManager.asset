@@ -12,6 +12,8 @@ TagManager:
   - basicAttack
   - strike
   - frog
+  - Ground
+  - healthBar
   layers:
   - Default
   - TransparentFX
