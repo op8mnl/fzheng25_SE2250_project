@@ -14,6 +14,7 @@ TagManager:
   - frog
   - Ground
   - healthBar
+  - slider
   layers:
   - Default
   - TransparentFX
