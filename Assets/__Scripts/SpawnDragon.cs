@@ -12,10 +12,12 @@ public class SpawnDragon : MonoBehaviour
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
         dragon.GetComponent<ScottController>()._healthPoints = 100f; //set the healthpoints to 100
-        dragon.GetComponent<healthManager>().slider_value = 100f; //slider value (NEEDS TO BE FIXED)
+        dragon.GetComponent<HealthManager>()._sliderValue = 100f; //slider value (NEEDS TO BE FIXED)
         Instantiate(dragon, new Vector2(-10, -2.5f), Quaternion.identity);
     }
+    */
 }

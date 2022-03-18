@@ -154,7 +154,7 @@ public class DragonController : MonoBehaviour
     public void takeDamage(float damage)
     {
         _healthPoints -= damage;
-        healthManager.GetComponent<healthManager>().healthUpdate(_healthPoints);
+        healthManager.GetComponent<HealthManager>().healthUpdate(_healthPoints);
     }
 
 

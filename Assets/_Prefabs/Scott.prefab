@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 391053634}
   - component: {fileID: 391053636}
   - component: {fileID: 6766950590566598208}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HealthContainer
   m_TagString: slider
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 978407183}
   - component: {fileID: 894160553330634}
   - component: {fileID: 2970353686643952296}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 1129864703}
   - component: {fileID: 1129864705}
   - component: {fileID: 1129864704}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 1303116313}
   - component: {fileID: 1303116315}
   - component: {fileID: 1303116314}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: CharacterIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 1356497924}
   - component: {fileID: 1356497923}
   - component: {fileID: 1356497922}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410359865}
   - component: {fileID: 524718676393820302}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicAttack
   m_TagString: basicAttack
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 1888192567}
   - component: {fileID: 1888192569}
   - component: {fileID: 1888192568}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 3114250723023165749}
   - component: {fileID: 3114250723023165751}
   - component: {fileID: 3114250723023165748}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 3114250723668659123}
   - component: {fileID: 3114250723668659120}
   - component: {fileID: 2954768533413486783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Scott
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -803,7 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jump: 7
+  jump: 8
   _healthPoints: 100
 --- !u!70 &3114250723668659123
 CapsuleCollider2D:
@@ -849,7 +849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f7962fca944b8499b3cec0b12fea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider_value: 100
+  mSlider: {fileID: 0}
+  _sliderValue: 0
 --- !u!1 &8942477202387826969
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4781527489623420663}
   - component: {fileID: 2454346977705337083}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Strike
   m_TagString: strike
   m_Icon: {fileID: 0}
