@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class ScottController : MonoBehaviour
@@ -13,7 +14,8 @@ public class ScottController : MonoBehaviour
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
     private bool _inPortal = false;
-    private float _healthPoints = 100f;
+    public float _healthPoints = 100f;
+    // private float level = 2;
 
     
 
@@ -174,8 +176,9 @@ public class ScottController : MonoBehaviour
         if (_inPortal == true && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
-            Invoke("toggleVisibility", 1.25f);
+            // Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, 0, "right"));
+            SceneManager.LoadScene(2);
         }
 
     }
