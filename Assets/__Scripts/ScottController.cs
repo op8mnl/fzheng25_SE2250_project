@@ -7,14 +7,13 @@ public class ScottController : MonoBehaviour
 {
     public float speed; //speed
     public float jump; //jump
-    public GameObject healthManager;
     private Rigidbody2D _scott; //scott player
     private PolygonCollider2D basicAttack;
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
     private bool _inPortal = false;
-    public float _healthPoints;
+    private float _healthPoints = 100f;
 
     
 
@@ -28,12 +27,13 @@ public class ScottController : MonoBehaviour
         scottAnim = GetComponent<Animator>();
         basicAttack = GameObject.FindGameObjectWithTag("basicAttack").GetComponent<PolygonCollider2D>();
         strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
-        _healthPoints = 100f;
+        
     }
     private void Awake()
     {
         DontDestroyOnLoad(this);
-        
+        GetComponent<HealthManager>().setHealth(_healthPoints);
+
     }
     // Update is called once per frame
     void Update()
@@ -187,7 +187,7 @@ public class ScottController : MonoBehaviour
 
     public void takeDamage(float damage){
         _healthPoints -= damage;
-        healthManager.GetComponent<healthManager>().healthUpdate(_healthPoints);
+        GetComponent<HealthManager>().healthUpdate(_healthPoints);
     }
 
     IEnumerator nextLevel(float delayTime,int currentLevel, string direction)

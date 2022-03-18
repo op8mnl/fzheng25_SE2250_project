@@ -2,26 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class healthManager : MonoBehaviour
+public class HealthManager : MonoBehaviour
 {
-    public Slider slider;
-    public float slider_value;
+    private Slider slider;
+    private float _sliderValue;
     // Start is called before the first frame update
     void Start()
     {
-        slider = GetComponent<Slider>();
-        slider.value = slider_value;
+        slider = GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>();
+        slider.value = _sliderValue;
     }
 
     public void healthUpdate(float healthVal)
     {
-        slider_value = healthVal;
-        Debug.Log(slider_value);
+        _sliderValue = healthVal;
+        Debug.Log(_sliderValue);
+        slider.value = _sliderValue;
     }
 
     private void Update()
     {
-        slider.value = slider_value;
+        
+        
     }
+
+    public void setHealth(float health) { _sliderValue = health; }
+    
 
 }
