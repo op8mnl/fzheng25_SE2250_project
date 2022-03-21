@@ -105,7 +105,7 @@ public class NinjaController : MonoBehaviour
         if (Input.GetButtonDown("Attack1") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_slash"))
         {
             ninjaAnim.SetTrigger("Slash");
-            slash.enabled = true;
+            //slash.enabled = true;
             StartCoroutine(DisableBasicAttackCollider());
         }
 
@@ -113,7 +113,7 @@ public class NinjaController : MonoBehaviour
         if (Input.GetButtonDown("Attack2") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_strike"))
         {
             ninjaAnim.SetTrigger("Strike");
-            strike.enabled = true;
+            //strike.enabled = true;
             StartCoroutine(DisableStrikeCollider());
         }
     }
@@ -121,13 +121,13 @@ public class NinjaController : MonoBehaviour
     private IEnumerator DisableStrikeCollider()
     {
         yield return new WaitForSeconds(0.03f);
-        strike.enabled = false;
+        //strike.enabled = false;
         StopCoroutine(DisableStrikeCollider());
     }
     private IEnumerator DisableBasicAttackCollider()
     {
         yield return new WaitForSeconds(0.04f);
-        slash.enabled = false;
+       // slash.enabled = false;
         StopCoroutine(DisableBasicAttackCollider());
     }
 

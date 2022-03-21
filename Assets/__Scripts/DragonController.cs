@@ -127,7 +127,7 @@ public class DragonController : MonoBehaviour
     private IEnumerator DisableBasicAttackCollider()
     {
         yield return new WaitForSeconds(0.04f);
-        basicAttack.enabled = false;
+        //basicAttack.enabled = false;
         StopCoroutine(DisableBasicAttackCollider());
     }
 
