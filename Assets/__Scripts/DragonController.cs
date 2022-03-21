@@ -9,7 +9,7 @@ public class DragonController : MonoBehaviour
     public GameObject healthManager;
     private Rigidbody2D _dragon; //dragon player sprite
     private PolygonCollider2D basicAttack;
-    private PolygonCollider2D strike;
+    private PolygonCollider2D FlyKick;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
     private bool _inPortal = false;
@@ -65,7 +65,6 @@ public class DragonController : MonoBehaviour
         //change animation when player is walking
         if (Input.GetAxis("Horizontal") != 0)
         {
-            Debug.Log("Yes");
             dragonAnim.SetBool("IsWalking", true);
         }
         else
@@ -123,7 +122,7 @@ public class DragonController : MonoBehaviour
     private IEnumerator DisableStrikeCollider()
     {
         yield return new WaitForSeconds(0.03f);
-        strike.enabled = false;
+        //strike.enabled = false;
         StopCoroutine(DisableStrikeCollider());
     }
     private IEnumerator DisableBasicAttackCollider()
