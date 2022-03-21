@@ -47,7 +47,6 @@ public class DragonController : MonoBehaviour
 
     private void Movement()
     {
-        
         //flip the character based on which direction ur moving
         var move = Input.GetAxis("Horizontal");
         if (Input.GetAxis("Horizontal") > 0 && _facingRight == false)
@@ -65,12 +64,11 @@ public class DragonController : MonoBehaviour
         //change animation when player is walking
         if (Input.GetAxis("Horizontal") != 0)
         {
-            Debug.Log("Yes");
             dragonAnim.SetBool("IsWalking", true);
         }
         else
         {
-            Debug.Log("no");
+            
             dragonAnim.SetBool("IsWalking", false);
         }
 
