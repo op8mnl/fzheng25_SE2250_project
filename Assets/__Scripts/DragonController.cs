@@ -32,7 +32,8 @@ public class DragonController : MonoBehaviour
 
     private void Update()
     {
-        
+        Movement();
+        Attack();
     }
 
     //flip the direction of the dragon sprite

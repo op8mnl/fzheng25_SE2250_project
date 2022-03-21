@@ -32,7 +32,8 @@ public class NinjaController : MonoBehaviour
 
     private void Update()
     {
-
+        Movement();
+        Attack();
     }
 
     //flip the direction of the ninja sprite
