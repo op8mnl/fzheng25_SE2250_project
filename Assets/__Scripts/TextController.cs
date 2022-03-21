@@ -19,8 +19,8 @@ public class TextController : MonoBehaviour
         if (rectangle.CompareTag("Player"))
         {
             plot.text = "Young Scott is on a life changing journey to find love on Timber. " +
-               "Scott’s dedication to his journey led him to have his phone " +
-               "confiscated during Ari Steinfeld’s MATH 1512 lecture.";
+               "Scott's dedication to his journey led him to have his phone " +
+               "confiscated during Ari Steinfeld's MATH 1512 lecture.";
 
         }
  

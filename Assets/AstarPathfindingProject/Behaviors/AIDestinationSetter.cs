@@ -21,6 +21,10 @@ namespace Pathfinding {
 
 		IAstarAI ai;
 
+		void Start () {
+			target = GameObject.FindGameObjectWithTag("Player").transform;
+		}
+
 		void OnEnable () {
 			ai = GetComponent<IAstarAI>();
 			// Update the destination right before searching for a path as well.
@@ -36,6 +40,7 @@ namespace Pathfinding {
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
+			target = GameObject.FindGameObjectWithTag("Player").transform;
 			if (target != null && ai != null) ai.destination = target.position;
 		}
 	}
