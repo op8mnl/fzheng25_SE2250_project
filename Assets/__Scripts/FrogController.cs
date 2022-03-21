@@ -20,6 +20,7 @@ public class FrogController : MonoBehaviour
     {
         initMovement();
         frog = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class FrogController : MonoBehaviour
         getShouldJump();
         movement(movementDir);
         die();
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -71,6 +73,18 @@ public class FrogController : MonoBehaviour
     {
         movementDir = Random.Range(1, 3);
     }
+    int force()
+    {
+        if(gameObject.GetComponent<Rigidbody2D>().velocity.x > 0)
+        {
+            return 1;
+        }
+        else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
+        {
+            return -1;
+        }
+        return 0;
+    }
     void movement(int dir)
     {
         if (movementDir == 1 && shouldJump == true)
@@ -105,8 +119,9 @@ public class FrogController : MonoBehaviour
     }
     void getShouldJump()
     {
+        
         float rand = Random.Range(1, 1000);
-        rand = rand / (1+(count/1000));
+        rand = rand / (1+(count/10000));
         
         if (rand < 1)
         {
@@ -128,10 +143,12 @@ public class FrogController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
+
         if (col.gameObject.CompareTag("Ground")|| col.gameObject.CompareTag("Hill"))
         {
             isLanded = true;
             frog.SetBool("isLanded", true);
+            
         }
     }
     private void OnCollisionExit2D(Collision2D col)
