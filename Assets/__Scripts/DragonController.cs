@@ -112,7 +112,7 @@ public class DragonController : MonoBehaviour
         //Attack 2 Animations
         if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
         {
-            dragonAnim.SetTrigger("Strike");
+            dragonAnim.SetTrigger("FlyKick");
             strike.enabled = true;
             StartCoroutine(DisableStrikeCollider());
         }

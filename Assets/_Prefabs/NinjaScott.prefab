@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 2690309283043553154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.23, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 2927086733612502131}
   - {fileID: 1903958390473158096}
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSlider: {fileID: 0}
-  _sliderValue: 0
+  _sliderValue: 100
 --- !u!1 &2765047580051433582
 GameObject:
   m_ObjectHideFlags: 0
