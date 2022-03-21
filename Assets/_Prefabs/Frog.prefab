@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1735948547548930659}
   - component: {fileID: 1735948547548930660}
   - component: {fileID: 1735948547548930656}
-  - component: {fileID: 6868644247465742026}
   - component: {fileID: 3851242952667045781}
+  - component: {fileID: 8336839473642386837}
   m_Layer: 0
   m_Name: Frog
   m_TagString: frog
@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -153,22 +153,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95851636, y: 0.9}
   m_EdgeRadius: 0
---- !u!58 &6868644247465742026
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735948547548930661}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4bff219fcbd41c844850a95fd2fd2b49, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: -0.1}
-  serializedVersion: 2
-  m_Radius: 0.45
 --- !u!114 &3851242952667045781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +166,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 100
-  speed: 100
-  jumpHeight: 100
+  speed: 200
+  jumpHeight: 300
   scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}
+--- !u!61 &8336839473642386837
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735948547548930661}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 4bff219fcbd41c844850a95fd2fd2b49, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.04927431, y: -0.5484327}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.6}
+    newSize: {x: 0.35, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.04929924, y: 0.0033791065}
+  m_EdgeRadius: 0
