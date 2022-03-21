@@ -47,7 +47,7 @@ public class DragonController : MonoBehaviour
 
     private void Movement()
     {
-
+        
         //flip the character based on which direction ur moving
         var move = Input.GetAxis("Horizontal");
         if (Input.GetAxis("Horizontal") > 0 && _facingRight == false)
@@ -61,14 +61,16 @@ public class DragonController : MonoBehaviour
 
         //translate the position of the player
         transform.position += new Vector3(move, 0, 0) * Time.deltaTime * speed;
-
+        
         //change animation when player is walking
         if (Input.GetAxis("Horizontal") != 0)
         {
+            Debug.Log("Yes");
             dragonAnim.SetBool("IsWalking", true);
         }
         else
         {
+            Debug.Log("no");
             dragonAnim.SetBool("IsWalking", false);
         }
 
@@ -105,7 +107,7 @@ public class DragonController : MonoBehaviour
         if (Input.GetButtonDown("Attack1") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_BasicAttack"))
         {
             dragonAnim.SetTrigger("BasicAttack");
-            basicAttack.enabled = true;
+            //basicAttack.enabled = true;
             StartCoroutine(DisableBasicAttackCollider());
         }
 
@@ -113,7 +115,7 @@ public class DragonController : MonoBehaviour
         if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
         {
             dragonAnim.SetTrigger("FlyKick");
-            strike.enabled = true;
+            //strike.enabled = true;
             StartCoroutine(DisableStrikeCollider());
         }
     }
