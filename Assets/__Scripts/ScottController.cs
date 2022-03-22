@@ -200,17 +200,17 @@ public class ScottController : MonoBehaviour
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
     }
 
-<<<<<<< HEAD
-    IEnumerator nextLevel(float delayTime, string direction)
-=======
+
+
+
     public void getExp(float points)
     {
         _expPoints += points;
         GetComponent<ExpManager>().expUpdate(_expPoints);
     }
 
-    IEnumerator nextLevel(float delayTime,int currentLevel, string direction)
->>>>>>> 01bced3cc348927b2dc8ba3e2af2fc51f2ce0f52
+    IEnumerator nextLevel(float delayTime, string direction)
+
     {
         //Wait for the specified delay time before continuing.
         yield return new WaitForSeconds(delayTime);
