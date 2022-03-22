@@ -94,7 +94,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -854,7 +854,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSlider: {fileID: 0}
+<<<<<<< Updated upstream
   _sliderValue: -3940
+=======
+  _sliderValue: 100
+>>>>>>> Stashed changes
 --- !u!114 &3428982553548728911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,7 +872,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xSlider: {fileID: 0}
+<<<<<<< Updated upstream
   _sliderValue: 100
+=======
+  _sliderValue: 0.01
+>>>>>>> Stashed changes
 --- !u!1 &3263109193797996119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,10 +1118,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 5482863469613944989}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 1
-  m_MaxValue: 100
+  m_MinValue: 0.01
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.01
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

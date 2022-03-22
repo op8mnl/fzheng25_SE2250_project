@@ -12,7 +12,8 @@ public class HealthManager : MonoBehaviour
     {
         // slider = GameObject.Find("HealthContainer").GetComponent<Slider>();
         mSlider = GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>();
-        mSlider.value = _sliderValue;
+        _sliderValue = 100f;
+        mSlider.value = 100f;
     }
 
     public void healthUpdate(float healthVal)

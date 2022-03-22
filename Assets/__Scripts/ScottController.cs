@@ -25,7 +25,11 @@ public class ScottController : MonoBehaviour
     public float _expPoints = 1f;
     Animator scottAnim; //animator
     private LevelManager _script;
+<<<<<<< Updated upstream
     public GameObject swordWave;
+=======
+    private Shield _shield;
+>>>>>>> Stashed changes
     
     // Start is called before the first frame update
     public void Start()
@@ -36,11 +40,17 @@ public class ScottController : MonoBehaviour
         scottAnim = GetComponent<Animator>();
         basicAttack = GameObject.FindGameObjectWithTag("basicAttack").GetComponent<PolygonCollider2D>();
         strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
-        
+        _healthPoints = 100f;
+        // this value is caching
+        _expPoints = 1f;
+        _shield = GetComponent<Shield>();
+
     }
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        _expPoints = 1f;
+        _healthPoints = 100f;
         GetComponent<HealthManager>().setHealth(_healthPoints);
         GetComponent<ExpManager>().setExp(_expPoints);
 
@@ -141,7 +151,17 @@ public class ScottController : MonoBehaviour
            
         }
 
+<<<<<<< Updated upstream
 
+=======
+        /* 
+        //Fireball Ability Stuff
+        if (Input.GetButtonDown("Attack3"))
+        {
+             var projectile = GameObject.Instantiate(fireballPrefab, transform.position, fireballPrefab.transform.rotation);
+        }
+        */
+>>>>>>> Stashed changes
     }
     private IEnumerator DisableStrikeCollider()
     {
@@ -194,6 +214,7 @@ public class ScottController : MonoBehaviour
         {
             _inPortal0 = true;
         }
+        
     }
     void OnTriggerExit2D(Collider2D other)
     {
@@ -232,6 +253,7 @@ public class ScottController : MonoBehaviour
     public void gainExp(float points)
     {
         _expPoints += points;
+        Debug.Log("_expPoints = " + _expPoints);
         GetComponent<ExpManager>().expUpdate(_expPoints);
     }
 
