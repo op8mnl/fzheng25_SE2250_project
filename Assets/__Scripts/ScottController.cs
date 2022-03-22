@@ -25,11 +25,8 @@ public class ScottController : MonoBehaviour
     public float _expPoints = 1f;
     Animator scottAnim; //animator
     private LevelManager _script;
-<<<<<<< Updated upstream
     public GameObject swordWave;
-=======
     private Shield _shield;
->>>>>>> Stashed changes
     
     // Start is called before the first frame update
     public void Start()
@@ -151,9 +148,6 @@ public class ScottController : MonoBehaviour
            
         }
 
-<<<<<<< Updated upstream
-
-=======
         /* 
         //Fireball Ability Stuff
         if (Input.GetButtonDown("Attack3"))
@@ -161,7 +155,7 @@ public class ScottController : MonoBehaviour
              var projectile = GameObject.Instantiate(fireballPrefab, transform.position, fireballPrefab.transform.rotation);
         }
         */
->>>>>>> Stashed changes
+
     }
     private IEnumerator DisableStrikeCollider()
     {
