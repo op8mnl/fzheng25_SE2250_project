@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Enemy
 {
-    public float speed = 200f;
     public float nextWaypointDistance = 3f;
     private Transform target;
     public bool canFly;
@@ -36,7 +35,6 @@ public class EnemyAI : MonoBehaviour
         if (seeker.IsDone()) {
             // current position, ending position, and the method to call:
             seeker.StartPath(rb.position, target.position, OnPathComplete);
-
         }
     }
 
@@ -82,54 +80,26 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint ++;
         }
 
-        // if (isRightFacing) {
-            if (rb.velocity.x >= 0.1f) { // moving right
-                transform.localScale = new Vector3(isRightFacing? 1 : -1, 1, 1);
-            } else if (rb.velocity.x <= -0.1f) { // moving left
-                transform.localScale = new Vector3(isRightFacing? -1 : 1, 1, 1);
-            }
-        // } else {
-        //     if (rb.velocity.x >= 0.1f) { // moving right
-        //         enemyGFX.rotation = Quaternion.Euler(0,0,0);
-        //     } else if (rb.velocity.x <= -0.1f) { // moving left
-        //         enemyGFX.rotation = Quaternion.Euler(0,180,0);
-        //     }
-        // }
+        if (rb.velocity.x >= 0.1f) { // moving right
+            transform.localScale = new Vector3(isRightFacing? 1 : -1, 1, 1);
+        } else if (rb.velocity.x <= -0.1f) { // moving left
+            transform.localScale = new Vector3(isRightFacing? -1 : 1, 1, 1);
+        }
     }
 
-    // This part doesn't work yet :(
     void OnTriggerEnter2D(Collider2D other) {
-        // if (path == null) {
-        //     return;
-        // }
-
-        // Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        // Vector2 force = direction * speed * Time.deltaTime;  // force that will move the enemy in the desired direction
-
-        // Vector2 velocity = rb.velocity;
-
         if (other.CompareTag("Hill") && !canFly) {
-            // velocity = force;
-            // rb.velocity = velocity;
             isOnHill = true;
         }
+
+        onTrigEnter(other);
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        // if (path == null) {
-        //     return;
-        // }
-
-        // Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        // Vector2 force = direction * speed * Time.deltaTime;  // force that will move the enemy in the desired direction
-
-        // Vector2 velocity = rb.velocity;
-
         if (other.CompareTag("Hill") && !canFly) {
-            // velocity.x = force.x;
-            // velocity.y = 0;
-            // rb.velocity = velocity;
             isOnHill = false;
         }
+
+        onTrigExit(other);
     }
 }

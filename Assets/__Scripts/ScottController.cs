@@ -76,6 +76,10 @@ public class ScottController : MonoBehaviour
         //translate the position of the player
         transform.position += new Vector3(move, 0, 0) * Time.deltaTime * speed;
 
+        if (scottAnim == null) {
+            scottAnim = GetComponent<Animator>();
+        }
+
         //change animation when player is walking
         if (Input.GetAxis("Horizontal") != 0)
         {
@@ -129,11 +133,13 @@ public class ScottController : MonoBehaviour
             StartCoroutine(DisableStrikeCollider());
         }
 
+        /* 
         //Fireball Ability Stuff
         if (Input.GetButtonDown("Attack3"))
         {
             var projectile = GameObject.Instantiate(fireballPrefab, transform.position, fireballPrefab.transform.rotation);
         }
+        */
     }
     private IEnumerator DisableStrikeCollider()
     {
@@ -149,6 +155,10 @@ public class ScottController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
+        if (_scott == null) {
+            _scott = GetComponent<Rigidbody2D>();
+        }
+        
         if (col.gameObject.CompareTag("Hill"))
         {
             _isOnHill = true;
