@@ -9,6 +9,8 @@ public class EnemyAI : MonoBehaviour
     public float nextWaypointDistance = 3f;
     private Transform target;
     public bool canFly;
+    private bool isOnHill = false;
+    public bool isRightFacing;
 
     public Transform enemyGFX;
 
@@ -64,7 +66,7 @@ public class EnemyAI : MonoBehaviour
 
         Vector2 velocity = rb.velocity;
 
-        if (canFly) {
+        if (canFly || isOnHill) {
             // If a flyer, apply velocity in all directions
             velocity = force;
             rb.velocity = velocity;
@@ -74,32 +76,60 @@ public class EnemyAI : MonoBehaviour
             rb.velocity = velocity;
         }
 
-        // This part doesn't work yet :(
-        void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Hill") && !canFly) {
-                velocity.y = force.y;
-                rb.velocity = velocity;
-            }
-        }
-
-        void OnTriggerExit2D(Collider2D other) {
-            if (other.CompareTag("Hill") && !canFly) {
-                velocity.y = 0;
-                rb.velocity = velocity;
-            }
-        }
-
-
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
         if (distance < nextWaypointDistance) {
             currentWaypoint ++;
         }
 
-        if (rb.velocity.x >= 0.1f) { // moving right
-            enemyGFX.rotation = Quaternion.Euler(0,0,0);
-        } else if (rb.velocity.x <= -0.1f) { // moving left
-            enemyGFX.rotation = Quaternion.Euler(0,180,0);
+        // if (isRightFacing) {
+            if (rb.velocity.x >= 0.1f) { // moving right
+                transform.localScale = new Vector3(isRightFacing? 1 : -1, 1, 1);
+            } else if (rb.velocity.x <= -0.1f) { // moving left
+                transform.localScale = new Vector3(isRightFacing? -1 : 1, 1, 1);
+            }
+        // } else {
+        //     if (rb.velocity.x >= 0.1f) { // moving right
+        //         enemyGFX.rotation = Quaternion.Euler(0,0,0);
+        //     } else if (rb.velocity.x <= -0.1f) { // moving left
+        //         enemyGFX.rotation = Quaternion.Euler(0,180,0);
+        //     }
+        // }
+    }
+
+    // This part doesn't work yet :(
+    void OnTriggerEnter2D(Collider2D other) {
+        // if (path == null) {
+        //     return;
+        // }
+
+        // Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        // Vector2 force = direction * speed * Time.deltaTime;  // force that will move the enemy in the desired direction
+
+        // Vector2 velocity = rb.velocity;
+
+        if (other.CompareTag("Hill") && !canFly) {
+            // velocity = force;
+            // rb.velocity = velocity;
+            isOnHill = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        // if (path == null) {
+        //     return;
+        // }
+
+        // Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        // Vector2 force = direction * speed * Time.deltaTime;  // force that will move the enemy in the desired direction
+
+        // Vector2 velocity = rb.velocity;
+
+        if (other.CompareTag("Hill") && !canFly) {
+            // velocity.x = force.x;
+            // velocity.y = 0;
+            // rb.velocity = velocity;
+            isOnHill = false;
         }
     }
 }

@@ -5148,7 +5148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!58 &1912039886
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5244,6 +5244,7 @@ MonoBehaviour:
   speed: 300
   nextWaypointDistance: 3
   canFly: 1
+  isRightFacing: 1
   enemyGFX: {fileID: 963120904}
 --- !u!1 &2010908203
 GameObject:
@@ -5502,6 +5503,7 @@ MonoBehaviour:
   speed: 200
   nextWaypointDistance: 3
   canFly: 0
+  isRightFacing: 0
   enemyGFX: {fileID: 363334579}
 --- !u!114 &2084881600
 MonoBehaviour:

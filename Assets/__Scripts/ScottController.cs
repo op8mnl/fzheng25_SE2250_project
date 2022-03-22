@@ -19,6 +19,7 @@ public class ScottController : MonoBehaviour
     public float _expPoints = 1f;
     Animator scottAnim; //animator
     private LevelManager _script;
+    
     // Start is called before the first frame update
     public void Start()
     {
