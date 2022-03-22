@@ -16,10 +16,7 @@ public class ScottController : MonoBehaviour
     private bool _inPortal1 = false;
     private bool _inPortal0 = false;
     public float _healthPoints = 100f;
-<<<<<<< Updated upstream
-=======
     public float _expPoints = 1f;
->>>>>>> Stashed changes
     Animator scottAnim; //animator
     private LevelManager _script;
     // Start is called before the first frame update
