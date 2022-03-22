@@ -7,27 +7,29 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public int currentLevel;
+    //public GameObject scott;
 
     public void Awake()
     {
         DontDestroyOnLoad(this);
     }
 
-    public void getNextLevel(int current, String dir)
+    public void getNextLevel(String dir)
     {
-        if(dir == "right")
+        if (dir == "right")
         {
             currentLevel++;
-        }else if(dir == "left")
+        }
+        else if (dir == "left")
         {
             currentLevel--;
         }
         SceneManager.LoadScene(currentLevel);
         GetComponent<LoadCharacter>().loadPlayer();
     }
-    public void setNextLevel(int currentLevel)
-    { 
-        this.currentLevel = currentLevel;
+    public int getLevel()
+    {
+        return currentLevel;
     }
 
 }

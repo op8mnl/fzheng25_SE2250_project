@@ -28,7 +28,9 @@ public class LoadCharacter : MonoBehaviour
     }
     public void loadPlayer()
     {
-        Instantiate(player, new Vector2(-10, -2.5f), Quaternion.identity);
+        if (GetComponent<LevelManager>().getLevel()==1) {
+            Instantiate(player, new Vector2(-10, -2.5f), Quaternion.identity);
+        } 
     }
 
 }

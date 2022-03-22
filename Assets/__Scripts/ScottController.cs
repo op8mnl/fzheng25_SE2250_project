@@ -178,11 +178,11 @@ public class ScottController : MonoBehaviour
 
     void Beam()
     {
-        if ((_inPortal1 == false || _inPortal0 == false) && Input.GetButtonDown("Down"))
+        if ((_inPortal1 == true || _inPortal0 == true) && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
             // Invoke("toggleVisibility", 1.25f);
-            StartCoroutine(nextLevel(1.5f, 0, "right"));
+            StartCoroutine(nextLevel(1.5f, "right"));
             //SceneManager.LoadScene();
         }
 
@@ -198,13 +198,13 @@ public class ScottController : MonoBehaviour
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
     }
 
-    IEnumerator nextLevel(float delayTime,int currentLevel, string direction)
+    IEnumerator nextLevel(float delayTime, string direction)
     {
         //Wait for the specified delay time before continuing.
         yield return new WaitForSeconds(delayTime);
 
         //Do the action after the delay time has finished.
-        _script.getNextLevel(currentLevel, direction);
+        _script.getNextLevel( direction);
         StopAllCoroutines();
     }
 
