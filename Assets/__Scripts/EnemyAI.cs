@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Enemy
 {
-    public float speed = 200f;
+    // public float healthPoints = 100f;
+    // public float speed = 200f;
+    // private bool hitScan;
+    // public GameObject scott;
+
     public float nextWaypointDistance = 3f;
     private Transform target;
     public bool canFly;
@@ -82,54 +86,63 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint ++;
         }
 
-        // if (isRightFacing) {
-            if (rb.velocity.x >= 0.1f) { // moving right
-                transform.localScale = new Vector3(isRightFacing? 1 : -1, 1, 1);
-            } else if (rb.velocity.x <= -0.1f) { // moving left
-                transform.localScale = new Vector3(isRightFacing? -1 : 1, 1, 1);
-            }
-        // } else {
-        //     if (rb.velocity.x >= 0.1f) { // moving right
-        //         enemyGFX.rotation = Quaternion.Euler(0,0,0);
-        //     } else if (rb.velocity.x <= -0.1f) { // moving left
-        //         enemyGFX.rotation = Quaternion.Euler(0,180,0);
-        //     }
-        // }
+        if (rb.velocity.x >= 0.1f) { // moving right
+            transform.localScale = new Vector3(isRightFacing? 1 : -1, 1, 1);
+        } else if (rb.velocity.x <= -0.1f) { // moving left
+            transform.localScale = new Vector3(isRightFacing? -1 : 1, 1, 1);
+        }
     }
 
-    // This part doesn't work yet :(
+    // void Update () {
+    //     die();
+    // }
+
     void OnTriggerEnter2D(Collider2D other) {
-        // if (path == null) {
-        //     return;
-        // }
-
-        // Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        // Vector2 force = direction * speed * Time.deltaTime;  // force that will move the enemy in the desired direction
-
-        // Vector2 velocity = rb.velocity;
-
         if (other.CompareTag("Hill") && !canFly) {
-            // velocity = force;
-            // rb.velocity = velocity;
             isOnHill = true;
         }
+
+        onTrigEnter(other);
+
+        // if (other.gameObject.CompareTag("basicAttack")|| other.gameObject.CompareTag("Player")|| other.gameObject.CompareTag("strike"))
+        // {
+        //     hitScan = true;
+        // }
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        // if (path == null) {
-        //     return;
-        // }
-
-        // Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        // Vector2 force = direction * speed * Time.deltaTime;  // force that will move the enemy in the desired direction
-
-        // Vector2 velocity = rb.velocity;
-
         if (other.CompareTag("Hill") && !canFly) {
-            // velocity.x = force.x;
-            // velocity.y = 0;
-            // rb.velocity = velocity;
             isOnHill = false;
         }
+
+        onTrigExit(other);
+        // if (other.gameObject.CompareTag("basicAttack") && hitScan == true)
+        // {
+        //     hit();
+        //     hitScan = false;
+        // }
+        // if (other.gameObject.CompareTag("strike") && hitScan == true)
+        // {
+
+        // }
+        // if(other.gameObject.CompareTag("Player") && hitScan == true)
+        // {
+        //     scott.GetComponent<ScottController>().takeDamage(10f);
+        // }
     }
+
+    // private void hit() {
+    //     healthPoints -= 10; 
+    //     gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 150);
+    //     gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
+    // }
+
+    // private void die()
+    // {
+    //     if(healthPoints <= 0)
+    //     {
+    //         Destroy(gameObject);
+    //         scott.GetComponent<ScottController>().gainExp(30f);
+    //     }
+    // }
 }
