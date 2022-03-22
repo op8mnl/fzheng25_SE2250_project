@@ -67,8 +67,10 @@ public class FrogController : MonoBehaviour
         if(healthPoints <= 0)
         {
             Destroy(gameObject);
+            scott.GetComponent<ScottController>().gainExp(30f);
         }
     }
+
     void initMovement()
     {
         movementDir = Random.Range(1, 3);

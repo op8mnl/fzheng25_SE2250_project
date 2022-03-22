@@ -10,7 +10,7 @@ public class ExpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        xSlider = GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>();
+        xSlider = GameObject.FindGameObjectWithTag("slider2").GetComponent<Slider>();
         xSlider.value = _sliderValue;
     }
 
@@ -19,7 +19,7 @@ public class ExpManager : MonoBehaviour
         Debug.Log(expVal);
         _sliderValue = expVal;
         Debug.Log(_sliderValue);
-        xSlider = GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>();
+        xSlider = GameObject.FindGameObjectWithTag("slider2").GetComponent<Slider>();
         xSlider.value = (float)_sliderValue;
     }
 
