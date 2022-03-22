@@ -123,12 +123,14 @@ public class DragonController : MonoBehaviour
         {
             if (_facingRight)
             {
-                var fireball = GameObject.Instantiate(fireballPrefab, new Vector2(transform.position.x, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
+                dragonAnim.SetTrigger("Fireball");
+                var fireball = GameObject.Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
             }
 
             if (!_facingRight)
             {
-                var fireball = GameObject.Instantiate(fireballPrefab, new Vector2(transform.position.x,transform.position.y - 0.5f), fireballPrefab.transform.rotation* Quaternion.Euler(0f, 180f, 0f));
+                dragonAnim.SetTrigger("Fireball");
+                var fireball = GameObject.Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f,transform.position.y - 0.5f), fireballPrefab.transform.rotation* Quaternion.Euler(0f, 180f, 0f));
 
             }
 
