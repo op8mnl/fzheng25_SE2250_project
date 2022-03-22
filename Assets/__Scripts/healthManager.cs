@@ -6,6 +6,7 @@ public class HealthManager : MonoBehaviour
 {
     public Slider mSlider;
     public float _sliderValue;
+
     // Start is called before the first frame update
     void Start()
     {

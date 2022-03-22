@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSlider: {fileID: 0}
-  _sliderValue: 0
+  _sliderValue: 100
 --- !u!1 &8942477202387826969
 GameObject:
   m_ObjectHideFlags: 0

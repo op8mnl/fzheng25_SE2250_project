@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
     {
         
         SceneManager.LoadScene(currentLevel);
-        GetComponent<SpawnScott>().spawnScott();
+        GetComponent<LoadCharacter>().loadPlayer();
     }
     public void setNextLevel(int currentLevel)
     { 

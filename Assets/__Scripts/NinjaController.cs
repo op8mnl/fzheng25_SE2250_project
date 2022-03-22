@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonController : MonoBehaviour
+public class NinjaController : MonoBehaviour
 {
     public float speed; //speed
     public float jump; //jump
     public GameObject healthManager;
-    private Rigidbody2D _dragon; //dragon player sprite
-    private PolygonCollider2D basicAttack;
-    private PolygonCollider2D FlyKick;
+    private Rigidbody2D _ninja; //ninja player sprite
+    private PolygonCollider2D slash;
+    private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
     private bool _inPortal = false;
     public float _healthPoints;
 
-    Animator dragonAnim; //animator for the dragon
+    Animator ninjaAnim; //animator for the ninja
 
     public void Start()
     {
         //get all the components
-        _dragon = GetComponent<Rigidbody2D>();
-        dragonAnim = GetComponent<Animator>();
+        _ninja = GetComponent<Rigidbody2D>();
+        ninjaAnim = GetComponent<Animator>();
         _healthPoints = 100f;
     }
 
@@ -36,7 +36,7 @@ public class DragonController : MonoBehaviour
         Attack();
     }
 
-    //flip the direction of the dragon sprite
+    //flip the direction of the ninja sprite
     private void Flip()
     {
         _facingRight = !_facingRight;
@@ -47,6 +47,7 @@ public class DragonController : MonoBehaviour
 
     private void Movement()
     {
+
         //flip the character based on which direction ur moving
         var move = Input.GetAxis("Horizontal");
         if (Input.GetAxis("Horizontal") > 0 && _facingRight == false)
@@ -60,39 +61,38 @@ public class DragonController : MonoBehaviour
 
         //translate the position of the player
         transform.position += new Vector3(move, 0, 0) * Time.deltaTime * speed;
-        
+
         //change animation when player is walking
         if (Input.GetAxis("Horizontal") != 0)
         {
-            dragonAnim.SetBool("IsWalking", true);
+            ninjaAnim.SetBool("IsWalking", true);
         }
         else
         {
-            
-            dragonAnim.SetBool("IsWalking", false);
+            ninjaAnim.SetBool("IsWalking", false);
         }
 
         //Crouch animation
-        if (Input.GetAxis("Vertical") < 0 && _inPortal == false && dragonAnim.GetBool("IsWalking") == false)
+        if (Input.GetAxis("Vertical") < 0 && _inPortal == false && ninjaAnim.GetBool("IsWalking") == false)
         {
-            dragonAnim.SetBool("IsCrouch", true);
+            ninjaAnim.SetBool("IsCrouch", true);
         }
         else
         {
-            dragonAnim.SetBool("IsCrouch", false);
+            ninjaAnim.SetBool("IsCrouch", false);
         }
 
         //get input for player to jump, add impulse force for jump
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(_dragon.velocity.y) < 0.001f)
+        if (Input.GetButtonDown("Jump") && Mathf.Abs(_ninja.velocity.y) < 0.001f)
         {
             if (_isOnHill)
             {
-                Vector3 targetVelocity = new Vector2(move * 10f, _dragon.velocity.y);
-                _dragon.AddForce(new Vector2(0, jump * _dragon.gravityScale / 2), ForceMode2D.Impulse);
+                Vector3 targetVelocity = new Vector2(move * 10f, _ninja.velocity.y);
+                _ninja.AddForce(new Vector2(0, jump * _ninja.gravityScale / 2), ForceMode2D.Impulse);
             }
             else
             {
-                _dragon.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
+                _ninja.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             }
 
         }
@@ -102,17 +102,17 @@ public class DragonController : MonoBehaviour
     {
 
         //Attack 1 Animations
-        if (Input.GetButtonDown("Attack1") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_BasicAttack"))
+        if (Input.GetButtonDown("Attack1") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_slash"))
         {
-            dragonAnim.SetTrigger("BasicAttack");
-            //basicAttack.enabled = true;
+            ninjaAnim.SetTrigger("Slash");
+            //slash.enabled = true;
             StartCoroutine(DisableBasicAttackCollider());
         }
 
         //Attack 2 Animations
-        if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
+        if (Input.GetButtonDown("Attack2") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_strike"))
         {
-            dragonAnim.SetTrigger("FlyKick");
+            ninjaAnim.SetTrigger("Strike");
             //strike.enabled = true;
             StartCoroutine(DisableStrikeCollider());
         }
@@ -127,7 +127,7 @@ public class DragonController : MonoBehaviour
     private IEnumerator DisableBasicAttackCollider()
     {
         yield return new WaitForSeconds(0.04f);
-        //basicAttack.enabled = false;
+        //slash.enabled = false;
         StopCoroutine(DisableBasicAttackCollider());
     }
 
@@ -136,12 +136,12 @@ public class DragonController : MonoBehaviour
         if (col.gameObject.CompareTag("Hill"))
         {
             _isOnHill = true;
-            _dragon.gravityScale = 3;
+            _ninja.gravityScale = 3;
         }
         else
         {
             _isOnHill = false;
-            _dragon.gravityScale = 1.5f;
+            _ninja.gravityScale = 1.5f;
         }
     }
     void OnTriggerExit2D(Collider2D other)
