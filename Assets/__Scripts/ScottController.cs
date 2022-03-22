@@ -16,6 +16,7 @@ public class ScottController : MonoBehaviour
     private bool _inPortal1 = false;
     private bool _inPortal0 = false;
     public float _healthPoints = 100f;
+    public float _expPoints = 0f;
     Animator scottAnim; //animator
     private LevelManager _script;
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class ScottController : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         GetComponent<HealthManager>().setHealth(_healthPoints);
+        GetComponent<ExpManager>().setExp(_expPoints);
 
     }
     // Update is called once per frame
@@ -196,6 +198,12 @@ public class ScottController : MonoBehaviour
     public void takeDamage(float damage){
         _healthPoints -= damage;
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
+    }
+
+    public void getExp(float points)
+    {
+        _expPoints += points;
+        GetComponent<ExpManager>().expUpdate(_expPoints);
     }
 
     IEnumerator nextLevel(float delayTime,int currentLevel, string direction)
