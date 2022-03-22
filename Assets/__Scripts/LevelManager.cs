@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public void Awake()
     {
         DontDestroyOnLoad(this);
+
     }
 
     public void getNextLevel(String dir)
