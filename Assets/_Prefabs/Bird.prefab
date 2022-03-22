@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7322479139939081349}
   - component: {fileID: 6045539107319397294}
   m_Layer: 0
-  m_Name: B1 Red Sheet_0
+  m_Name: Bird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

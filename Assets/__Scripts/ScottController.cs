@@ -16,7 +16,6 @@ public class ScottController : MonoBehaviour
     private bool _inPortal1 = false;
     private bool _inPortal0 = false;
     public float _healthPoints = 100f;
-    public float _expPoints = 0f;
     Animator scottAnim; //animator
     private LevelManager _script;
     // Start is called before the first frame update
@@ -126,6 +125,12 @@ public class ScottController : MonoBehaviour
             scottAnim.SetTrigger("Strike");
             strike.enabled = true;
             StartCoroutine(DisableStrikeCollider());
+        }
+
+        //Fireball Ability Stuff
+        if (Input.GetButtonDown("Attack3"))
+        {
+            var projectile = GameObject.Instantiate(fireballPrefab, transform.position, fireballPrefab.transform.rotation);
         }
     }
     private IEnumerator DisableStrikeCollider()
