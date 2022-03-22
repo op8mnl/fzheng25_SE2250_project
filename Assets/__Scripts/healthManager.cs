@@ -17,9 +17,7 @@ public class HealthManager : MonoBehaviour
 
     public void healthUpdate(float healthVal)
     {
-        Debug.Log(healthVal);
         _sliderValue = healthVal;
-        Debug.Log(_sliderValue);
         mSlider = GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>();
         mSlider.value = (float)_sliderValue;
     }

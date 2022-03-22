@@ -200,9 +200,9 @@ public class ScottController : MonoBehaviour
         if ((_inPortal1 == true || _inPortal0 == true) && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
-            // Invoke("toggleVisibility", 1.25f);
+            //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "right"));
-            //SceneManager.LoadScene();
+            
         }
 
     }
@@ -230,7 +230,7 @@ public class ScottController : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
 
         //Do the action after the delay time has finished.
-        _script.getNextLevel( direction);
+        _script.getNextLevel(direction);
         StopAllCoroutines();
     }
 
