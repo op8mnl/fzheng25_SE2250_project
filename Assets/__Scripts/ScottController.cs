@@ -26,6 +26,7 @@ public class ScottController : MonoBehaviour
     Animator scottAnim; //animator
     private LevelManager _script;
     public GameObject swordWave;
+    private Shield _shield;
     
     // Start is called before the first frame update
     public void Start()
