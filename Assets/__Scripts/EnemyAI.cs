@@ -5,11 +5,6 @@ using Pathfinding;
 
 public class EnemyAI : Enemy
 {
-    // public float healthPoints = 100f;
-    // public float speed = 200f;
-    // private bool hitScan;
-    // public GameObject scott;
-
     public float nextWaypointDistance = 3f;
     private Transform target;
     public bool canFly;
@@ -40,7 +35,6 @@ public class EnemyAI : Enemy
         if (seeker.IsDone()) {
             // current position, ending position, and the method to call:
             seeker.StartPath(rb.position, target.position, OnPathComplete);
-
         }
     }
 
@@ -93,21 +87,12 @@ public class EnemyAI : Enemy
         }
     }
 
-    // void Update () {
-    //     die();
-    // }
-
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Hill") && !canFly) {
             isOnHill = true;
         }
 
         onTrigEnter(other);
-
-        // if (other.gameObject.CompareTag("basicAttack")|| other.gameObject.CompareTag("Player")|| other.gameObject.CompareTag("strike"))
-        // {
-        //     hitScan = true;
-        // }
     }
 
     void OnTriggerExit2D(Collider2D other) {
@@ -116,33 +101,5 @@ public class EnemyAI : Enemy
         }
 
         onTrigExit(other);
-        // if (other.gameObject.CompareTag("basicAttack") && hitScan == true)
-        // {
-        //     hit();
-        //     hitScan = false;
-        // }
-        // if (other.gameObject.CompareTag("strike") && hitScan == true)
-        // {
-
-        // }
-        // if(other.gameObject.CompareTag("Player") && hitScan == true)
-        // {
-        //     scott.GetComponent<ScottController>().takeDamage(10f);
-        // }
     }
-
-    // private void hit() {
-    //     healthPoints -= 10; 
-    //     gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 150);
-    //     gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
-    // }
-
-    // private void die()
-    // {
-    //     if(healthPoints <= 0)
-    //     {
-    //         Destroy(gameObject);
-    //         scott.GetComponent<ScottController>().gainExp(30f);
-    //     }
-    // }
 }

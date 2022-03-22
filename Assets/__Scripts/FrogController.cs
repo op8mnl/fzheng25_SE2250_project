@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class FrogController : Enemy
 {
-    // public float healthPoints = 100f;
-    // public float speed = 100f;
     public float jumpHeight = 500f;
     private int count = 0;
     private int movementDir;
     private bool shouldJump;
     private bool isLanded;
-    // private bool hitScan;
-    // public GameObject scott;
     Animator frog;
 
     // Start is called before the first frame update
@@ -38,45 +34,6 @@ public class FrogController : Enemy
     void OnTriggerExit2D(Collider2D other) {
         onTrigExit(other);
     }
-
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("basicAttack")|| other.gameObject.CompareTag("Player")|| other.gameObject.CompareTag("strike"))
-    //     {
-    //         hitScan = true;
-    //     }
-    // }
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("basicAttack") && hitScan == true)
-    //     {
-    //         hit();
-    //         hitScan = false;
-    //     }
-    //     if (other.gameObject.CompareTag("strike") && hitScan == true)
-    //     {
-
-    //     }
-    //     if(other.gameObject.CompareTag("Player") && hitScan == true)
-    //     {
-    //         scott.GetComponent<ScottController>().takeDamage(10f);
-    //     }
-    // }
-
-    // private void hit() {
-    //     healthPoints -= 10; 
-    //     gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 150);
-    //     gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
-    // }
-
-    // private void die()
-    // {
-    //     if(healthPoints <= 0)
-    //     {
-    //         Destroy(gameObject);
-    //         scott.GetComponent<ScottController>().gainExp(30f);
-    //     }
-    // }
 
     void initMovement()
     {
