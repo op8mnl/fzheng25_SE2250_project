@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
     }
 
-    protected void die()
+    protected virtual void die()
     {
         if(healthPoints <= 0)
         {

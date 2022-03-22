@@ -122,4 +122,13 @@ public class FrogController : Enemy
         isLanded = false;
         frog.SetBool("isLanded", false);
     }
+
+    protected override void die()
+    {
+        if (healthPoints <= 0)
+        {
+            Destroy(gameObject);
+            scott.GetComponent<ScottController>().gainExp(20f);
+        }
+    }
 }
