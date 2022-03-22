@@ -20,6 +20,7 @@ TagManager:
   - Script
   - portal0
   - slider2
+  - projectile
   layers:
   - Default
   - TransparentFX
