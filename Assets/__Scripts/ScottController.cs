@@ -12,6 +12,12 @@ public class ScottController : MonoBehaviour
     private PolygonCollider2D basicAttack;
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
+
+    public bool getDirection()
+    {
+        return _facingRight;
+    }
+
     private bool _isOnHill = false;
     private bool _inPortal1 = false;
     private bool _inPortal0 = false;
@@ -19,6 +25,7 @@ public class ScottController : MonoBehaviour
     public float _expPoints = 1f;
     Animator scottAnim; //animator
     private LevelManager _script;
+    public GameObject swordWave;
     
     // Start is called before the first frame update
     public void Start()
@@ -118,7 +125,7 @@ public class ScottController : MonoBehaviour
     {
        
         //Attack 1 Animations
-        if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(0).IsName("Scott_BasicAttack"))
+        if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_BasicAttack"))
         {
             scottAnim.SetTrigger("BasicAttack");
             basicAttack.enabled = true;
@@ -126,24 +133,29 @@ public class ScottController : MonoBehaviour
         }
 
         //Attack 2 Animations
-        if (Input.GetButtonDown("Attack2") && !scottAnim.GetCurrentAnimatorStateInfo(0).IsName("Scott_Strike"))
+        if (Input.GetAxis("Attack2") >0 && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_Strike"))
         {
             scottAnim.SetTrigger("Strike");
             strike.enabled = true;
             StartCoroutine(DisableStrikeCollider());
+           
         }
 
-        /* 
-        //Fireball Ability Stuff
-        if (Input.GetButtonDown("Attack3"))
-        {
-            var projectile = GameObject.Instantiate(fireballPrefab, transform.position, fireballPrefab.transform.rotation);
-        }
-        */
+
     }
     private IEnumerator DisableStrikeCollider()
     {
         yield return new WaitForSeconds(0.03f);
+        if (_facingRight)
+        {
+            Instantiate(swordWave, new Vector2(transform.position.x+0.9f, transform.position.y - 0.5f), swordWave.transform.rotation);
+        }
+
+        if (!_facingRight)
+        {
+            Instantiate(swordWave, new Vector2(transform.position.x - 0.9f, transform.position.y - 0.5f), swordWave.transform.rotation * Quaternion.Euler(0f, 0f, 180f));
+
+        }
         strike.enabled = false;
         StopCoroutine(DisableStrikeCollider());
     }

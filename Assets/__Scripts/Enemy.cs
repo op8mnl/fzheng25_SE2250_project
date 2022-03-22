@@ -32,7 +32,8 @@ public class Enemy : MonoBehaviour
         }
         if (other.gameObject.CompareTag("strike") && hitScan == true)
         {
-
+            hit();
+            hitScan = false;
         }
         if(other.gameObject.CompareTag("Player") && hitScan == true)
         {

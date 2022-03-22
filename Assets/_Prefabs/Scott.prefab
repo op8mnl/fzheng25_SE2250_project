@@ -806,8 +806,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jump: 8
-  _healthPoints: 100
-  _expPoints: 0
+  _healthPoints: -3940
+  _expPoints: 100
+  swordWave: {fileID: 8301763337838979422, guid: df79914cee7d34a44af4bfe904475e1c, type: 3}
 --- !u!70 &3114250723668659123
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -853,7 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSlider: {fileID: 0}
-  _sliderValue: -440
+  _sliderValue: -3940
 --- !u!114 &3428982553548728911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,7 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xSlider: {fileID: 0}
-  _sliderValue: 1
+  _sliderValue: 100
 --- !u!1 &3263109193797996119
 GameObject:
   m_ObjectHideFlags: 0
