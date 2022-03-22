@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,20 +12,16 @@ public class LevelManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
     }
-    public void setNextLevel(string direction)
+
+    public void getNextLevel(int current, String dir)
     {
-        if (direction == "right")
+        if(dir == "right")
         {
             currentLevel++;
-        }
-        else
+        }else if(dir == "left")
         {
             currentLevel--;
         }
-    }
-    public void getNextLevel()
-    {
-        
         SceneManager.LoadScene(currentLevel);
         GetComponent<LoadCharacter>().loadPlayer();
     }

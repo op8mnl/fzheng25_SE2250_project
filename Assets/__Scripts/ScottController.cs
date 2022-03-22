@@ -13,18 +13,16 @@ public class ScottController : MonoBehaviour
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
-    private bool _inPortal = false;
+    private bool _inPortal1 = false;
+    private bool _inPortal0 = false;
     public float _healthPoints = 100f;
-    // private float level = 2;
-
-    
-
-
     Animator scottAnim; //animator
+    private LevelManager _script;
     // Start is called before the first frame update
     public void Start()
     {
         //get components
+        _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
         _scott = GetComponent<Rigidbody2D>();
         scottAnim = GetComponent<Animator>();
         basicAttack = GameObject.FindGameObjectWithTag("basicAttack").GetComponent<PolygonCollider2D>();
@@ -86,7 +84,7 @@ public class ScottController : MonoBehaviour
         }
 
         //Crouch animation
-        if (Input.GetAxis("Vertical") < 0 && _inPortal == false && scottAnim.GetBool("IsWalking") == false)
+        if (Input.GetAxis("Vertical") < 0 && (_inPortal1 == false||_inPortal0 == false) && scottAnim.GetBool("IsWalking") == false)
         {
             scottAnim.SetBool("IsCrouch", true);
         }
@@ -159,26 +157,33 @@ public class ScottController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("portal1"))
         {
-            _inPortal = true;
+            _inPortal1 = true;
         }
-
+        if (other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal0 = true;
+        }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("portal1"))
+        if (other.gameObject.CompareTag("portal1")||other.gameObject.CompareTag("portal0"))
         {
-            _inPortal = false;
+            _inPortal1 = false;
+        }
+        if (other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal0 = false;
         }
     }
 
     void Beam()
     {
-        if (_inPortal == true && Input.GetButtonDown("Down"))
+        if ((_inPortal1 == false || _inPortal0 == false) && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
             // Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, 0, "right"));
-            SceneManager.LoadScene(2);
+            //SceneManager.LoadScene();
         }
 
     }
@@ -199,7 +204,7 @@ public class ScottController : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
 
         //Do the action after the delay time has finished.
-        //GetComponent<LevelManager>().getNextLevel(currentLevel, direction);
+        _script.getNextLevel(currentLevel, direction);
         StopAllCoroutines();
     }
 

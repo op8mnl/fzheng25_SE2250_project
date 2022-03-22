@@ -17,6 +17,8 @@ TagManager:
   - slider
   - Block
   - Enemy
+  - Script
+  - portal0
   layers:
   - Default
   - TransparentFX

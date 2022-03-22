@@ -13,8 +13,8 @@ public class PlayButton : MonoBehaviour
 
     public void playGame()
     {
-        script.GetComponent<LevelManager>().setNextLevel(1);
-        script.GetComponent<LevelManager>().getNextLevel();
+        
+        script.GetComponent<LevelManager>().getNextLevel(0,"right");
     }
     
 }
