@@ -854,11 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSlider: {fileID: 0}
-<<<<<<< Updated upstream
-  _sliderValue: -3940
-=======
   _sliderValue: 100
->>>>>>> Stashed changes
 --- !u!114 &3428982553548728911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,11 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xSlider: {fileID: 0}
-<<<<<<< Updated upstream
-  _sliderValue: 100
-=======
   _sliderValue: 0.01
->>>>>>> Stashed changes
 --- !u!1 &3263109193797996119
 GameObject:
   m_ObjectHideFlags: 0
