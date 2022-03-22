@@ -14,6 +14,7 @@ public class DragonController : MonoBehaviour
     private bool _isOnHill = false;
     private bool _inPortal = false;
     public float _healthPoints;
+    public GameObject fireballPrefab;
 
     Animator dragonAnim; //animator for the dragon
 
@@ -116,6 +117,37 @@ public class DragonController : MonoBehaviour
             //strike.enabled = true;
             StartCoroutine(DisableStrikeCollider());
         }
+
+        //Fireball Ability Stuff
+        if (Input.GetButtonDown("Attack3"))
+        {
+            if (_facingRight)
+            {
+                var fireball = GameObject.Instantiate(fireballPrefab, new Vector2(transform.position.x, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
+            }
+
+            if (!_facingRight)
+            {
+                var fireball = GameObject.Instantiate(fireballPrefab, new Vector2(transform.position.x,transform.position.y - 0.5f), fireballPrefab.transform.rotation* Quaternion.Euler(0f, 180f, 0f));
+
+            }
+
+
+        }
+    }
+
+    public int getDirection()
+    {
+        var dir = 1;
+        if (_facingRight)
+        {
+            dir = 1;
+        }
+        if (!_facingRight)
+        {
+            dir = -1;
+        }
+        return dir;
     }
 
     private IEnumerator DisableStrikeCollider()

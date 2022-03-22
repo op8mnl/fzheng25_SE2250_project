@@ -351,6 +351,7 @@ MonoBehaviour:
   jump: 10
   healthManager: {fileID: 0}
   _healthPoints: 100
+  fireballPrefab: {fileID: 8848828657805914266, guid: 9f93cf94a992a844bbcdc670b3fce9bb, type: 3}
 --- !u!114 &7123668347650257048
 MonoBehaviour:
   m_ObjectHideFlags: 0
