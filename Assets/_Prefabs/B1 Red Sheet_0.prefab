@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7322479139939081351}
   - component: {fileID: 7322479139939081350}
   - component: {fileID: 7322479139939081349}
-  - component: {fileID: -5861989062099822645}
   - component: {fileID: 6045539107319397294}
   m_Layer: 0
   m_Name: B1 Red Sheet_0
@@ -104,19 +103,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-5861989062099822645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7322479139939081348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b4091d9a2d8a4434ae6b61728a424d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiPath: {fileID: 0}
 --- !u!58 &6045539107319397294
 CircleCollider2D:
   m_ObjectHideFlags: 0
