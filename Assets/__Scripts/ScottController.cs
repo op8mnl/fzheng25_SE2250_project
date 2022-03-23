@@ -26,8 +26,10 @@ public class ScottController : MonoBehaviour
     Animator scottAnim; //animator
     private LevelManager _script;
     public GameObject swordWave;
-    public Shield shield;
-    
+
+    public SpriteRenderer shield;
+    private bool activeShield = false;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -37,10 +39,10 @@ public class ScottController : MonoBehaviour
         scottAnim = GetComponent<Animator>();
         basicAttack = GameObject.FindGameObjectWithTag("basicAttack").GetComponent<PolygonCollider2D>();
         strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
-        shield = GameObject.FindGameObjectWithTag("shield").GetComponent<Shield>();
         _healthPoints = 100f;
         // this value is caching
         _expPoints = 1f;
+        shield = GameObject.FindGameObjectWithTag("shield").GetComponent<SpriteRenderer>();
 
     }
     private void Awake()
@@ -148,6 +150,15 @@ public class ScottController : MonoBehaviour
            
         }
 
+        if (Input.GetButtonDown("Shield"))
+        {
+            shield.enabled = !shield.enabled;
+            activeShield = !activeShield;
+            Debug.Log("enabled?" + shield.enabled);
+
+
+        }
+
         /* 
         //Fireball Ability Stuff
         if (Input.GetButtonDown("Attack3"))
@@ -240,7 +251,8 @@ public class ScottController : MonoBehaviour
     }
 
     public void takeDamage(float damage){
-        if (shield.ActiveShield == false)
+        Debug.Log("enabled?" + shield.enabled);
+        if (shield.enabled == false)
         {
             _healthPoints -= damage;
             GetComponent<HealthManager>().healthUpdate(_healthPoints);

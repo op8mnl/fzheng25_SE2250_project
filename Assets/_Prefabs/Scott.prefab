@@ -807,10 +807,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jump: 8
-  _healthPoints: -3940
+  _healthPoints: 100
   _expPoints: 100
   swordWave: {fileID: 8301763337838979422, guid: df79914cee7d34a44af4bfe904475e1c, type: 3}
-  shield: {fileID: 5927457987885095206}
+  shield: {fileID: 60808502341578650}
 --- !u!70 &3114250723668659123
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1158,7 +1158,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8699387827365072090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8699387827365072090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e337dbc633dbe4ec6af28ae8a66abe3f, type: 3}
   m_Name: 
