@@ -21,6 +21,7 @@ TagManager:
   - portal0
   - slider2
   - projectile
+  - shield
   layers:
   - Default
   - TransparentFX

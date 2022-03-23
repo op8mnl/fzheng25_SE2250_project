@@ -20,9 +20,9 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetButtonDown("Shield"))
         {
-            if(!activeShield)
+            if (!activeShield)
             {
                 shield.SetActive(true);
                 activeShield = true;
