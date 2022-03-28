@@ -808,7 +808,7 @@ MonoBehaviour:
   speed: 5
   jump: 8
   _healthPoints: 100
-  _expPoints: 100
+  _expPoints: 4
   swordWave: {fileID: 8301763337838979422, guid: df79914cee7d34a44af4bfe904475e1c, type: 3}
   shield: {fileID: 60808502341578650}
 --- !u!70 &3114250723668659123
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xSlider: {fileID: 0}
-  _sliderValue: 0.01
+  _sliderValue: 4
 --- !u!1 &3263109193797996119
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,8 +50,8 @@ public class ScottController : MonoBehaviour
         DontDestroyOnLoad(this);
         _expPoints = 1f;
         _healthPoints = 100f;
-        GetComponent<HealthManager>().setHealth(_healthPoints);
-        GetComponent<ExpManager>().setExp(_expPoints);
+        //GetComponent<HealthManager>().setHealth(_healthPoints);
+        //GetComponent<ExpManager>().setExp(_expPoints);
 
     }
     // Update is called once per frame

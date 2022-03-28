@@ -30,10 +30,10 @@ public class Enemy : MonoBehaviour
             hit();
             hitScan = false;
         }
-        if (other.gameObject.CompareTag("strike") && hitScan == true)
+        if (other.gameObject.CompareTag("strike"))
         {
             hit();
-            hitScan = false;
+            
         }
         if(other.gameObject.CompareTag("Player") && hitScan == true)
         {
