@@ -11,14 +11,18 @@ public class EnemyController : Enemy
     public float minDistance;
     private bool isOnHill = false;
     private bool isOnGround = false;
+    public bool canFly;
 
     public bool isRightFacing;
+
+    Animator knightAnim; //animator
 
     Rigidbody2D rb;
 
     void Start()
     {
         // scott = GameObject.FindGameObjectWithTag("Player").transform;
+        knightAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
  
@@ -30,8 +34,10 @@ public class EnemyController : Enemy
             // face left
             transform.localScale = new Vector3(isRightFacing ? -1 : 1, 1, 1);
 
-            if (isOnHill) {
-                ySpeed = moveSpeed/2;
+            if (canFly) {
+                ySpeed = 0f;
+            } else if (isOnHill) {
+                ySpeed = moveSpeed;
             } else if (!isOnGround) {
                 ySpeed = -moveSpeed/2;
             }
@@ -42,10 +48,12 @@ public class EnemyController : Enemy
             // face right
             transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
 
-            if (isOnHill) {
+            if (canFly) {
+                ySpeed = 0f;
+            } else if (isOnHill || canFly) {
                 ySpeed = moveSpeed;
             } else if (!isOnGround) {
-                ySpeed = -moveSpeed;
+                ySpeed = -moveSpeed/2;
             }
 
             moveDir = new Vector2(moveSpeed, ySpeed);    // move to the right if needed, and if on a hill, move accordingly
@@ -57,6 +65,13 @@ public class EnemyController : Enemy
             if (Vector3.Distance(transform.position, scottPlayer.transform.position) <= maxDistance)
             {
                 //call any function like a shoot or swing function at here or something
+
+                if (knightAnim == null) {
+                    knightAnim = GetComponent<Animator>();
+                }
+
+                //change animation when player is walking
+                knightAnim.SetBool("Attack", true);
             }
  
         }

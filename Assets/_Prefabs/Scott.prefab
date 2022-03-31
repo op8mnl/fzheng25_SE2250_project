@@ -806,7 +806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jump: 8
+  jump: 9
+  damageToEnemy: 30
   _healthPoints: 100
   _expPoints: 4
   swordWave: {fileID: 8301763337838979422, guid: df79914cee7d34a44af4bfe904475e1c, type: 3}

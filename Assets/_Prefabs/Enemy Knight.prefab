@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4475864892888083446}
   - component: {fileID: 4475864892888083447}
   - component: {fileID: 5714577635316615888}
+  - component: {fileID: 4632632129697516484}
   m_Layer: 0
   m_Name: Enemy Knight
   m_TagString: Enemy
@@ -104,11 +105,30 @@ MonoBehaviour:
   speed: 200
   expPointsGiven: 30
   damageGiven: 20
-  scott: {fileID: 0}
   moveSpeed: 5
   maxDistance: 10
   minDistance: 2.5
+  canFly: 0
   isRightFacing: 0
+--- !u!95 &4632632129697516484
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4475864892888083440}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6bda1f5bf4224db44b12251ff5bfe8cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4475864891136189689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -204,7 +224,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 95898481864777010, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
 --- !u!1 &4474856750802451427 stripped
 GameObject:

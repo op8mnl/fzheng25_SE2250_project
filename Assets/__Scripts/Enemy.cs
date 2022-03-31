@@ -45,9 +45,11 @@ public class Enemy : MonoBehaviour
     }
     
     protected void hit() {
-        healthPoints -= 10; 
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 150);
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
+
+        healthPoints -= scottPlayer.GetComponent<ScottController>().getScottDamage(); 
+        Debug.Log("HealthPoints: " + healthPoints);
     }
 
     protected virtual void die() {

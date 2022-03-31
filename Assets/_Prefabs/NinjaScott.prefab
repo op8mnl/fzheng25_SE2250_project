@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jump: 10
+  jump: 11
   healthManager: {fileID: 0}
   _healthPoints: 100
 --- !u!114 &6973870661594180930
