@@ -12,8 +12,13 @@ public class NinjaController : MonoBehaviour
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
-    private bool _inPortal = false;
-    public float _healthPoints;
+    public float _healthPoints = 100f;
+    public float _expPoints = 1f;
+    private bool _inPortal0 = false;
+    private bool _inPortal1 = false;
+    private float _expLevel = 1f;
+    public float damageToEnemy;
+    private LevelManager _script;
 
     Animator ninjaAnim; //animator for the ninja
 
@@ -23,17 +28,32 @@ public class NinjaController : MonoBehaviour
         _ninja = GetComponent<Rigidbody2D>();
         ninjaAnim = GetComponent<Animator>();
         _healthPoints = 100f;
+        _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
+        slash = GameObject.FindGameObjectWithTag("slash").GetComponent<PolygonCollider2D>();
+        strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
+        _expPoints = 1f;
+        GetComponent<HealthManager>().healthUpdate(_healthPoints);
+        GetComponent<ExpManager>().expUpdate(_expPoints);
     }
+
 
     public void Awake()
     {
         DontDestroyOnLoad(this);
+        _expPoints = 1f;
+        _healthPoints = 100f;
     }
 
     private void Update()
     {
         Movement();
         Attack();
+        Beam();
+    }
+
+    public bool getDirection()
+    {
+        return _facingRight;
     }
 
     //flip the direction of the ninja sprite
@@ -73,7 +93,7 @@ public class NinjaController : MonoBehaviour
         }
 
         //Crouch animation
-        if (Input.GetAxis("Vertical") < 0 && _inPortal == false && ninjaAnim.GetBool("IsWalking") == false)
+        if (Input.GetAxis("Vertical") < 0 && (_inPortal1 == false || _inPortal0 == false) && ninjaAnim.GetBool("IsWalking") == false)
         {
             ninjaAnim.SetBool("IsCrouch", true);
         }
@@ -121,7 +141,17 @@ public class NinjaController : MonoBehaviour
     private IEnumerator DisableStrikeCollider()
     {
         yield return new WaitForSeconds(0.03f);
-        //strike.enabled = false;
+        if (_facingRight)
+        {
+            Instantiate(strike, new Vector2(transform.position.x + 0.9f, transform.position.y - 0.7f), strike.transform.rotation);
+        }
+
+        if (!_facingRight)
+        {
+            Instantiate(strike, new Vector2(transform.position.x - 0.9f, transform.position.y - 0.7f), strike.transform.rotation);
+
+        }
+        strike.enabled = false;
         StopCoroutine(DisableStrikeCollider());
     }
     private IEnumerator DisableBasicAttackCollider()
@@ -133,6 +163,11 @@ public class NinjaController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        if (_ninja == null)
+        {
+            _ninja = GetComponent<Rigidbody2D>();
+        }
+
         if (col.gameObject.CompareTag("Hill"))
         {
             _isOnHill = true;
@@ -146,16 +181,83 @@ public class NinjaController : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("portal1")) //CHANGE TO PORTAL2 once created
+        if (other.gameObject.CompareTag("portal1") || other.gameObject.CompareTag("portal0"))
         {
-            _inPortal = false;
+            _inPortal1 = false;
         }
+        if (other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal0 = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("portal1"))
+        {
+            _inPortal1 = true;
+        }
+        if (other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal0 = true;
+        }
+
     }
 
     public void takeDamage(float damage)
     {
-        _healthPoints -= damage;
-        healthManager.GetComponent<HealthManager>().healthUpdate(_healthPoints);
+        if (true)
+        {
+            _healthPoints -= damage;
+            GetComponent<HealthManager>().healthUpdate(_healthPoints);
+        }
+    }
+
+    void Beam()
+    {
+        if ((_inPortal1 == true || _inPortal0 == true) && Input.GetButtonDown("Down"))
+        {
+            ninjaAnim.SetTrigger("Beam");
+            //Invoke("toggleVisibility", 1.25f);
+            StartCoroutine(nextLevel(1.5f, "right"));
+
+        }
+
+    }
+
+    public void gainExp(float points)
+    {
+        _expPoints += points;
+        Debug.Log("_expPoints = " + _expPoints);
+
+        if (_expPoints >= 100)
+        {
+            Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
+            _expPoints -= 100;
+            speed += 1;
+            jump += 1;
+            damageToEnemy += 1;
+            GetComponent<HealthManager>().healthUpdate(100f);
+            Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
+        }
+
+        GetComponent<ExpManager>().expUpdate(_expPoints);
+    }
+
+    public float getScottDamage()
+    {
+        return damageToEnemy;
+    }
+
+    IEnumerator nextLevel(float delayTime, string direction)
+
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(delayTime);
+
+        //Do the action after the delay time has finished.
+        _script.getNextLevel(direction);
+        StopAllCoroutines();
     }
 
 
