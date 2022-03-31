@@ -167,8 +167,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 100
   speed: 200
+  expPointsGiven: 50
+  damageGiven: 50
   jumpHeight: 300
-  scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}
 --- !u!61 &8336839473642386837
 BoxCollider2D:
   m_ObjectHideFlags: 0

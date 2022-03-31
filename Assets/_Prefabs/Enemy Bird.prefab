@@ -196,6 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 100
   speed: 300
+  expPointsGiven: 40
+  damageGiven: 40
   scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}
   nextWaypointDistance: 3
   canFly: 1

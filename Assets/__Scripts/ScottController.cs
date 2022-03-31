@@ -40,8 +40,9 @@ public class ScottController : MonoBehaviour
         basicAttack = GameObject.FindGameObjectWithTag("basicAttack").GetComponent<PolygonCollider2D>();
         strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
         _healthPoints = 100f;
-        // this value is caching
         _expPoints = 1f;
+        GetComponent<HealthManager>().healthUpdate(_healthPoints);
+        GetComponent<ScottController>().gainExp(_expPoints);
         shield = GameObject.FindGameObjectWithTag("shield").GetComponent<SpriteRenderer>();
 
     }
@@ -50,9 +51,6 @@ public class ScottController : MonoBehaviour
         DontDestroyOnLoad(this);
         _expPoints = 1f;
         _healthPoints = 100f;
-        //GetComponent<HealthManager>().setHealth(_healthPoints);
-        //GetComponent<ExpManager>().setExp(_expPoints);
-
     }
     // Update is called once per frame
     void Update()

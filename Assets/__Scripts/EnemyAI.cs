@@ -102,13 +102,4 @@ public class EnemyAI : Enemy
 
         onTrigExit(other);
     }
-
-    protected override void die()
-    {
-        if (healthPoints <= 0)
-        {
-            Destroy(gameObject);
-            scott.GetComponent<ScottController>().gainExp(40f);
-        }
-    }
 }
