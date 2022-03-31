@@ -15,14 +15,14 @@ public class EnemyController : Enemy
 
     public bool isRightFacing;
 
-    Animator knightAnim; //animator
+    // Animator knightAnim; //animator
 
     Rigidbody2D rb;
 
     void Start()
     {
         // scott = GameObject.FindGameObjectWithTag("Player").transform;
-        knightAnim = GetComponent<Animator>();
+        // knightAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
  
@@ -66,12 +66,12 @@ public class EnemyController : Enemy
             {
                 //call any function like a shoot or swing function at here or something
 
-                if (knightAnim == null) {
-                    knightAnim = GetComponent<Animator>();
-                }
+                // if (knightAnim == null) {
+                //     knightAnim = GetComponent<Animator>();
+                // }
 
-                //change animation when player is walking
-                knightAnim.SetBool("Attack", true);
+                // //change animation when player is walking
+                // knightAnim.SetBool("Attack", true);
             }
  
         }
