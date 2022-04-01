@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyController : Enemy
+public class KnightController : Enemy
 {
     // private Transform scott;
-    public float moveSpeed;
     public float maxDistance;
     public float minDistance;
     private bool isOnHill = false;
     private bool isOnGround = false;
-    public bool canFly;
-
     public bool isRightFacing;
 
     Animator knightAnim; //animator
@@ -30,39 +27,41 @@ public class EnemyController : Enemy
         Vector2 moveDir;    // force that will move the enemy in the desired direction
         float ySpeed = 0f;
 
+        Debug.Log("Speed: " + speed);
+
         if (transform.position.x > scottPlayer.transform.position.x) {
             // face left
             transform.localScale = new Vector3(isRightFacing ? -1 : 1, 1, 1);
 
-            if (canFly) {
-                ySpeed = 0f;
-            } else if (isOnHill) {
-                ySpeed = moveSpeed;
+            if (isOnHill) {
+                ySpeed = speed;
             } else if (!isOnGround) {
-                ySpeed = -moveSpeed/2;
+                ySpeed = -speed/2;
             }
 
-            moveDir = new Vector2(-moveSpeed, ySpeed);   // move to the left if needed, and if on a hill, move accordingly
-            Debug.Log("moveDir: " + moveDir);
+            moveDir = new Vector2(-speed, ySpeed);   // move to the left if needed, and if on a hill, move accordingly
+            // Debug.Log("moveDir: " + moveDir);
         } else {
             // face right
             transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
 
-            if (canFly) {
-                ySpeed = 0f;
-            } else if (isOnHill || canFly) {
-                ySpeed = moveSpeed;
+            if (isOnHill) {
+                ySpeed = speed;
             } else if (!isOnGround) {
-                ySpeed = -moveSpeed/2;
+                ySpeed = -speed/2;
             }
 
-            moveDir = new Vector2(moveSpeed, ySpeed);    // move to the right if needed, and if on a hill, move accordingly
-            Debug.Log("moveDir: " + moveDir);
+            moveDir = new Vector2(speed, ySpeed);    // move to the right if needed, and if on a hill, move accordingly
+            // Debug.Log("moveDir: " + moveDir);
         }
 
         if (Vector3.Distance(transform.position, scottPlayer.transform.position) >= minDistance) {
-            rb.velocity = moveDir;
-            Debug.Log("rb.velocity: " + rb.velocity);
+            if (rb == null) {
+                rb = GetComponent<Rigidbody2D>();
+            }
+            // rb.velocity = moveDir;
+            rb.AddForce((transform.right * speed));
+            // Debug.Log("rb.velocity: " + rb.velocity);
 
             // transform.position += (Vector3)moveDir * Time.deltaTime;
 

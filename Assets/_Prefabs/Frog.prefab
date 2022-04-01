@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 300
-  speed: 200
+  speed: 15
   expPointsGiven: 80
   damageGiven: 60
   jumpHeight: 300

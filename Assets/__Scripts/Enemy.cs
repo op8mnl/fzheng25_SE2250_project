@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float healthPoints = 100f;
-    public float speed = 200f;
+    public float speed;
     protected bool hitScan;
     public float expPointsGiven;
     public float damageGiven;
