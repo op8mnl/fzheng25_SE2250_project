@@ -270,7 +270,8 @@ public class ScottController : MonoBehaviour
             speed += 1;
             jump += 1;
             damageToEnemy += 1;
-            GetComponent<HealthManager>().healthUpdate(100f);
+            _healthPoints = 100f;
+            GetComponent<HealthManager>().healthUpdate(_healthPoints);
             Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
         }
 

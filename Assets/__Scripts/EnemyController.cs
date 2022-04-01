@@ -15,14 +15,14 @@ public class EnemyController : Enemy
 
     public bool isRightFacing;
 
-    // Animator knightAnim; //animator
+    Animator knightAnim; //animator
 
     Rigidbody2D rb;
 
     void Start()
     {
         // scott = GameObject.FindGameObjectWithTag("Player").transform;
-        // knightAnim = GetComponent<Animator>();
+        knightAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
  
@@ -43,7 +43,7 @@ public class EnemyController : Enemy
             }
 
             moveDir = new Vector2(-moveSpeed, ySpeed);   // move to the left if needed, and if on a hill, move accordingly
-
+            Debug.Log("moveDir: " + moveDir);
         } else {
             // face right
             transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
@@ -57,23 +57,28 @@ public class EnemyController : Enemy
             }
 
             moveDir = new Vector2(moveSpeed, ySpeed);    // move to the right if needed, and if on a hill, move accordingly
+            Debug.Log("moveDir: " + moveDir);
         }
 
         if (Vector3.Distance(transform.position, scottPlayer.transform.position) >= minDistance) {
             rb.velocity = moveDir;
+            Debug.Log("rb.velocity: " + rb.velocity);
+
+            // transform.position += (Vector3)moveDir * Time.deltaTime;
+
+            knightAnim.SetFloat("speed", rb.velocity.x);
 
             if (Vector3.Distance(transform.position, scottPlayer.transform.position) <= maxDistance)
             {
-                //call any function like a shoot or swing function at here or something
-
-                // if (knightAnim == null) {
-                //     knightAnim = GetComponent<Animator>();
-                // }
-
-                // //change animation when player is walking
-                // knightAnim.SetBool("Attack", true);
+                //call functions like a shoot or swing function at here or something
+                if (knightAnim == null) {
+                    knightAnim = GetComponent<Animator>();
+                }
+                //change animation when player is attack distance
+                knightAnim.SetBool("isAttack", true);
+            } else {
+                knightAnim.SetBool("isAttack", false);
             }
- 
         }
     }
 
