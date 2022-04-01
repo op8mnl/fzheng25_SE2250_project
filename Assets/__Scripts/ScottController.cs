@@ -276,10 +276,12 @@ public class ScottController : MonoBehaviour
         if (_expPoints >= 100) {
             Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
             _expPoints -= 100;
+            expLevel += 1;  // implement a switch statement or smt to make this relavent
             speed += 1;
-            jump += 1;
+            // jump += 1;
             damageToEnemy += 1;
-            GetComponent<HealthManager>().healthUpdate(100f);
+            _healthPoints = 100f;
+            GetComponent<HealthManager>().healthUpdate(_healthPoints);
             Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
         }
 
