@@ -132,30 +132,35 @@ public class ScottController : MonoBehaviour
     }
     private void Attack()
     {
-       
-        //Attack 1 Animations
-        if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_BasicAttack"))
+        if (shield.enabled == false)
         {
-            scottAnim.SetTrigger("BasicAttack");
-            basicAttack.enabled = true;
-            StartCoroutine(DisableBasicAttackCollider());
+            //Attack 1 Animations
+            if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_BasicAttack"))
+            {
+                scottAnim.SetTrigger("BasicAttack");
+                basicAttack.enabled = true;
+                StartCoroutine(DisableBasicAttackCollider());
+            }
         }
+        
 
-        //Attack 2 Animations
-        if (Input.GetAxis("Attack2") >0 && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_Strike"))
+        if (shield.enabled == false)
         {
-            scottAnim.SetTrigger("Strike");
-            strike.enabled = true;
-            StartCoroutine(DisableStrikeCollider());
-           
+            //Attack 2 Animations
+            if (Input.GetAxis("Attack2") > 0 && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_Strike"))
+            {
+                scottAnim.SetTrigger("Strike");
+                strike.enabled = true;
+                StartCoroutine(DisableStrikeCollider());
+
+            }
         }
+        
 
         if (Input.GetButtonDown("Shield"))
         {
             shield.enabled = !shield.enabled;
             activeShield = !activeShield;
-            Debug.Log("enabled?" + shield.enabled);
-
 
         }
 
