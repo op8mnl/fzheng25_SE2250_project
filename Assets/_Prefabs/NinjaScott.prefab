@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 4176709678563911705}
   - component: {fileID: 9033812977844679243}
   - component: {fileID: 6973870661594180930}
+  - component: {fileID: 8323830982683896626}
   m_Layer: 7
   m_Name: NinjaScott
   m_TagString: Player
@@ -348,9 +349,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jump: 10
+  jump: 11
   healthManager: {fileID: 0}
   _healthPoints: 100
+  _expPoints: 1
+  damageToEnemy: 0
 --- !u!114 &6973870661594180930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +368,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mSlider: {fileID: 0}
   _sliderValue: 100
+--- !u!114 &8323830982683896626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690309283043553154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd7990ece14641cd8b7caca404d5976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xSlider: {fileID: 0}
+  _sliderValue: 1
 --- !u!1 &2765047580051433582
 GameObject:
   m_ObjectHideFlags: 0

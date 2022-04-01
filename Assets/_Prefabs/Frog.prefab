@@ -165,10 +165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e600395b30197f04c9fc4abe2769207e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
+  healthPoints: 300
   speed: 200
+  expPointsGiven: 80
+  damageGiven: 60
   jumpHeight: 300
-  scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}
 --- !u!61 &8336839473642386837
 BoxCollider2D:
   m_ObjectHideFlags: 0

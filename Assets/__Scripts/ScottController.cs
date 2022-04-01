@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class ScottController : MonoBehaviour
 {
-    public float speed; //speed
-    public float jump; //jump
+    public float speed;     //speed
+    public float jump;      //jump
+    public float damageToEnemy;    // damage to give to enemies
     private Rigidbody2D _scott; //scott player
     private PolygonCollider2D basicAttack;
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
+    private float expLevel = 1;
 
     public bool getDirection()
     {
@@ -40,8 +42,9 @@ public class ScottController : MonoBehaviour
         basicAttack = GameObject.FindGameObjectWithTag("basicAttack").GetComponent<PolygonCollider2D>();
         strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
         _healthPoints = 100f;
-        // this value is caching
         _expPoints = 1f;
+        GetComponent<HealthManager>().healthUpdate(_healthPoints);
+        GetComponent<ExpManager>().expUpdate(_expPoints);
         shield = GameObject.FindGameObjectWithTag("shield").GetComponent<SpriteRenderer>();
 
     }
@@ -50,9 +53,6 @@ public class ScottController : MonoBehaviour
         DontDestroyOnLoad(this);
         _expPoints = 1f;
         _healthPoints = 100f;
-        //GetComponent<HealthManager>().setHealth(_healthPoints);
-        //GetComponent<ExpManager>().setExp(_expPoints);
-
     }
     // Update is called once per frame
     void Update()
@@ -263,7 +263,22 @@ public class ScottController : MonoBehaviour
     {
         _expPoints += points;
         Debug.Log("_expPoints = " + _expPoints);
+
+        if (_expPoints >= 100) {
+            Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
+            _expPoints -= 100;
+            speed += 1;
+            jump += 1;
+            damageToEnemy += 1;
+            GetComponent<HealthManager>().healthUpdate(100f);
+            Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
+        }
+
         GetComponent<ExpManager>().expUpdate(_expPoints);
+    }
+
+    public float getScottDamage() {
+        return damageToEnemy;
     }
 
     IEnumerator nextLevel(float delayTime, string direction)

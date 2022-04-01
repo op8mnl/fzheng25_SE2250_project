@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  jump: 10
+  jump: 11
   healthManager: {fileID: 0}
   _healthPoints: 100
   fireballPrefab: {fileID: 8848828657805914266, guid: 9f93cf94a992a844bbcdc670b3fce9bb, type: 3}

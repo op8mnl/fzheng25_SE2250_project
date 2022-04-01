@@ -128,8 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5071917682200268227}
-  - component: {fileID: 5071917682200268226}
-  - component: {fileID: 5071917682200268224}
+  - component: {fileID: 3372792195470958761}
   - component: {fileID: 5071917682200268253}
   - component: {fileID: 5071917682200268252}
   m_Layer: 0
@@ -154,7 +153,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5071917682200268226
+--- !u!114 &3372792195470958761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,44 +162,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5071917682200268255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fe9982b79c884ad399ab91ca80d25e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
---- !u!114 &5071917682200268224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5071917682200268255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e8a19e6b54ab4e9e933b0cebe477cad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 100
-  speed: 300
-  scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}
-  nextWaypointDistance: 3
+  healthPoints: 20
+  speed: 200
+  expPointsGiven: 70
+  damageGiven: 40
+  moveSpeed: 5
+  maxDistance: 10
+  minDistance: 4
   canFly: 1
   isRightFacing: 1
-  enemyGFX: {fileID: 5071917683399633690}
 --- !u!50 &5071917682200268253
 Rigidbody2D:
   serializedVersion: 4
