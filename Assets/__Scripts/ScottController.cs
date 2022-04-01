@@ -173,13 +173,17 @@ public class ScottController : MonoBehaviour
         yield return new WaitForSeconds(0.03f);
         if (_facingRight)
         {
-            Instantiate(swordWave, new Vector2(transform.position.x+0.9f, transform.position.y - 0.7f), swordWave.transform.rotation);
+            
+            Instantiate(swordWave, new Vector2(transform.position.x+0.9f, transform.position.y - 0.7f), swordWave.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+     
+
         }
 
         if (!_facingRight)
         {
+            
             Instantiate(swordWave, new Vector2(transform.position.x - 0.9f, transform.position.y - 0.7f), swordWave.transform.rotation * Quaternion.Euler(0f, 0f, 180f));
-
+        
         }
         strike.enabled = false;
         StopCoroutine(DisableStrikeCollider());
