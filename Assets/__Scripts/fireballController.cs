@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fireballController : MonoBehaviour
+public class FireballController : MonoBehaviour
 {
     public Vector2 StartingVelocity;
     public DragonController script;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class swordWaveController : MonoBehaviour
+public class SwordWaveController : MonoBehaviour
 {
     public Vector2 StartingVelocity;
     private ScottController script;

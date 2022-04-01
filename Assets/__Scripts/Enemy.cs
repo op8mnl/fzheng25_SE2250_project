@@ -29,6 +29,10 @@ public class Enemy : MonoBehaviour
 
     protected void onTrigExit(Collider2D other)
     {
+        if (scottPlayer == null) {
+            scottPlayer = GameObject.FindGameObjectWithTag("Player");
+        }
+        
         if (other.gameObject.CompareTag("basicAttack") && hitScan == true)
         {
             hit();

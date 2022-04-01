@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class setScott : MonoBehaviour
+public class SetScott : MonoBehaviour
 {
     public GameObject scott;
 
