@@ -13,13 +13,13 @@ public class swordWaveController : MonoBehaviour
         if (script.getDirection() == true)
         {
             GetComponent<Rigidbody2D>().velocity = StartingVelocity;
-            Invoke("Destroy", 3f);
+            Invoke("Destroy", 1.5f);
             
         }
         if (script.getDirection() == false)
         {
             GetComponent<Rigidbody2D>().velocity = -StartingVelocity;
-            Invoke("Destroy", 3f);
+            Invoke("Destroy", 1.5f);
             
         }
     }
@@ -35,6 +35,6 @@ public class swordWaveController : MonoBehaviour
     }
     private void grow()
     {
-        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x + Time.deltaTime*0.2f, gameObject.transform.localScale.y + Time.deltaTime * 0.2f, gameObject.transform.localScale.z);
+        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x + Time.deltaTime * 0.2f, gameObject.transform.localScale.y + Time.deltaTime * 0.2f, gameObject.transform.localScale.z);
     }
 }
