@@ -17,6 +17,7 @@ public class ScottController : MonoBehaviour
     private bool _isAb1Disabled;
     private bool _isAb2Disabled;
     private bool _isAb3Disabled;
+    public GameObject player;
 
     public bool getDirection()
     {
@@ -65,6 +66,8 @@ public class ScottController : MonoBehaviour
         Attack();
 
         Beam();
+
+        DeathToScott();
 
         
     }
@@ -303,6 +306,12 @@ public class ScottController : MonoBehaviour
             _healthPoints -= damage;
             GetComponent<HealthManager>().healthUpdate(_healthPoints);
         }
+    }
+
+    public void DeathToScott()
+    {
+        if (_healthPoints <= 0)
+            Destroy(player);
     }
 
     public void gainExp(float points)

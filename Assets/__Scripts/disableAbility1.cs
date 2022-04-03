@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class disableAbility1 : MonoBehaviour
 {
-
+    private void Start()
+    {
+        selectorCall();
+    }
     public void selectorCall()
     {
         GetComponent<AbilitySelector>().disable1();
