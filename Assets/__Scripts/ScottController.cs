@@ -260,7 +260,7 @@ public class ScottController : MonoBehaviour
     }
 
     public void takeDamage(float damage){
-        Debug.Log("enabled?" + shield.enabled);
+        // Debug.Log("enabled?" + shield.enabled);
         if (shield.enabled == false)
         {
             _healthPoints -= damage;
@@ -271,10 +271,10 @@ public class ScottController : MonoBehaviour
     public void gainExp(float points)
     {
         _expPoints += points;
-        Debug.Log("_expPoints = " + _expPoints);
+        // Debug.Log("_expPoints = " + _expPoints);
 
         if (_expPoints >= 100) {
-            Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
+            // Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
             _expPoints -= 100;
             expLevel += 1;  // implement a switch statement or smt to make this relavent
             speed += 1;
@@ -282,7 +282,7 @@ public class ScottController : MonoBehaviour
             damageToEnemy += 1;
             _healthPoints = 100f;
             GetComponent<HealthManager>().healthUpdate(_healthPoints);
-            Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
+            // Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
         }
 
         GetComponent<ExpManager>().expUpdate(_expPoints);

@@ -11,6 +11,7 @@ public class KnightController : Enemy
     private bool isOnHill = false;
     private bool isOnGround = false;
     public bool isRightFacing;
+    private float ySpeed = 0f;
 
     Animator knightAnim; //animator
 
@@ -18,52 +19,47 @@ public class KnightController : Enemy
 
     void Start()
     {
-        // scott = GameObject.FindGameObjectWithTag("Player").transform;
         knightAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
  
     void FixedUpdate() {
         Vector2 moveDir;    // force that will move the enemy in the desired direction
-        float ySpeed = 0f;
-
-        Debug.Log("Speed: " + speed);
 
         if (transform.position.x > scottPlayer.transform.position.x) {
             // face left
             transform.localScale = new Vector3(isRightFacing ? -1 : 1, 1, 1);
 
             if (isOnHill) {
-                ySpeed = speed;
+                ySpeed = speed/2;
             } else if (!isOnGround) {
-                ySpeed = -speed/2;
+                ySpeed = -speed;
+            } else {
+                ySpeed = 0f;
             }
 
             moveDir = new Vector2(-speed, ySpeed);   // move to the left if needed, and if on a hill, move accordingly
-            // Debug.Log("moveDir: " + moveDir);
         } else {
             // face right
             transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
 
             if (isOnHill) {
-                ySpeed = speed;
+                ySpeed = speed/2;
             } else if (!isOnGround) {
-                ySpeed = -speed/2;
+                ySpeed = -speed;
+            } else {
+                ySpeed = 0f;
             }
 
             moveDir = new Vector2(speed, ySpeed);    // move to the right if needed, and if on a hill, move accordingly
-            // Debug.Log("moveDir: " + moveDir);
         }
 
         if (Vector3.Distance(transform.position, scottPlayer.transform.position) >= minDistance) {
+            // only move if greater than minimum distance
+            rb.velocity = moveDir;
             if (rb == null) {
                 rb = GetComponent<Rigidbody2D>();
             }
-            rb.velocity = moveDir;
-            // rb.AddForce((transform.right * speed));
-            // Debug.Log("rb.velocity: " + rb.velocity);
-
-            // transform.position += (Vector3)moveDir * Time.deltaTime;
 
             knightAnim.SetFloat("speed", rb.velocity.x);
 
@@ -101,5 +97,27 @@ public class KnightController : Enemy
         }
 
         onTrigExit(other);
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Hill")) {
+            isOnHill = true;
+        }
+        // if (other.CompareTag("Ground")) {
+        //     isOnGround = true;
+        // }
+
+        // onTrigEnter(other);
+    }
+
+    void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Hill")) {
+            isOnHill = false;
+        }
+        // if (other.CompareTag("Ground")) {
+        //     isOnGround = true;
+        // }
+
+        // onTrigEnter(other);
     }
 }
