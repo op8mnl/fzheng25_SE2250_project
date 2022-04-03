@@ -19,6 +19,7 @@ public class ScottController : MonoBehaviour
     private bool _isAb3Disabled;
     public GameObject player;
 
+
     public bool getDirection()
     {
         return _facingRight;
@@ -311,7 +312,11 @@ public class ScottController : MonoBehaviour
     public void DeathToScott()
     {
         if (_healthPoints <= 0)
+        {
+            Camera.main.transform.parent = null;
             Destroy(player);
+        }
+            
     }
 
     public void gainExp(float points)

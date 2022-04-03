@@ -809,6 +809,7 @@ MonoBehaviour:
   jump: 9
   damageToEnemy: 30
   player: {fileID: 3114250723668659128}
+  cam: {fileID: 3114250723023165749}
   _healthPoints: 100
   _expPoints: 4
   swordWave: {fileID: 8301763337838979422, guid: df79914cee7d34a44af4bfe904475e1c, type: 3}
