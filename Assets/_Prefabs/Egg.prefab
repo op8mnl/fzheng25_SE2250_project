@@ -1,6 +1,10 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< Updated upstream
 --- !u!1 &1738106421810283651
+=======
+--- !u!1 &6932452400427229836
+>>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,6 +12,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream
   - component: {fileID: 4678510837429609558}
   - component: {fileID: 2350011677408232619}
   - component: {fileID: 4463727283938675534}
@@ -15,31 +20,58 @@ GameObject:
   m_Layer: 0
   m_Name: Egg
   m_TagString: Untagged
+=======
+  - component: {fileID: 7884646030380071064}
+  - component: {fileID: 2558645989672857421}
+  - component: {fileID: -1346752220705345497}
+  - component: {fileID: -5597466328894612560}
+  m_Layer: 7
+  m_Name: Egg
+  m_TagString: projectile
+>>>>>>> Stashed changes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
 --- !u!4 &4678510837429609558
+=======
+--- !u!4 &7884646030380071064
+>>>>>>> Stashed changes
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1738106421810283651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 381.33002, y: 218.19179, z: -74.1962}
+=======
+  m_GameObject: {fileID: 6932452400427229836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 30.914413, y: 155.89613, z: -74.69284}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!212 &2350011677408232619
+=======
+--- !u!212 &2558645989672857421
+>>>>>>> Stashed changes
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1738106421810283651}
+=======
+  m_GameObject: {fileID: 6932452400427229836}
+>>>>>>> Stashed changes
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,25 +105,41 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< Updated upstream
   m_Sprite: {fileID: 21300000, guid: 40a8030bf695218499eaa955fe92c559, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: c141603a28f245d4d81bec129a353d4d, type: 3}
+>>>>>>> Stashed changes
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
+<<<<<<< Updated upstream
   m_Size: {x: 9, y: 7.8}
+=======
+  m_Size: {x: 5.37, y: 4.65}
+>>>>>>> Stashed changes
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< Updated upstream
 --- !u!50 &4463727283938675534
+=======
+--- !u!50 &-1346752220705345497
+>>>>>>> Stashed changes
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1738106421810283651}
+=======
+  m_GameObject: {fileID: 6932452400427229836}
+>>>>>>> Stashed changes
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -105,12 +153,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+<<<<<<< Updated upstream
 --- !u!58 &-4389345396270444785
+=======
+--- !u!58 &-5597466328894612560
+>>>>>>> Stashed changes
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1738106421810283651}
   m_Enabled: 1
   m_Density: 1
@@ -121,3 +174,15 @@ CircleCollider2D:
   m_Offset: {x: -0.35, y: 0.4}
   serializedVersion: 2
   m_Radius: 1.9
+=======
+  m_GameObject: {fileID: 6932452400427229836}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.4, y: 0.4}
+  serializedVersion: 2
+  m_Radius: 1.85
+>>>>>>> Stashed changes
