@@ -14,6 +14,9 @@ public class ScottController : MonoBehaviour
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private float expLevel = 1;
+    private bool _isAb1Disabled;
+    private bool _isAb2Disabled;
+    private bool _isAb3Disabled;
 
     public bool getDirection()
     {
@@ -130,39 +133,73 @@ public class ScottController : MonoBehaviour
 
         }
     }
+
+    public void setAbility1(bool disable)
+    {
+        _isAb1Disabled = disable;
+        _isAb2Disabled = !disable;
+        _isAb3Disabled = !disable;
+    }
+
+    public void setAbility2(bool disable)
+    {
+        _isAb2Disabled = disable;
+        _isAb1Disabled = !disable;
+        _isAb3Disabled = !disable;
+    }
+
+    public void setAbility3(bool disable)
+    {
+        _isAb3Disabled = disable;
+        _isAb2Disabled = !disable;
+        _isAb1Disabled = !disable;
+    }
+
     private void Attack()
     {
-        if (shield.enabled == false)
+
+        if (_isAb1Disabled == false)
         {
-            //Attack 1 Animations
-            if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_BasicAttack"))
+            if (shield.enabled == false)
             {
-                scottAnim.SetTrigger("BasicAttack");
-                basicAttack.enabled = true;
-                StartCoroutine(DisableBasicAttackCollider());
+                //Attack 1 Animations
+                if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_BasicAttack"))
+                {
+                    scottAnim.SetTrigger("BasicAttack");
+                    basicAttack.enabled = true;
+                    StartCoroutine(DisableBasicAttackCollider());
+                }
             }
         }
-        
 
-        if (shield.enabled == false)
+        
+        if (_isAb2Disabled == false)
         {
-            //Attack 2 Animations
-            if (Input.GetAxis("Attack2") > 0 && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_Strike"))
+            if (shield.enabled == false)
             {
-                scottAnim.SetTrigger("Strike");
-                strike.enabled = true;
-                StartCoroutine(DisableStrikeCollider());
+                //Attack 2 Animations
+                if (Input.GetAxis("Attack2") > 0 && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_Strike"))
+                {
+                    scottAnim.SetTrigger("Strike");
+                    strike.enabled = true;
+                    StartCoroutine(DisableStrikeCollider());
+
+                }
+            }
+        }
+
+        
+        if (_isAb3Disabled == false)
+        {
+            if (Input.GetButtonDown("Shield"))
+            {
+                shield.enabled = !shield.enabled;
+                activeShield = !activeShield;
 
             }
         }
-        
 
-        if (Input.GetButtonDown("Shield"))
-        {
-            shield.enabled = !shield.enabled;
-            activeShield = !activeShield;
-
-        }
+       
 
         /* 
         //Fireball Ability Stuff

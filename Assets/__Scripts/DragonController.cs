@@ -15,6 +15,9 @@ public class DragonController : MonoBehaviour
     private bool _inPortal = false;
     public float _healthPoints;
     public GameObject fireballPrefab;
+    private bool _isAb1Disabled;
+    private bool _isAb2Disabled;
+    private bool _isAb3Disabled;
 
     Animator dragonAnim; //animator for the dragon
 
