@@ -29,9 +29,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403578614894049845}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   minDistance: 4
   canFly: 1
   isRightFacing: 1
+  smallBirdPrefab: {fileID: 3879780174793549223, guid: c1185450092fbfe4dafabb415f471213, type: 3}
 --- !u!58 &705429608667952190
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,15 +11,19 @@ public class BirdController : Enemy
     public bool canFly;
     public bool isRightFacing;
 
+    public GameObject smallBirdPrefab;
+
     // Animator birdAnim; //animator
 
     Rigidbody2D rb;
+    private float nextDrop;
 
     void Start()
     {
         // scott = GameObject.FindGameObjectWithTag("Player").transform;
         // birdAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        nextDrop = Random.Range (0.2f, 2f);
     }
  
     void FixedUpdate() {
@@ -42,23 +46,18 @@ public class BirdController : Enemy
 
         if (Vector3.Distance(transform.position, scottPlayer.transform.position) >= minDistance) {
             rb.velocity = moveDir;
-            // Debug.Log("rb.velocity: " + rb.velocity);
 
-            // transform.position += (Vector3)moveDir * Time.deltaTime;
+            // StartCoroutine(createSmallBird());
 
-            // birdAnim.SetFloat("speed", rb.velocity.x);
-
-            // if (Vector3.Distance(transform.position, scottPlayer.transform.position) <= maxDistance)
-            // {
-            //     //call functions like a shoot or swing function at here or something
-            //     if (birdAnim == null) {
-            //         birdAnim = GetComponent<Animator>();
-            //     }
-            //     //change animation when player is attack distance
-            //     birdAnim.SetBool("isAttack", true);
-            // } else {
-            //     birdAnim.SetBool("isAttack", false);
-            // }
+            if (Vector3.Distance(transform.position, scottPlayer.transform.position) <= maxDistance)
+            {
+                // shoot out small birds at random intervals
+                // StartCoroutine(createSmallBird());
+                if (Time.time > nextDrop) {
+                    nextDrop = Time.time + Random.Range (0.2f, 2f);
+                    Instantiate(smallBirdPrefab, new Vector2(transform.position.x,transform.position.y - 0.5f), smallBirdPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+                }
+            }
         }
     }
 
@@ -69,4 +68,13 @@ public class BirdController : Enemy
     void OnTriggerExit2D(Collider2D other) {
         onTrigExit(other);
     }
+
+    // private IEnumerator createSmallBird()
+    // {
+    //     //Wait for 2 seconds
+    //     yield return new WaitForSeconds(2);
+
+    //     //create small bird from prefab
+    //     Instantiate(smallBirdPrefab, new Vector2(transform.position.x,transform.position.y - 0.5f), smallBirdPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
+    // }
 }
