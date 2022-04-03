@@ -263,7 +263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &46122727
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -327,7 +327,7 @@ Transform:
   m_LocalScale: {x: 13.787445, y: 9.3714905, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &46122729
 SortingGroup:
@@ -382,7 +382,7 @@ Transform:
   m_Children:
   - {fileID: 414571057}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &73802452
 GameObject:
@@ -491,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7358521541292277494, guid: 66f01178bcb5e4537bfce8bc736209b8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7358521541292277494, guid: 66f01178bcb5e4537bfce8bc736209b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -546,9 +546,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: sword_man (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3670568192203852613, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -672,7 +676,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &405698864
 GameObject:
@@ -1191,7 +1195,7 @@ RectTransform:
   m_Children:
   - {fileID: 899565177}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1262,7 +1266,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &545653526
 GameObject:
@@ -1376,7 +1380,7 @@ Transform:
   m_LocalScale: {x: 2, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &593710081
 BoxCollider2D:
@@ -1464,7 +1468,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5595125039191117266, guid: c4b5e9b8252e9ad4f980dbe4d7943873, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5595125039191117266, guid: c4b5e9b8252e9ad4f980dbe4d7943873, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1510,6 +1514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Muller
       objectReference: {fileID: 0}
+    - target: {fileID: 8936681550471005346, guid: c4b5e9b8252e9ad4f980dbe4d7943873, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b5e9b8252e9ad4f980dbe4d7943873, type: 3}
 --- !u!1 &649706711
@@ -1548,7 +1556,7 @@ Transform:
   - {fileID: 1099493636}
   - {fileID: 405698865}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &678864737
 GameObject:
@@ -1806,7 +1814,7 @@ Transform:
   m_LocalScale: {x: 6.1288, y: 6.2237, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &899565176
 GameObject:
@@ -2035,9 +2043,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: sword_man
       objectReference: {fileID: 0}
+    - target: {fileID: 3670568192203852613, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2137,7 +2149,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1031793075
 BoxCollider2D:
@@ -2340,7 +2352,7 @@ Transform:
   m_LocalScale: {x: 4.718065, y: 2.9410172, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &1168741493
 SortingGroup:
@@ -2473,6 +2485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sword_man (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3670568192203852613, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2600,7 +2616,7 @@ Transform:
   m_Children:
   - {fileID: 44889956}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1807383972
 GameObject:
@@ -2645,7 +2661,7 @@ Transform:
   - {fileID: 1840324421}
   - {fileID: 1533115510}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1840324420
 GameObject:
