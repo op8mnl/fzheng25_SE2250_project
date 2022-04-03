@@ -327,7 +327,7 @@ Transform:
   m_LocalScale: {x: 13.787445, y: 9.3714905, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &46122729
 SortingGroup:
@@ -488,6 +488,10 @@ PrefabInstance:
     - target: {fileID: 403578614894049845, guid: 66f01178bcb5e4537bfce8bc736209b8, type: 3}
       propertyPath: m_Name
       value: Enemy Bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 403578614894049845, guid: 66f01178bcb5e4537bfce8bc736209b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7358521541292277494, guid: 66f01178bcb5e4537bfce8bc736209b8, type: 3}
       propertyPath: m_RootOrder
@@ -676,7 +680,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &405698864
 GameObject:
@@ -2618,6 +2622,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1680098949
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3670568192203852613, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_Name
+      value: sword_man
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.025368333
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.3863649
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673277760792543979, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b0eb18e3aeda49f5bf2988159f111a7, type: 3}
 --- !u!1 &1807383972
 GameObject:
   m_ObjectHideFlags: 0
@@ -4843,6 +4904,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1735948547548930661, guid: 4ac7b737050a7444895bfd62eb88e433, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4475864892888083338, guid: fd4809a8ef07640ab90c0570621b8940, type: 3}
       propertyPath: m_RootOrder
       value: 3

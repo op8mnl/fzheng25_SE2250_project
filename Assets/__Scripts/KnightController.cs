@@ -59,8 +59,8 @@ public class KnightController : Enemy
             if (rb == null) {
                 rb = GetComponent<Rigidbody2D>();
             }
-            // rb.velocity = moveDir;
-            rb.AddForce((transform.right * speed));
+            rb.velocity = moveDir;
+            // rb.AddForce((transform.right * speed));
             // Debug.Log("rb.velocity: " + rb.velocity);
 
             // transform.position += (Vector3)moveDir * Time.deltaTime;
