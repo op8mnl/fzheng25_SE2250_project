@@ -136,11 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 100
-  speed: 10
+  speed: 3
   expPointsGiven: 30
   damageGiven: 20
-  maxDistance: 4
-  minDistance: 2.5
+  maxDistance: 2.5
+  minDistance: 2
   isRightFacing: 0
 --- !u!70 &957876249666053353
 CapsuleCollider2D:
