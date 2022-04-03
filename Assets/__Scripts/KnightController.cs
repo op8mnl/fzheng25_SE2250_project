@@ -34,7 +34,7 @@ public class KnightController : Enemy
             if (isOnHill) {
                 ySpeed = speed/3;
             } else if (!isOnGround) {
-                ySpeed = -speed/2;
+                ySpeed = -speed;
             } else {
                 ySpeed = 0f;
             }
@@ -47,7 +47,7 @@ public class KnightController : Enemy
             if (isOnHill) {
                 ySpeed = speed/3;
             } else if (!isOnGround) {
-                ySpeed = -speed/2;
+                ySpeed = -speed;
             } else {
                 ySpeed = 0f;
             }
@@ -73,7 +73,7 @@ public class KnightController : Enemy
 
                 if (!attackCooldown && !knightAnim.GetBool("isAttack")) {
                     attackCooldown = true;
-                    Invoke("cooldown", 2f);
+                    Invoke("cooldown", 1f);
 
                     //change animation when player is attack distance
                     knightAnim.SetBool("isAttack", true);
@@ -83,6 +83,21 @@ public class KnightController : Enemy
             } else {
                 knightAnim.SetBool("isAttack", false);
             }
+        } else {
+            //call functions like a shoot or swing function at here or something
+                if (knightAnim == null) {
+                    knightAnim = GetComponent<Animator>();
+                }
+
+                if (!attackCooldown && !knightAnim.GetBool("isAttack")) {
+                    attackCooldown = true;
+                    Invoke("cooldown", 1f);
+
+                    //change animation when player is attack distance
+                    knightAnim.SetBool("isAttack", true);
+                } else {
+                    knightAnim.SetBool("isAttack", false);
+                }
         }
     }
 

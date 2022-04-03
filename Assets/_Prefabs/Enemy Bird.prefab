@@ -119,10 +119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 20
-  speed: 5
+  speed: 4
   expPointsGiven: 50
   damageGiven: 10
-  maxDistance: 20
+  maxDistance: 15
   minDistance: 4
   canFly: 1
   isRightFacing: 1

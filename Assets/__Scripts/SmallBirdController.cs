@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class SmallBirdController : Enemy
 {
+
+    void Update() {
+        if (transform.position.x > scottPlayer.transform.position.x) {
+            // face left
+            transform.localScale = new Vector3(-0.2f, 0.2f, 0f);
+        } else {
+            // face right
+            transform.localScale = new Vector3(0.2f, 0.2f, 0f);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Hill"))

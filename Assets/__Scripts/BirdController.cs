@@ -18,16 +18,16 @@ public class BirdController : Enemy
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        nextDrop = Random.Range (0.2f, 2f);
+        nextDrop = Random.Range (1f, 5f);
     }
  
     void FixedUpdate() {
         if (speed < 0) {
             // face left
-            transform.localScale = new Vector3(isRightFacing ? -1 : 1, 1, 1);
+            transform.localScale = new Vector3(isRightFacing ? -0.5f : 0.5f, 0.5f, 0f);
         } else {
             // face right
-            transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
+            transform.localScale = new Vector3(isRightFacing ? 0.5f : -0.5f, 0.5f, 0f);
         }
 
         rb.velocity = new Vector2(speed, 0f);;    // force that will move the enemy in the desired direction
@@ -36,7 +36,7 @@ public class BirdController : Enemy
         {
             // shoot out small birds at random intervals
             if (Time.time > nextDrop) {
-                nextDrop = Time.time + Random.Range (0.2f, 2f);
+                nextDrop = Time.time + Random.Range (1f, 5f);
                 Instantiate(smallBirdPrefab, new Vector2(transform.position.x,transform.position.y - 0.5f), smallBirdPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
             }
         }

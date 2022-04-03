@@ -121,7 +121,7 @@ MonoBehaviour:
   healthPoints: 1
   speed: 0
   expPointsGiven: 0
-  damageGiven: 199
+  damageGiven: 1
 --- !u!50 &804305914
 Rigidbody2D:
   serializedVersion: 4
