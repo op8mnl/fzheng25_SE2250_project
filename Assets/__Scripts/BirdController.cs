@@ -27,25 +27,34 @@ public class BirdController : Enemy
     }
  
     void FixedUpdate() {
-        Vector2 moveDir;    // force that will move the enemy in the desired direction
-        float ySpeed = 0f;
+        // if (transform.position.x > scottPlayer.transform.position.x) {
+        //     // face left
+        //     transform.localScale = new Vector3(isRightFacing ? -1 : 1, 1, 1);
 
-        if (transform.position.x > scottPlayer.transform.position.x) {
+        //     moveDir = new Vector2(-speed, 0f);   // move to the left if needed, and if on a hill, move accordingly
+        //     // Debug.Log("moveDir: " + moveDir);
+        // } else {
+        //     // face right
+        //     transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
+
+        //     moveDir = new Vector2(speed, 0f);    // move to the right if needed, and if on a hill, move accordingly
+        //     // Debug.Log("moveDir: " + moveDir);
+        // }
+
+
+
+        if (speed < 0) {
             // face left
             transform.localScale = new Vector3(isRightFacing ? -1 : 1, 1, 1);
-
-            moveDir = new Vector2(-speed, ySpeed);   // move to the left if needed, and if on a hill, move accordingly
-            // Debug.Log("moveDir: " + moveDir);
         } else {
             // face right
             transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
-
-            moveDir = new Vector2(speed, ySpeed);    // move to the right if needed, and if on a hill, move accordingly
-            // Debug.Log("moveDir: " + moveDir);
         }
 
-        if (Vector3.Distance(transform.position, scottPlayer.transform.position) >= minDistance) {
-            rb.velocity = moveDir;
+        rb.velocity = new Vector2(speed, 0f);;    // force that will move the enemy in the desired direction
+
+        // if (Vector3.Distance(transform.position, scottPlayer.transform.position) >= minDistance) {
+        //     rb.velocity = moveDir;
 
             // StartCoroutine(createSmallBird());
 
@@ -58,10 +67,12 @@ public class BirdController : Enemy
                     Instantiate(smallBirdPrefab, new Vector2(transform.position.x,transform.position.y - 0.5f), smallBirdPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
                 }
             }
-        }
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
+        speed *= -1;
+
         onTrigEnter(other);
     }
 

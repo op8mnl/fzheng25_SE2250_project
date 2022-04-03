@@ -12,6 +12,7 @@ public class KnightController : Enemy
     private bool isOnGround = false;
     public bool isRightFacing;
     private float ySpeed = 0f;
+    private bool attackCooldown = false;
 
     Animator knightAnim; //animator
 
@@ -31,9 +32,9 @@ public class KnightController : Enemy
             transform.localScale = new Vector3(isRightFacing ? -1 : 1, 1, 1);
 
             if (isOnHill) {
-                ySpeed = speed/2;
+                ySpeed = speed/3;
             } else if (!isOnGround) {
-                ySpeed = -speed;
+                ySpeed = -speed/2;
             } else {
                 ySpeed = 0f;
             }
@@ -44,9 +45,9 @@ public class KnightController : Enemy
             transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
 
             if (isOnHill) {
-                ySpeed = speed/2;
+                ySpeed = speed/3;
             } else if (!isOnGround) {
-                ySpeed = -speed;
+                ySpeed = -speed/2;
             } else {
                 ySpeed = 0f;
             }
@@ -69,8 +70,16 @@ public class KnightController : Enemy
                 if (knightAnim == null) {
                     knightAnim = GetComponent<Animator>();
                 }
-                //change animation when player is attack distance
-                knightAnim.SetBool("isAttack", true);
+
+                if (!attackCooldown && !knightAnim.GetBool("isAttack")) {
+                    attackCooldown = true;
+                    Invoke("cooldown", 2f);
+
+                    //change animation when player is attack distance
+                    knightAnim.SetBool("isAttack", true);
+                } else {
+                    knightAnim.SetBool("isAttack", false);
+                }
             } else {
                 knightAnim.SetBool("isAttack", false);
             }
@@ -103,21 +112,22 @@ public class KnightController : Enemy
         if (other.gameObject.CompareTag("Hill")) {
             isOnHill = true;
         }
-        // if (other.CompareTag("Ground")) {
+        // if (other.gameObject.CompareTag("Ground")) {
         //     isOnGround = true;
         // }
-
-        // onTrigEnter(other);
     }
 
     void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.CompareTag("Hill")) {
             isOnHill = false;
         }
-        // if (other.CompareTag("Ground")) {
-        //     isOnGround = true;
+        // if (other.gameObject.CompareTag("Ground")) {
+        //     isOnGround = false;
         // }
+    }
 
-        // onTrigEnter(other);
+    void cooldown()
+    {
+        attackCooldown = false;
     }
 }

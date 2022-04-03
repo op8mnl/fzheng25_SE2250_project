@@ -122,7 +122,7 @@ MonoBehaviour:
   speed: 5
   expPointsGiven: 50
   damageGiven: 10
-  maxDistance: 10
+  maxDistance: 20
   minDistance: 4
   canFly: 1
   isRightFacing: 1

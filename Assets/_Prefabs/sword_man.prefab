@@ -139,8 +139,8 @@ MonoBehaviour:
   speed: 5
   expPointsGiven: 30
   damageGiven: 20
-  maxDistance: 2.5
-  minDistance: 2
+  maxDistance: 3
+  minDistance: 2.3
   isRightFacing: 0
 --- !u!70 &957876249666053353
 CapsuleCollider2D:
@@ -182,7 +182,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.01}
+  m_Size: {x: 0.01, y: 0.01}
   m_EdgeRadius: 0
 --- !u!58 &2771583851150679465
 CircleCollider2D:
