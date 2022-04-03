@@ -19,6 +19,9 @@ public class NinjaController : MonoBehaviour
     private float _expLevel = 1f;
     public float damageToEnemy;
     private LevelManager _script;
+    private bool _isAb1Disabled;
+    private bool _isAb2Disabled;
+    private bool _isAb3Disabled;
 
     Animator ninjaAnim; //animator for the ninja
 

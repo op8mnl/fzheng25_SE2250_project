@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class AbilitySelector : MonoBehaviour
 {
+    public GameObject scott;
+    //public GameObject ninja;
+    //public GameObject dragon;
 
     public void disable1()
     {
-        GetComponent<ScottController>().setAbility1(true);
+        scott.GetComponent<ScottController>().setAbility1(true);
         //GetComponent<NinjaController>().setAbility1(true);
         //GetComponent<DragonController>().setAbility1(true);
     }
 
     public void disable2()
     {
-        GetComponent<ScottController>().setAbility2(true);
+        scott.GetComponent<ScottController>().setAbility2(true);
         //GetComponent<NinjaController>().setAbility2(true);
         //GetComponent<DragonController>().setAbility2(true);
     }
 
     public void disable3()
     {
-        GetComponent<ScottController>().setAbility3(true);
+        scott.GetComponent<ScottController>().setAbility3(true);
         //GetComponent<NinjaController>().setAbility3(true);
         //GetComponent<DragonController>().setAbility3(true);
     }

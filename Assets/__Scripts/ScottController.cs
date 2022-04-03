@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class ScottController : MonoBehaviour
@@ -18,6 +19,10 @@ public class ScottController : MonoBehaviour
     private bool _isAb2Disabled;
     private bool _isAb3Disabled;
     public GameObject player;
+
+    public Button abilityButton1;
+    public Button abilityButton2;
+    public Button abilityButton3;
 
 
     public bool getDirection()
@@ -51,8 +56,12 @@ public class ScottController : MonoBehaviour
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
         GetComponent<ExpManager>().expUpdate(_expPoints);
         shield = GameObject.FindGameObjectWithTag("shield").GetComponent<SpriteRenderer>();
+        ability1Btn.onClick.AddListener(disableAb1);
+        ability2Btn.onClick.AddListener(disableAb2);
+        ability3Btn.onClick.AddListener(disableAb3);
 
     }
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -72,7 +81,20 @@ public class ScottController : MonoBehaviour
 
         
     }
-    
+
+    private void disableAb1()
+    {
+
+    }
+    private void disableAb2()
+    {
+
+    }
+    private void disableAb3()
+    {
+
+    }
+
     //flip the direction of the player sprite
     private void Flip()
     {
