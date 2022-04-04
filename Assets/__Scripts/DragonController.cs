@@ -133,11 +133,6 @@ public class DragonController : MonoBehaviour
             if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
             {
 
-                dragonAnim.SetTrigger("Fireball");
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.3f, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.1f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 10f));
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.1f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, -10f));
-
                 dragonAnim.SetTrigger("FlyKick");
                 //strike.enabled = true;
                 StartCoroutine(DisableStrikeCollider());
