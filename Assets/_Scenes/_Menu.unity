@@ -388,6 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca88324986282d4aa1b02e1858da43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragon: {fileID: 906231217711062372, guid: 240e6f70f4ecaf349afa19dc9dca001c, type: 3}
+  script: {fileID: 1422832196}
 --- !u!1 &558897762
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03db86c6eb8cc4443990baf6c3ec792b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ninja: {fileID: 2690309283043553154, guid: e2ab9bc3579b5eb4fa8479f7248a1a6a, type: 3}
+  script: {fileID: 1422832196}
 --- !u!1 &1289907265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0982fdf00b75bc498658ea2beb8d1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scott: {fileID: 3114250723668659128, guid: 0cc9c2cefb27c5b4680a6c36c424d67b, type: 3}
+  script: {fileID: 1422832196}
 --- !u!1 &1680559852
 GameObject:
   m_ObjectHideFlags: 0
