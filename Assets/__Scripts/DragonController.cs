@@ -133,11 +133,6 @@ public class DragonController : MonoBehaviour
             if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
             {
 
-                dragonAnim.SetTrigger("Fireball");
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.3f, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.1f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 10f));
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.1f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, -10f));
-
                 dragonAnim.SetTrigger("FlyKick");
                 //strike.enabled = true;
                 StartCoroutine(DisableStrikeCollider());
@@ -229,14 +224,12 @@ public class DragonController : MonoBehaviour
         if ((_inPortal1 == true) && Input.GetButtonDown("Down"))
         {
             dragonAnim.SetTrigger("Beam");
-            //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "right"));
 
         }
         if ((_inPortal0 == true) && Input.GetButtonDown("Down"))
         {
             dragonAnim.SetTrigger("Beam");
-            //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "left"));
 
         }
@@ -258,12 +251,10 @@ public class DragonController : MonoBehaviour
         if (other.gameObject.CompareTag("portal1") || other.gameObject.CompareTag("portal0"))
         {
             _inPortal1 = false;
-        }
-        if (other.gameObject.CompareTag("portal0"))
-        {
             _inPortal0 = false;
         }
-    }
+    }          
+    
     IEnumerator nextLevel(float delayTime, string direction)
 
     {
@@ -287,14 +278,20 @@ public class DragonController : MonoBehaviour
         if (level == 1)
         {
             transform.position = new Vector3(-10.07f, -2.69f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
         }
         else if (level == 2)
         {
             transform.position = new Vector3(-20.08054f, -3.560295f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
         }
         else if (level == 3)
         {
             transform.position = new Vector3(-22.91002f, -2.755001f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
 
         }
     }

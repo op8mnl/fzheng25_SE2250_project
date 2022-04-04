@@ -251,9 +251,6 @@ public class ScottController : MonoBehaviour
         if (other.gameObject.CompareTag("portal1")||other.gameObject.CompareTag("portal0"))
         {
             _inPortal1 = false;
-        }
-        if (other.gameObject.CompareTag("portal0"))
-        {
             _inPortal0 = false;
         }
     }
@@ -263,22 +260,16 @@ public class ScottController : MonoBehaviour
         if ((_inPortal1 == true) && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
-            //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "right"));
+            Debug.Log("Right");
             
         }
         if ((_inPortal0 == true) && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
-            //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "left"));
-
+            Debug.Log("Left");
         }
-    }
-    void toggleVisibility()
-    {
-        GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
-
     }
 
     public void takeDamage(float damage){
@@ -348,15 +339,20 @@ public class ScottController : MonoBehaviour
         if (level == 1)
         {
             transform.position = new Vector3(-10.07f, -2.69f, 0);
-        }
+                 _inPortal1 = false;
+                 _inPortal0 = false;
+}
         else if (level == 2)
         {
             transform.position = new Vector3(-20.08054f, -3.560295f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
         }
         else if (level == 3)
         {
-            transform.position = new Vector3(-22.91002f, -2.755001f, 0);
-      
+            transform.position = new Vector3(22.91002f, -2.755001f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
         }
     }
 }
