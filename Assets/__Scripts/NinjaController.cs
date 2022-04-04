@@ -193,30 +193,9 @@ public class NinjaController : MonoBehaviour
             _ninja.gravityScale = 1.5f;
         }
     }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("portal1") || other.gameObject.CompareTag("portal0"))
-        {
-            _inPortal1 = false;
-        }
-        if (other.gameObject.CompareTag("portal0"))
-        {
-            _inPortal0 = false;
-        }
-    }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("portal1"))
-        {
-            _inPortal1 = true;
-        }
-        if (other.gameObject.CompareTag("portal0"))
-        {
-            _inPortal0 = true;
-        }
 
-    }
+
 
     public void takeDamage(float damage)
     {
@@ -227,17 +206,7 @@ public class NinjaController : MonoBehaviour
         }
     }
 
-    void Beam()
-    {
-        if ((_inPortal1 == true || _inPortal0 == true) && Input.GetButtonDown("Down"))
-        {
-            ninjaAnim.SetTrigger("Beam");
-            //Invoke("toggleVisibility", 1.25f);
-            StartCoroutine(nextLevel(1.5f, "right"));
 
-        }
-
-    }
 
     public void gainExp(float points)
     {
@@ -274,5 +243,69 @@ public class NinjaController : MonoBehaviour
         StopAllCoroutines();
     }
 
+    void Beam()
+    {
+        if ((_inPortal1 == true) && Input.GetButtonDown("Down"))
+        {
+            ninjaAnim.SetTrigger("Beam");
+            StartCoroutine(nextLevel(1.5f, "right"));
 
+        }
+        if ((_inPortal0 == true) && Input.GetButtonDown("Down"))
+        {
+            ninjaAnim.SetTrigger("Beam");
+            StartCoroutine(nextLevel(1.5f, "left"));
+
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("portal1"))
+        {
+            _inPortal1 = true;
+        }
+        if (other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal0 = true;
+        }
+
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("portal1") || other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal1 = false;
+            _inPortal0 = false;
+        }
+    }
+
+    void getScenario()
+    {
+        if (_script == null)
+        {
+            _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
+        }
+
+
+        int level = _script.getLevel();
+        if (level == 1)
+        {
+            transform.position = new Vector3(-10.07f, -2.69f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
+        }
+        else if (level == 2)
+        {
+            transform.position = new Vector3(-20.08054f, -3.560295f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
+        }
+        else if (level == 3)
+        {
+            transform.position = new Vector3(22.91002f, -2.755001f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
+
+        }
+    }
 }

@@ -286,7 +286,7 @@ public class DragonController : MonoBehaviour
         }
         else if (level == 3)
         {
-            transform.position = new Vector3(-22.91002f, -2.755001f, 0);
+            transform.position = new Vector3(22.91002f, -2.755001f, 0);
             _inPortal1 = false;
             _inPortal0 = false;
 
