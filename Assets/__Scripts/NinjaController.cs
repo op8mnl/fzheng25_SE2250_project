@@ -128,7 +128,7 @@ public class NinjaController : MonoBehaviour
         if (_abilitySelector == null) {
             _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
         }
-        
+
         if (_abilitySelector.getDisabled1() == false)
         {
             //Attack 1 Animations
@@ -150,7 +150,7 @@ public class NinjaController : MonoBehaviour
                 StartCoroutine(DisableStrikeCollider());
             }
         }
-            
+
     }
 
     private IEnumerator DisableStrikeCollider()
@@ -206,17 +206,6 @@ public class NinjaController : MonoBehaviour
             GetComponent<HealthManager>().healthUpdate(_healthPoints);
         }
     }
-
-    void Beam()
-    {
-        if ((_inPortal1 == true || _inPortal0 == true) && Input.GetButtonDown("Down"))
-        {
-            ninjaAnim.SetTrigger("Beam");
-            StartCoroutine(nextLevel(1.5f, "right"));
-
-        }
-
-
     public void DeathToNinja()
     {
         if (_healthPoints <= 0)
@@ -227,74 +216,106 @@ public class NinjaController : MonoBehaviour
 
     }
 
-    public void gainExp(float points)
-    {
-        _expPoints += points;
-        // Debug.Log("_expPoints = " + _expPoints);
-
-        if (_expPoints >= 100)
-        {
-            // Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
-            _expPoints -= 100;
-            _expLevel += 1;  // implement a switch statement or smt to make this relavent
-            speed += 1;
-            // jump += 1;
-            damageToEnemy += 1;
-            _healthPoints = 100f;
-            GetComponent<HealthManager>().healthUpdate(_healthPoints);
-            // Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
-        }
-
-        GetComponent<ExpManager>().expUpdate(_expPoints);
-    }
 
     public float getScottDamage()
     {
         return damageToEnemy;
     }
 
+    public void gainExp(float points)
+        {
+            _expPoints += points;
+            // Debug.Log("_expPoints = " + _expPoints);
+
+            if (_expPoints >= 100)
+            {
+                // Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
+                _expPoints -= 100;
+                _expLevel += 1;  // implement a switch statement or smt to make this relavent
+                speed += 1;
+                // jump += 1;
+                damageToEnemy += 1;
+                _healthPoints = 100f;
+                GetComponent<HealthManager>().healthUpdate(_healthPoints);
+                // Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
+            }
+
+            GetComponent<ExpManager>().expUpdate(_expPoints);
+        }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("portal1"))
+        {
+            _inPortal1 = true;
+        }
+        if (other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal0 = true;
+        }
+
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("portal1") || other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal1 = false;
+            _inPortal0 = false;
+        }
+    }
+    void Beam()
+    {
+        if ((_inPortal1 == true) && Input.GetButtonDown("Down"))
+        {
+            ninjaAnim.SetTrigger("Beam");
+            StartCoroutine(nextLevel(1.5f, "right"));
+
+        }
+        if ((_inPortal0 == true) && Input.GetButtonDown("Down"))
+        {
+            ninjaAnim.SetTrigger("Beam");
+            StartCoroutine(nextLevel(1.5f, "left"));
+
+        }
+    }
     IEnumerator nextLevel(float delayTime, string direction)
 
-    {
-        //Wait for the specified delay time before continuing.
-        yield return new WaitForSeconds(delayTime);
+        {
+            //Wait for the specified delay time before continuing.
+            yield return new WaitForSeconds(delayTime);
 
-        //Do the action after the delay time has finished.
-        _script.getNextLevel(direction);
-        getScenario();
-        StopAllCoroutines();
+            //Do the action after the delay time has finished.
+            _script.getNextLevel(direction);
+            getScenario();
+            StopAllCoroutines();
+        }
+
+        void getScenario()
+        {
+            if (_script == null)
+            {
+                _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
+            }
+
+
+            int level = _script.getLevel();
+            if (level == 1)
+            {
+                transform.position = new Vector3(-10.07f, -2.69f, 0);
+                _inPortal1 = false;
+                _inPortal0 = false;
+            }
+            else if (level == 2)
+            {
+                transform.position = new Vector3(-20.08054f, -3.560295f, 0);
+                _inPortal1 = false;
+                _inPortal0 = false;
+            }
+            else if (level == 3)
+            {
+                transform.position = new Vector3(22.91002f, -2.755001f, 0);
+                _inPortal1 = false;
+                _inPortal0 = false;
+            }
+        }
     }
 
-    void getScenario()
-    {
-        if (_script == null)
-        {
-            _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
-        }
-
-
-        int level = _script.getLevel();
-        if (level == 1)
-        {
-            transform.position = new Vector3(-10.07f, -2.69f, 0);
-            _inPortal1 = false;
-            _inPortal0 = false;
-        }
-        else if (level == 2)
-        {
-            transform.position = new Vector3(-20.08054f, -3.560295f, 0);
-            _inPortal1 = false;
-            _inPortal0 = false;
-        }
-        else if (level == 3)
-        {
-            transform.position = new Vector3(22.91002f, -2.755001f, 0);
-            _inPortal1 = false;
-            _inPortal0 = false;
-        }
-    }
-
-
-        }
-    }
-}
