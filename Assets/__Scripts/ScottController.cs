@@ -56,6 +56,7 @@ public class ScottController : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        
         _expPoints = 1f;
         _healthPoints = 100f;
     }
@@ -185,15 +186,7 @@ public class ScottController : MonoBehaviour
             }
         }
 
-       
 
-        /* 
-        //Fireball Ability Stuff
-        if (Input.GetButtonDown("Attack3"))
-        {
-             var projectile = GameObject.Instantiate(fireballPrefab, transform.position, fireballPrefab.transform.rotation);
-        }
-        */
 
     }
     private IEnumerator DisableStrikeCollider()
@@ -267,14 +260,20 @@ public class ScottController : MonoBehaviour
 
     void Beam()
     {
-        if ((_inPortal1 == true || _inPortal0 == true) && Input.GetButtonDown("Down"))
+        if ((_inPortal1 == true) && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
             //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "right"));
             
         }
+        if ((_inPortal0 == true) && Input.GetButtonDown("Down"))
+        {
+            scottAnim.SetTrigger("Beam");
+            //Invoke("toggleVisibility", 1.25f);
+            StartCoroutine(nextLevel(1.5f, "left"));
 
+        }
     }
     void toggleVisibility()
     {
@@ -333,8 +332,31 @@ public class ScottController : MonoBehaviour
 
         //Do the action after the delay time has finished.
         _script.getNextLevel(direction);
+        getScenario();
         StopAllCoroutines();
     }
 
+    void getScenario()
+    {
+        if (_script == null)
+        {
+            _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
+        }
 
+
+        int level = _script.getLevel();
+        if (level == 1)
+        {
+            transform.position = new Vector3(-10.07f, -2.69f, 0);
+        }
+        else if (level == 2)
+        {
+            transform.position = new Vector3(-20.08054f, -3.560295f, 0);
+        }
+        else if (level == 3)
+        {
+            transform.position = new Vector3(-22.91002f, -2.755001f, 0);
+      
+        }
+    }
 }
