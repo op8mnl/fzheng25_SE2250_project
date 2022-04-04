@@ -19,6 +19,8 @@ public class NinjaController : MonoBehaviour
     private float _expLevel = 1f;
     public float damageToEnemy;
     private LevelManager _script;
+    private AbilitySelector _abilitySelector;
+
 
     Animator ninjaAnim; //animator for the ninja
 
@@ -34,6 +36,8 @@ public class NinjaController : MonoBehaviour
         _expPoints = 1f;
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
         GetComponent<ExpManager>().expUpdate(_expPoints);
+        _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+
     }
 
 
@@ -120,22 +124,32 @@ public class NinjaController : MonoBehaviour
 
     private void Attack()
     {
-
-        //Attack 1 Animations
-        if (Input.GetButtonDown("Attack1") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_slash"))
+        if (_abilitySelector == null) {
+            _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+        }
+        
+        if (_abilitySelector.getDisabled1() == false)
         {
-            ninjaAnim.SetTrigger("Slash");
-            //slash.enabled = true;
-            StartCoroutine(DisableBasicAttackCollider());
+            //Attack 1 Animations
+            if (Input.GetButtonDown("Attack1") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_slash"))
+            {
+                ninjaAnim.SetTrigger("Slash");
+                //slash.enabled = true;
+                StartCoroutine(DisableBasicAttackCollider());
+            }
         }
 
-        //Attack 2 Animations
-        if (Input.GetButtonDown("Attack2") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_strike"))
+        if (_abilitySelector.getDisabled2() == false)
         {
-            ninjaAnim.SetTrigger("Strike");
-            //strike.enabled = true;
-            StartCoroutine(DisableStrikeCollider());
+            //Attack 2 Animations
+            if (Input.GetButtonDown("Attack2") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_strike"))
+            {
+                ninjaAnim.SetTrigger("Strike");
+                //strike.enabled = true;
+                StartCoroutine(DisableStrikeCollider());
+            }
         }
+            
     }
 
     private IEnumerator DisableStrikeCollider()

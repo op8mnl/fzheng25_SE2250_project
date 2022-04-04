@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class ScottController : MonoBehaviour
@@ -14,6 +15,8 @@ public class ScottController : MonoBehaviour
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private float expLevel = 1;
+    public GameObject player;
+
 
     public bool getDirection()
     {
@@ -27,6 +30,7 @@ public class ScottController : MonoBehaviour
     public float _expPoints = 1f;
     Animator scottAnim; //animator
     private LevelManager _script;
+    private AbilitySelector _abilitySelector;
     public GameObject swordWave;
 
     public SpriteRenderer shield;
@@ -46,8 +50,9 @@ public class ScottController : MonoBehaviour
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
         GetComponent<ExpManager>().expUpdate(_expPoints);
         shield = GameObject.FindGameObjectWithTag("shield").GetComponent<SpriteRenderer>();
-
+        _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
     }
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -63,9 +68,11 @@ public class ScottController : MonoBehaviour
 
         Beam();
 
+        DeathToScott();
+
         
     }
-    
+
     //flip the direction of the player sprite
     private void Flip()
     {
@@ -130,39 +137,55 @@ public class ScottController : MonoBehaviour
 
         }
     }
+
     private void Attack()
     {
-        if (shield.enabled == false)
+        if (_abilitySelector == null) {
+            _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+        }
+
+        if (_abilitySelector.getDisabled1() == false)
         {
-            //Attack 1 Animations
-            if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_BasicAttack"))
+            if (shield.enabled == false)
             {
-                scottAnim.SetTrigger("BasicAttack");
-                basicAttack.enabled = true;
-                StartCoroutine(DisableBasicAttackCollider());
+                //Attack 1 Animations
+                if (Input.GetButtonDown("Attack1") && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_BasicAttack"))
+                {
+                    scottAnim.SetTrigger("BasicAttack");
+                    basicAttack.enabled = true;
+                    StartCoroutine(DisableBasicAttackCollider());
+                }
             }
         }
-        
 
-        if (shield.enabled == false)
+        
+        if (_abilitySelector.getDisabled2() == false)
         {
-            //Attack 2 Animations
-            if (Input.GetAxis("Attack2") > 0 && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_Strike"))
+            if (shield.enabled == false)
             {
-                scottAnim.SetTrigger("Strike");
-                strike.enabled = true;
-                StartCoroutine(DisableStrikeCollider());
+                //Attack 2 Animations
+                if (Input.GetAxis("Attack2") > 0 && !scottAnim.GetCurrentAnimatorStateInfo(1).IsName("Scott_Strike"))
+                {
+                    scottAnim.SetTrigger("Strike");
+                    strike.enabled = true;
+                    StartCoroutine(DisableStrikeCollider());
+
+                }
+            }
+        }
+
+        
+        if (_abilitySelector.getDisabled3() == false)
+        {
+            if (Input.GetButtonDown("Shield"))
+            {
+                shield.enabled = !shield.enabled;
+                activeShield = !activeShield;
 
             }
         }
-        
 
-        if (Input.GetButtonDown("Shield"))
-        {
-            shield.enabled = !shield.enabled;
-            activeShield = !activeShield;
-
-        }
+       
 
         /* 
         //Fireball Ability Stuff
@@ -266,6 +289,16 @@ public class ScottController : MonoBehaviour
             _healthPoints -= damage;
             GetComponent<HealthManager>().healthUpdate(_healthPoints);
         }
+    }
+
+    public void DeathToScott()
+    {
+        if (_healthPoints <= 0)
+        {
+            Camera.main.transform.parent = null;
+            Destroy(player);
+        }
+            
     }
 
     public void gainExp(float points)
