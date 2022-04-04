@@ -229,14 +229,12 @@ public class DragonController : MonoBehaviour
         if ((_inPortal1 == true) && Input.GetButtonDown("Down"))
         {
             dragonAnim.SetTrigger("Beam");
-            //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "right"));
 
         }
         if ((_inPortal0 == true) && Input.GetButtonDown("Down"))
         {
             dragonAnim.SetTrigger("Beam");
-            //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "left"));
 
         }
@@ -258,12 +256,10 @@ public class DragonController : MonoBehaviour
         if (other.gameObject.CompareTag("portal1") || other.gameObject.CompareTag("portal0"))
         {
             _inPortal1 = false;
-        }
-        if (other.gameObject.CompareTag("portal0"))
-        {
             _inPortal0 = false;
         }
-    }
+    }          
+    
     IEnumerator nextLevel(float delayTime, string direction)
 
     {
@@ -287,14 +283,20 @@ public class DragonController : MonoBehaviour
         if (level == 1)
         {
             transform.position = new Vector3(-10.07f, -2.69f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
         }
         else if (level == 2)
         {
             transform.position = new Vector3(-20.08054f, -3.560295f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
         }
         else if (level == 3)
         {
             transform.position = new Vector3(-22.91002f, -2.755001f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
 
         }
     }
