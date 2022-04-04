@@ -148,9 +148,6 @@ public class DragonController : MonoBehaviour
             {
 
                 dragonAnim.SetTrigger("Fireball");
-                Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.3f,transform.position.y - 0.5f), fireballPrefab.transform.rotation* Quaternion.Euler(0f, 180f, 0f));
-                Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.1f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 170f));
-                Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.1f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 190f));
 
                 if (_facingRight)
                 {
