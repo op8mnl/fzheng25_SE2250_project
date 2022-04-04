@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class setNinja : MonoBehaviour
+public class SetNinja : MonoBehaviour
 {
     public GameObject ninja;
 

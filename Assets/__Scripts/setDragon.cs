@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class setDragon : MonoBehaviour
+public class SetDragon : MonoBehaviour
 {
     public GameObject dragon;
 

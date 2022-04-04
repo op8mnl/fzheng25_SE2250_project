@@ -15,9 +15,14 @@ public class DragonController : MonoBehaviour
     private bool _inPortal = false;
     public float _healthPoints;
     public GameObject fireballPrefab;
+
     private LevelManager _script;
     private bool _inPortal1 = false;
     private bool _inPortal0 = false;
+
+    private AbilitySelector _abilitySelector;
+
+
     Animator dragonAnim; //animator for the dragon
 
     public void Start()
@@ -27,6 +32,8 @@ public class DragonController : MonoBehaviour
         _dragon = GetComponent<Rigidbody2D>();
         dragonAnim = GetComponent<Animator>();
         _healthPoints = 100f;
+        _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+
     }
 
     public void Awake()
@@ -105,43 +112,68 @@ public class DragonController : MonoBehaviour
 
     private void Attack()
     {
-
-        //Attack 1 Animations
-        if (Input.GetButtonDown("Attack1") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_BasicAttack"))
-        {
-            dragonAnim.SetTrigger("BasicAttack");
-            //basicAttack.enabled = true;
-            StartCoroutine(DisableBasicAttackCollider());
+        if (_abilitySelector == null) {
+            _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
         }
-
-        //Attack 2 Animations
-        if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
+        
+        if (_abilitySelector.getDisabled1() == false)
         {
-            dragonAnim.SetTrigger("FlyKick");
-            //strike.enabled = true;
-            StartCoroutine(DisableStrikeCollider());
-        }
-
-        //Fireball Ability Stuff
-        if (Input.GetButtonDown("Attack3"))
-        {
-            if (_facingRight)
+            //Attack 1 Animations
+            if (Input.GetButtonDown("Attack1") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_BasicAttack"))
             {
+                dragonAnim.SetTrigger("BasicAttack");
+                //basicAttack.enabled = true;
+                StartCoroutine(DisableBasicAttackCollider());
+            }
+        }
+
+        if (_abilitySelector.getDisabled2() == false)
+        {
+            //Attack 2 Animations
+            if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
+            {
+
                 dragonAnim.SetTrigger("Fireball");
                 Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.3f, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
                 Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.1f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 10f));
                 Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.1f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, -10f));
-            }
 
-            if (!_facingRight)
+                dragonAnim.SetTrigger("FlyKick");
+                //strike.enabled = true;
+                StartCoroutine(DisableStrikeCollider());
+
+            }
+        }
+
+            
+        if (_abilitySelector.getDisabled3() == false)
+        {
+            //Fireball Ability Stuff
+            if (Input.GetButtonDown("Attack3"))
             {
+
                 dragonAnim.SetTrigger("Fireball");
                 Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.3f,transform.position.y - 0.5f), fireballPrefab.transform.rotation* Quaternion.Euler(0f, 180f, 0f));
                 Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.1f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 170f));
                 Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.1f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 190f));
+
+                if (_facingRight)
+                {
+                    dragonAnim.SetTrigger("Fireball");
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 10f));
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, -10f));
+                }
+
+                if (!_facingRight)
+                {
+                    dragonAnim.SetTrigger("Fireball");
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f,transform.position.y - 0.5f), fireballPrefab.transform.rotation* Quaternion.Euler(0f, 180f, 0f));
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 170f));
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 190f));
+                }
+
             }
-
-
         }
     }
 

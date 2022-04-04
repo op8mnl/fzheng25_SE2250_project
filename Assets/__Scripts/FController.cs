@@ -11,11 +11,6 @@ public class FController : MonoBehaviour
         Invoke("destroyF", 3f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void destroyF()
     {
         Destroy(gameObject);
