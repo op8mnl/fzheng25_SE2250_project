@@ -15,14 +15,7 @@ public class ScottController : MonoBehaviour
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
     private float expLevel = 1;
-    private bool _isAb1Disabled;
-    private bool _isAb2Disabled;
-    private bool _isAb3Disabled;
     public GameObject player;
-
-    public Button abilityButton1;
-    public Button abilityButton2;
-    public Button abilityButton3;
 
 
     public bool getDirection()
@@ -37,6 +30,7 @@ public class ScottController : MonoBehaviour
     public float _expPoints = 1f;
     Animator scottAnim; //animator
     private LevelManager _script;
+    private AbilitySelector _abilitySelector;
     public GameObject swordWave;
 
     public SpriteRenderer shield;
@@ -56,9 +50,7 @@ public class ScottController : MonoBehaviour
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
         GetComponent<ExpManager>().expUpdate(_expPoints);
         shield = GameObject.FindGameObjectWithTag("shield").GetComponent<SpriteRenderer>();
-        ability1Btn.onClick.AddListener(disableAb1);
-        ability2Btn.onClick.AddListener(disableAb2);
-        ability3Btn.onClick.AddListener(disableAb3);
+        _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
 
     }
 
@@ -80,19 +72,6 @@ public class ScottController : MonoBehaviour
         DeathToScott();
 
         
-    }
-
-    private void disableAb1()
-    {
-
-    }
-    private void disableAb2()
-    {
-
-    }
-    private void disableAb3()
-    {
-
     }
 
     //flip the direction of the player sprite
@@ -160,31 +139,10 @@ public class ScottController : MonoBehaviour
         }
     }
 
-    public void setAbility1(bool disable)
-    {
-        _isAb1Disabled = disable;
-        _isAb2Disabled = !disable;
-        _isAb3Disabled = !disable;
-    }
-
-    public void setAbility2(bool disable)
-    {
-        _isAb2Disabled = disable;
-        _isAb1Disabled = !disable;
-        _isAb3Disabled = !disable;
-    }
-
-    public void setAbility3(bool disable)
-    {
-        _isAb3Disabled = disable;
-        _isAb2Disabled = !disable;
-        _isAb1Disabled = !disable;
-    }
-
     private void Attack()
     {
 
-        if (_isAb1Disabled == false)
+        if (_abilitySelector.getDisabled1() == false)
         {
             if (shield.enabled == false)
             {
@@ -199,7 +157,7 @@ public class ScottController : MonoBehaviour
         }
 
         
-        if (_isAb2Disabled == false)
+        if (_abilitySelector.getDisabled2() == false)
         {
             if (shield.enabled == false)
             {
@@ -215,7 +173,7 @@ public class ScottController : MonoBehaviour
         }
 
         
-        if (_isAb3Disabled == false)
+        if (_abilitySelector.getDisabled3() == false)
         {
             if (Input.GetButtonDown("Shield"))
             {

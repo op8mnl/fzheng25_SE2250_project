@@ -6,18 +6,24 @@ using UnityEngine.UI;
 public class disableAbility3 : MonoBehaviour
 {
     public Button ability3Btn;
+    private bool _isAb3Disabled = false;
+
     public GameObject script;
 
     private void Start()
     {
-        ability3Btn.onClick.AddListener(selectorCall);
+        ability3Btn.onClick.AddListener(disable3);
     }
 
-    public void selectorCall()
+    public void disable3()
     {
-        Debug.Log("calling 3rd selectorCall");
-        script.GetComponent<AbilitySelector>().disable3();
+        _isAb3Disabled = !_isAb3Disabled;
+        //Debug.Log("calling 1st selectorCall");
+        //script.GetComponent<AbilitySelector>().disable1();
+    }
+
+    public bool getDisabled3()
+    {
+        return _isAb3Disabled;
     }
 }
-
-//add AddListener for each of these scripts, making the buttons injected as GameObject being referenced

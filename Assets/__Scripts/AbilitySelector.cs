@@ -1,42 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilitySelector : MonoBehaviour
 {
-    public GameObject scott;
-    //public GameObject ninja;
-    //public GameObject dragon;
+    public Button ability1Btn;
+    public Button ability2Btn;
+    public Button ability3Btn;
+
+    private bool _isAb1Disabled = false;
+    private bool _isAb2Disabled = false;
+    private bool _isAb3Disabled = false;
+
+    //public GameObject script;
+
+    private void Start()
+    {
+        ability1Btn.onClick.AddListener(disable1);
+        ability2Btn.onClick.AddListener(disable2);
+        ability3Btn.onClick.AddListener(disable3);
+    }
 
     public void disable1()
     {
-        scott.GetComponent<ScottController>().setAbility1(true);
-        //GetComponent<NinjaController>().setAbility1(true);
-        //GetComponent<DragonController>().setAbility1(true);
+        Debug.Log("Button 1 is pressed");
+        _isAb1Disabled = !_isAb1Disabled;
+        _isAb2Disabled = false;
+        _isAb3Disabled = false;
+       
     }
-
     public void disable2()
     {
-        scott.GetComponent<ScottController>().setAbility2(true);
-        //GetComponent<NinjaController>().setAbility2(true);
-        //GetComponent<DragonController>().setAbility2(true);
+        Debug.Log("Button 2 is pressed");
+        _isAb2Disabled = !_isAb2Disabled;
+        _isAb1Disabled = false;
+        _isAb3Disabled = false;
+      
     }
-
     public void disable3()
     {
-        scott.GetComponent<ScottController>().setAbility3(true);
-        //GetComponent<NinjaController>().setAbility3(true);
-        //GetComponent<DragonController>().setAbility3(true);
+        Debug.Log("Button 3 is pressed");
+        _isAb3Disabled = !_isAb3Disabled;
+        _isAb2Disabled = false;
+        _isAb1Disabled = false;
+       
     }
+
+    public bool getDisabled1()
+    {
+        return _isAb1Disabled;
+    }
+    public bool getDisabled2()
+    {
+        return _isAb2Disabled;
+    }
+    public bool getDisabled3()
+    {
+        return _isAb3Disabled;
+    }
+
 }
-
-
-// when button clicked for ability not using, need a boolean variable to use in if
-// statement to disable button pressing, like how activeShield in ScottController prevents.
-// need so when one is clicked, the other are set true as to not disable all
-
-// scripts for each button, when pressed, sent to this script, then depending on which pressed (if statement),
-// method call to each player controller to set specific ability bool to false and the others true,
-// and in the controllers if certain bool is true, only then can ability be used
-
-// how to get OnClick to call method in disable scripts?

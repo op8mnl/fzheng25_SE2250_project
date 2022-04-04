@@ -6,16 +6,24 @@ using UnityEngine.UI;
 public class disableAbility2 : MonoBehaviour
 {
     public Button ability2Btn;
-    public GameObject script;
+    private bool _isAb2Disabled = false;
+
+    //public GameObject script;
 
     private void Start()
     {
-        ability2Btn.onClick.AddListener(selectorCall);
+        ability2Btn.onClick.AddListener(disable2);
     }
 
-    public void selectorCall()
+    public void disable2()
     {
-        Debug.Log("calling 2nd selectorCall");
-        script.GetComponent<AbilitySelector>().disable2();
+        _isAb2Disabled = !_isAb2Disabled;
+        //Debug.Log("calling 1st selectorCall");
+        //script.GetComponent<AbilitySelector>().disable1();
+    }
+
+    public bool getDisabled2()
+    {
+        return _isAb2Disabled;
     }
 }
