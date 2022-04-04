@@ -6,19 +6,20 @@ public class DragonController : MonoBehaviour
 {
     public float speed; //speed
     public float jump; //jump
-    public GameObject healthManager;
     private Rigidbody2D _dragon; //dragon player sprite
+    public GameObject player;
     private PolygonCollider2D basicAttack;
-    private PolygonCollider2D FlyKick;
+    private PolygonCollider2D flyAttack;
     private bool _facingRight = true; //facing direction
     private bool _isOnHill = false;
     private bool _inPortal = false;
     public float _healthPoints;
     public GameObject fireballPrefab;
-
+    private float _expPoints = 1f;
     private LevelManager _script;
     private bool _inPortal1 = false;
     private bool _inPortal0 = false;
+    public float damageToEnemy;
 
     private AbilitySelector _abilitySelector;
 
@@ -33,6 +34,11 @@ public class DragonController : MonoBehaviour
         dragonAnim = GetComponent<Animator>();
         _healthPoints = 100f;
         _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+        basicAttack = GameObject.FindGameObjectWithTag("Slash").GetComponent<PolygonCollider2D>();
+        flyAttack = GameObject.FindGameObjectWithTag("Strike").GetComponent<PolygonCollider2D>();
+        _expPoints = 1f;
+        GetComponent<HealthManager>().healthUpdate(_healthPoints);
+        GetComponent<ExpManager>().expUpdate(_expPoints);
 
     }
 
@@ -46,6 +52,7 @@ public class DragonController : MonoBehaviour
         Movement();
         Attack();
         Beam();
+        DeathToDragon();
     }
 
     //flip the direction of the dragon sprite
@@ -122,7 +129,7 @@ public class DragonController : MonoBehaviour
             if (Input.GetButtonDown("Attack1") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_BasicAttack"))
             {
                 dragonAnim.SetTrigger("BasicAttack");
-                //basicAttack.enabled = true;
+                basicAttack.enabled = true;
                 StartCoroutine(DisableBasicAttackCollider());
             }
         }
@@ -134,8 +141,8 @@ public class DragonController : MonoBehaviour
             {
 
                 dragonAnim.SetTrigger("FlyKick");
-                //strike.enabled = true;
-                StartCoroutine(DisableStrikeCollider());
+                flyAttack.enabled = true;
+                StartCoroutine(DisableFlyAttackCollider());
 
             }
         }
@@ -186,16 +193,16 @@ public class DragonController : MonoBehaviour
         return dir;
     }
 
-    private IEnumerator DisableStrikeCollider()
+    private IEnumerator DisableFlyAttackCollider()
     {
         yield return new WaitForSeconds(0.03f);
-        //strike.enabled = false;
-        StopCoroutine(DisableStrikeCollider());
+        flyAttack.enabled = false;
+        StopCoroutine(DisableFlyAttackCollider());
     }
     private IEnumerator DisableBasicAttackCollider()
     {
         yield return new WaitForSeconds(0.04f);
-        //basicAttack.enabled = false;
+        basicAttack.enabled = false;
         StopCoroutine(DisableBasicAttackCollider());
     }
 
@@ -217,7 +224,7 @@ public class DragonController : MonoBehaviour
     public void takeDamage(float damage)
     {
         _healthPoints -= damage;
-        healthManager.GetComponent<HealthManager>().healthUpdate(_healthPoints);
+        GetComponent<HealthManager>().healthUpdate(_healthPoints);
     }
     void Beam()
     {
@@ -253,8 +260,23 @@ public class DragonController : MonoBehaviour
             _inPortal1 = false;
             _inPortal0 = false;
         }
-    }          
-    
+    }
+
+    public float getScottDamage()
+    {
+        return damageToEnemy;
+    }
+
+    public void DeathToDragon()
+    {
+        if (_healthPoints <= 0)
+        {
+            Camera.main.transform.parent = null;
+            Destroy(player);
+        }
+
+    }
+
     IEnumerator nextLevel(float delayTime, string direction)
 
     {

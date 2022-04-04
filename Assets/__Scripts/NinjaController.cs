@@ -6,8 +6,8 @@ public class NinjaController : MonoBehaviour
 {
     public float speed; //speed
     public float jump; //jump
-    public GameObject healthManager;
     private Rigidbody2D _ninja; //ninja player sprite
+    public GameObject player;
     private PolygonCollider2D slash;
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
@@ -31,8 +31,8 @@ public class NinjaController : MonoBehaviour
         ninjaAnim = GetComponent<Animator>();
         _healthPoints = 100f;
         _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
-        slash = GameObject.FindGameObjectWithTag("slash").GetComponent<PolygonCollider2D>();
-        strike = GameObject.FindGameObjectWithTag("strike").GetComponent<PolygonCollider2D>();
+        slash = GameObject.FindGameObjectWithTag("Slash").GetComponent<PolygonCollider2D>();
+        strike = GameObject.FindGameObjectWithTag("Strike").GetComponent<PolygonCollider2D>();
         _expPoints = 1f;
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
         GetComponent<ExpManager>().expUpdate(_expPoints);
@@ -53,6 +53,7 @@ public class NinjaController : MonoBehaviour
         Movement();
         Attack();
         Beam();
+        DeathToNinja();
     }
 
     public bool getDirection()
@@ -134,8 +135,8 @@ public class NinjaController : MonoBehaviour
             if (Input.GetButtonDown("Attack1") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_slash"))
             {
                 ninjaAnim.SetTrigger("Slash");
-                //slash.enabled = true;
-                StartCoroutine(DisableBasicAttackCollider());
+                slash.enabled = true;
+                StartCoroutine(DisableSlashCollider());
             }
         }
 
@@ -145,7 +146,7 @@ public class NinjaController : MonoBehaviour
             if (Input.GetButtonDown("Attack2") && !ninjaAnim.GetCurrentAnimatorStateInfo(0).IsName("ninja_strike"))
             {
                 ninjaAnim.SetTrigger("Strike");
-                //strike.enabled = true;
+                strike.enabled = true;
                 StartCoroutine(DisableStrikeCollider());
             }
         }
@@ -168,11 +169,11 @@ public class NinjaController : MonoBehaviour
         strike.enabled = false;
         StopCoroutine(DisableStrikeCollider());
     }
-    private IEnumerator DisableBasicAttackCollider()
+    private IEnumerator DisableSlashCollider()
     {
         yield return new WaitForSeconds(0.04f);
-        //slash.enabled = false;
-        StopCoroutine(DisableBasicAttackCollider());
+        slash.enabled = false;
+        StopCoroutine(DisableSlashCollider());
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -232,9 +233,18 @@ public class NinjaController : MonoBehaviour
         if ((_inPortal1 == true || _inPortal0 == true) && Input.GetButtonDown("Down"))
         {
             ninjaAnim.SetTrigger("Beam");
-            //Invoke("toggleVisibility", 1.25f);
             StartCoroutine(nextLevel(1.5f, "right"));
 
+        }
+
+    }
+
+    public void DeathToNinja()
+    {
+        if (_healthPoints <= 0)
+        {
+            Camera.main.transform.parent = null;
+            Destroy(player);
         }
 
     }
@@ -242,17 +252,19 @@ public class NinjaController : MonoBehaviour
     public void gainExp(float points)
     {
         _expPoints += points;
-        Debug.Log("_expPoints = " + _expPoints);
+        // Debug.Log("_expPoints = " + _expPoints);
 
         if (_expPoints >= 100)
         {
-            Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
+            // Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
             _expPoints -= 100;
+            _expLevel += 1;  // implement a switch statement or smt to make this relavent
             speed += 1;
-            jump += 1;
+            // jump += 1;
             damageToEnemy += 1;
-            GetComponent<HealthManager>().healthUpdate(100f);
-            Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
+            _healthPoints = 100f;
+            GetComponent<HealthManager>().healthUpdate(_healthPoints);
+            // Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
         }
 
         GetComponent<ExpManager>().expUpdate(_expPoints);
@@ -271,7 +283,37 @@ public class NinjaController : MonoBehaviour
 
         //Do the action after the delay time has finished.
         _script.getNextLevel(direction);
+        getScenario();
         StopAllCoroutines();
+    }
+
+    void getScenario()
+    {
+        if (_script == null)
+        {
+            _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
+        }
+
+
+        int level = _script.getLevel();
+        if (level == 1)
+        {
+            transform.position = new Vector3(-10.07f, -2.69f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
+        }
+        else if (level == 2)
+        {
+            transform.position = new Vector3(-20.08054f, -3.560295f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
+        }
+        else if (level == 3)
+        {
+            transform.position = new Vector3(22.91002f, -2.755001f, 0);
+            _inPortal1 = false;
+            _inPortal0 = false;
+        }
     }
 
 
