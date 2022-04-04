@@ -15,9 +15,8 @@ public class DragonController : MonoBehaviour
     private bool _inPortal = false;
     public float _healthPoints;
     public GameObject fireballPrefab;
-    private bool _isAb1Disabled;
-    private bool _isAb2Disabled;
-    private bool _isAb3Disabled;
+    private AbilitySelector _abilitySelector;
+
 
     Animator dragonAnim; //animator for the dragon
 
@@ -27,6 +26,8 @@ public class DragonController : MonoBehaviour
         _dragon = GetComponent<Rigidbody2D>();
         dragonAnim = GetComponent<Animator>();
         _healthPoints = 100f;
+        _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+
     }
 
     public void Awake()
@@ -104,22 +105,29 @@ public class DragonController : MonoBehaviour
 
     private void Attack()
     {
-
-        //Attack 1 Animations
-        if (Input.GetButtonDown("Attack1") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_BasicAttack"))
+        if (_abilitySelector.getDisabled1() == false)
         {
-            dragonAnim.SetTrigger("BasicAttack");
-            //basicAttack.enabled = true;
-            StartCoroutine(DisableBasicAttackCollider());
+            //Attack 1 Animations
+            if (Input.GetButtonDown("Attack1") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_BasicAttack"))
+            {
+                dragonAnim.SetTrigger("BasicAttack");
+                //basicAttack.enabled = true;
+                StartCoroutine(DisableBasicAttackCollider());
+            }
         }
 
-        //Attack 2 Animations
-        if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
+        if (_abilitySelector.getDisabled2() == false)
         {
-            dragonAnim.SetTrigger("FlyKick");
-            //strike.enabled = true;
-            StartCoroutine(DisableStrikeCollider());
+            //Attack 2 Animations
+            if (Input.GetButtonDown("Attack2") && !dragonAnim.GetCurrentAnimatorStateInfo(0).IsName("Dragon_FlyKick"))
+            {
+                dragonAnim.SetTrigger("FlyKick");
+                //strike.enabled = true;
+                StartCoroutine(DisableStrikeCollider());
+            }
         }
+
+            
 
         //Fireball Ability Stuff
         if (Input.GetButtonDown("Attack3"))
