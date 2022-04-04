@@ -33,18 +33,17 @@ public class AbilitySelector : MonoBehaviour
     public void disable2()
     {
         Debug.Log("Button 2 is pressed");
-        _isAb2Disabled = !_isAb2Disabled;
         _isAb1Disabled = false;
+        _isAb2Disabled = !_isAb2Disabled;
         _isAb3Disabled = false;
       
     }
     public void disable3()
     {
         Debug.Log("Button 3 is pressed");
-        _isAb3Disabled = !_isAb3Disabled;
-        _isAb2Disabled = false;
         _isAb1Disabled = false;
-       
+        _isAb2Disabled = false;
+        _isAb3Disabled = !_isAb3Disabled;
     }
 
     public bool getDisabled1()

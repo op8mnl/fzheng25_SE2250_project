@@ -105,6 +105,10 @@ public class DragonController : MonoBehaviour
 
     private void Attack()
     {
+        if (_abilitySelector == null) {
+            _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+        }
+        
         if (_abilitySelector.getDisabled1() == false)
         {
             //Attack 1 Animations
@@ -128,27 +132,27 @@ public class DragonController : MonoBehaviour
         }
 
             
-
-        //Fireball Ability Stuff
-        if (Input.GetButtonDown("Attack3"))
+        if (_abilitySelector.getDisabled3() == false)
         {
-            if (_facingRight)
+            //Fireball Ability Stuff
+            if (Input.GetButtonDown("Attack3"))
             {
-                dragonAnim.SetTrigger("Fireball");
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 10f));
-                Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, -10f));
+                if (_facingRight)
+                {
+                    dragonAnim.SetTrigger("Fireball");
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.5f), fireballPrefab.transform.rotation);
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 10f));
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, -10f));
+                }
+
+                if (!_facingRight)
+                {
+                    dragonAnim.SetTrigger("Fireball");
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f,transform.position.y - 0.5f), fireballPrefab.transform.rotation* Quaternion.Euler(0f, 180f, 0f));
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 170f));
+                    Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 190f));
+                }
             }
-
-            if (!_facingRight)
-            {
-                dragonAnim.SetTrigger("Fireball");
-                Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f,transform.position.y - 0.5f), fireballPrefab.transform.rotation* Quaternion.Euler(0f, 180f, 0f));
-                Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.35f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 170f));
-                Instantiate(fireballPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.65f), fireballPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 190f));
-            }
-
-
         }
     }
 

@@ -51,7 +51,6 @@ public class ScottController : MonoBehaviour
         GetComponent<ExpManager>().expUpdate(_expPoints);
         shield = GameObject.FindGameObjectWithTag("shield").GetComponent<SpriteRenderer>();
         _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
-
     }
 
     private void Awake()
@@ -141,6 +140,9 @@ public class ScottController : MonoBehaviour
 
     private void Attack()
     {
+        if (_abilitySelector == null) {
+            _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+        }
 
         if (_abilitySelector.getDisabled1() == false)
         {

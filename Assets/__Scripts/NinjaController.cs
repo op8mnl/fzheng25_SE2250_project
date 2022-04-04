@@ -124,6 +124,10 @@ public class NinjaController : MonoBehaviour
 
     private void Attack()
     {
+        if (_abilitySelector == null) {
+            _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+        }
+        
         if (_abilitySelector.getDisabled1() == false)
         {
             //Attack 1 Animations
