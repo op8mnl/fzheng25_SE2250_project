@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 100
-  speed: 5
+  speed: 3
   expPointsGiven: 30
-  damageGiven: 20
+  damageGiven: 5
   maxDistance: 2.5
   minDistance: 2
   isRightFacing: 0
