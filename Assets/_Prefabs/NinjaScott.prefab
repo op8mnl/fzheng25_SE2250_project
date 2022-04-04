@@ -353,9 +353,10 @@ MonoBehaviour:
   speed: 7
   jump: 11
   healthManager: {fileID: 0}
+  player: {fileID: 2690309283043553154}
   _healthPoints: 100
   _expPoints: 1
-  damageToEnemy: 0
+  damageToEnemy: 20
 --- !u!114 &6973870661594180930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +472,7 @@ GameObject:
   - component: {fileID: 8931882669815275257}
   m_Layer: 0
   m_Name: Slash
-  m_TagString: Untagged
+  m_TagString: Slash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -635,7 +636,7 @@ GameObject:
   - component: {fileID: 80415995087875419}
   m_Layer: 0
   m_Name: Strike
-  m_TagString: Untagged
+  m_TagString: Strike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

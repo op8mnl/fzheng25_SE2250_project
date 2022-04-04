@@ -22,6 +22,8 @@ TagManager:
   - slider2
   - projectile
   - shield
+  - Strike
+  - Slash
   layers:
   - Default
   - TransparentFX

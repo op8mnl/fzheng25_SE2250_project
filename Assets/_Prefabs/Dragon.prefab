@@ -415,9 +415,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   jump: 11
-  healthManager: {fileID: 0}
+  player: {fileID: 906231217711062372}
   _healthPoints: 100
   fireballPrefab: {fileID: 8848828657805914266, guid: 9f93cf94a992a844bbcdc670b3fce9bb, type: 3}
+  damageToEnemy: 40
 --- !u!114 &7123668347650257048
 MonoBehaviour:
   m_ObjectHideFlags: 0
