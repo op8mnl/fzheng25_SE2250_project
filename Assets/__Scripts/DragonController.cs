@@ -15,12 +15,15 @@ public class DragonController : MonoBehaviour
     private bool _inPortal = false;
     public float _healthPoints;
     public GameObject fireballPrefab;
-
+    private LevelManager _script;
+    private bool _inPortal1 = false;
+    private bool _inPortal0 = false;
     Animator dragonAnim; //animator for the dragon
 
     public void Start()
     {
         //get all the components
+        _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
         _dragon = GetComponent<Rigidbody2D>();
         dragonAnim = GetComponent<Animator>();
         _healthPoints = 100f;
@@ -35,6 +38,7 @@ public class DragonController : MonoBehaviour
     {
         Movement();
         Attack();
+        Beam();
     }
 
     //flip the direction of the dragon sprite
@@ -181,19 +185,86 @@ public class DragonController : MonoBehaviour
             _dragon.gravityScale = 1.5f;
         }
     }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("portal1")) //CHANGE TO PORTAL2 once created
-        {
-            _inPortal = false;
-        }
-    }
+
 
     public void takeDamage(float damage)
     {
         _healthPoints -= damage;
         healthManager.GetComponent<HealthManager>().healthUpdate(_healthPoints);
     }
+    void Beam()
+    {
+        if ((_inPortal1 == true) && Input.GetButtonDown("Down"))
+        {
+            dragonAnim.SetTrigger("Beam");
+            //Invoke("toggleVisibility", 1.25f);
+            StartCoroutine(nextLevel(1.5f, "right"));
+
+        }
+        if ((_inPortal0 == true) && Input.GetButtonDown("Down"))
+        {
+            dragonAnim.SetTrigger("Beam");
+            //Invoke("toggleVisibility", 1.25f);
+            StartCoroutine(nextLevel(1.5f, "left"));
+
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("portal1"))
+        {
+            _inPortal1 = true;
+        }
+        if (other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal0 = true;
+        }
+
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("portal1") || other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal1 = false;
+        }
+        if (other.gameObject.CompareTag("portal0"))
+        {
+            _inPortal0 = false;
+        }
+    }
+    IEnumerator nextLevel(float delayTime, string direction)
+
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(delayTime);
+
+        //Do the action after the delay time has finished.
+        _script.getNextLevel(direction);
+        getScenario();
+        StopAllCoroutines();
+    }
+    void getScenario()
+    {
+        if (_script == null)
+        {
+            _script = GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>();
+        }
 
 
+        int level = _script.getLevel();
+        if (level == 1)
+        {
+            transform.position = new Vector3(-10.07f, -2.69f, 0);
+        }
+        else if (level == 2)
+        {
+            transform.position = new Vector3(-20.08054f, -3.560295f, 0);
+        }
+        else if (level == 3)
+        {
+            transform.position = new Vector3(-22.91002f, -2.755001f, 0);
+
+        }
+    }
 }
+
