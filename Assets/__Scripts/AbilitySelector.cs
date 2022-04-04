@@ -11,7 +11,7 @@ public class AbilitySelector : MonoBehaviour
 
     private bool _isAb1Disabled = false;
     private bool _isAb2Disabled = false;
-    private bool _isAb3Disabled = false;
+    private bool _isAb3Disabled = true;
 
     //public GameObject script;
 
