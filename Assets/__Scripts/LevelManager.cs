@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public void Awake()
     {
         DontDestroyOnLoad(this);
+
     }
 
     public void getNextLevel(String dir)
@@ -25,12 +26,11 @@ public class LevelManager : MonoBehaviour
             currentLevel--;
         }
         SceneManager.LoadScene(currentLevel);
-        
+        GetComponent<LoadCharacter>().loadPlayer();
     }
     public int getLevel()
     {
         return currentLevel;
     }
 
-    
 }
