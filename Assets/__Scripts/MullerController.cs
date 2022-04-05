@@ -58,7 +58,8 @@ public class MullerController : Enemy
         }
 
         // Do this to let Muller attack. Should be attacking when Scott is INSIDE of Muller's range
-        if ((!isScottOnRight && transform.position.x > scottPlayer.transform.position.x - 6) || (isScottOnRight && transform.position.x < scottPlayer.transform.position.x + 6)) {
+          if ((!isScottOnRight && transform.position.x - scottPlayer.transform.position.x <= 12) || (isScottOnRight && scottPlayer.transform.position.x - transform.position.x <= 12))
+          {
             // only move if greater than minimum distance
             rb.velocity = moveDir;
             if (rb == null)
