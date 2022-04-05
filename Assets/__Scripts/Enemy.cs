@@ -73,11 +73,7 @@ public class Enemy : MonoBehaviour
 
     protected void onTrigExit(Collider2D other)
     {   
-        if (other.gameObject.CompareTag("basicAttack"))
-        {
-            hit();
-        }
-        if (other.gameObject.CompareTag("strike"))
+        if (other.gameObject.CompareTag("basicAttack") || other.gameObject.CompareTag("strike") || other.gameObject.CompareTag("Strike") || other.gameObject.CompareTag("Slash") || other.gameObject.CompareTag("projectile"))
         {
             hit();
         }

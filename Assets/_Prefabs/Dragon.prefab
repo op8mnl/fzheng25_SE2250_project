@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6630325923404374533}
   m_Layer: 0
   m_Name: FlyAttack
-  m_TagString: Untagged
+  m_TagString: Strike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 8659467826206553959}
   m_Layer: 0
   m_Name: BasicAttack
-  m_TagString: Untagged
+  m_TagString: Slash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
