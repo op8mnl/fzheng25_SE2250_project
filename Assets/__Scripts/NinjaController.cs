@@ -20,6 +20,8 @@ public class NinjaController : MonoBehaviour
     public float damageToEnemy;
     private LevelManager _script;
     private AbilitySelector _abilitySelector;
+    private LevelDisplayManager _levelScript;
+
 
 
     Animator ninjaAnim; //animator for the ninja
@@ -37,6 +39,8 @@ public class NinjaController : MonoBehaviour
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
         GetComponent<ExpManager>().expUpdate(_expPoints);
         _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+        _levelScript = GameObject.FindGameObjectWithTag("levelScript").GetComponent<LevelDisplayManager>();
+
 
     }
 
@@ -316,19 +320,25 @@ public class NinjaController : MonoBehaviour
                 transform.position = new Vector3(-10.07f, -2.69f, 0);
                 _inPortal1 = false;
                 _inPortal0 = false;
+                _levelScript.setLevelText(1);
+                _levelScript.setTextBlack();
             }
             else if (level == 2)
             {
                 transform.position = new Vector3(-20.08054f, -3.560295f, 0);
                 _inPortal1 = false;
                 _inPortal0 = false;
+                _levelScript.setLevelText(2);
+                _levelScript.setTextWhite();
             }
             else if (level == 3)
             {
                 transform.position = new Vector3(22.91002f, -2.755001f, 0);
                 _inPortal1 = false;
                 _inPortal0 = false;
-            }
+                _levelScript.setLevelText(3);
+                _levelScript.setTextWhite();
+            }  
         }
     }
 

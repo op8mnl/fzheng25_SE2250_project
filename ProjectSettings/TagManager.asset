@@ -25,6 +25,7 @@ TagManager:
   - Strike
   - Slash
   - birdy
+  - levelScript
   layers:
   - Default
   - TransparentFX

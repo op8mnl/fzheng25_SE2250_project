@@ -36,6 +36,8 @@ public class ScottController : MonoBehaviour
     public SpriteRenderer shield;
     private bool activeShield = false;
 
+    private LevelDisplayManager _levelScript;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -51,6 +53,7 @@ public class ScottController : MonoBehaviour
         GetComponent<ExpManager>().expUpdate(_expPoints);
         shield = GameObject.FindGameObjectWithTag("shield").GetComponent<SpriteRenderer>();
         _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
+        _levelScript = GameObject.FindGameObjectWithTag("levelScript").GetComponent<LevelDisplayManager>();
     }
 
     private void Awake()
@@ -353,18 +356,24 @@ public class ScottController : MonoBehaviour
             transform.position = new Vector3(-10.07f, -2.69f, 0);
                  _inPortal1 = false;
                  _inPortal0 = false;
-}
+            _levelScript.setLevelText(1);
+            _levelScript.setTextBlack();
+        }
         else if (level == 2)
         {
             transform.position = new Vector3(-20.08054f, -3.560295f, 0);
             _inPortal1 = false;
             _inPortal0 = false;
+            _levelScript.setLevelText(2);
+            _levelScript.setTextWhite();
         }
         else if (level == 3)
         {
             transform.position = new Vector3(22.91002f, -2.755001f, 0);
             _inPortal1 = false;
             _inPortal0 = false;
+            _levelScript.setLevelText(3);
+            _levelScript.setTextWhite();
         }
     }
 }
