@@ -14,7 +14,7 @@ public class ScottController : MonoBehaviour
     private PolygonCollider2D basicAttack;
     private PolygonCollider2D strike;
     private bool _facingRight = true; //facing direction
-    private float expLevel = 1;
+    private float _expLevel = 1;
     public GameObject player;
 
 
@@ -299,7 +299,7 @@ public class ScottController : MonoBehaviour
         if (_expPoints >= 100) {
             // Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
             _expPoints -= 100;
-            expLevel += 1;  // implement a switch statement or smt to make this relavent
+            _expLevel += 1;  // implement a switch statement or smt to make this relavent
             speed += 1;
             // jump += 1;
             damageToEnemy += 1;

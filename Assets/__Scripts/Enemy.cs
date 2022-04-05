@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using System.String.Equals;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,9 +11,27 @@ public class Enemy : MonoBehaviour
     public float expPointsGiven;
     public float damageGiven;
     protected GameObject scottPlayer;
+    protected bool isScott = false;
+    protected bool isDragon = false;
+    protected bool isNinja = false;
 
     void Awake () {
         scottPlayer = GameObject.FindGameObjectWithTag("Player");
+
+        // var scottPrefab = PrefabUtility.GetCorrespondingObjectFromSource(scottPlayer);
+
+        if (scottPlayer.GetComponent<ScottController>() != null) {
+            Debug.Log("We are officially Scott");
+            isScott = true;
+        }
+        if (scottPlayer.GetComponent<DragonController>() != null) {
+            Debug.Log("We are officially Dragon");
+            isDragon = true;
+        }
+        if (scottPlayer.GetComponent<NinjaController>() != null) {
+            Debug.Log("We are officially Ninja");
+            isNinja = true;
+        }
     }
 
     // Update is called once per frame
@@ -21,16 +40,32 @@ public class Enemy : MonoBehaviour
     }
 
     protected void onTrigEnter(Collider2D other) {
-        // if (other.gameObject.CompareTag("basicAttack") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("strike"))
         if (other.gameObject.CompareTag("Player") && hitScan == true)
         {
-            // hitScan = true;
-
             if (scottPlayer == null) {
                 scottPlayer = GameObject.FindGameObjectWithTag("Player");
+                if (scottPlayer.GetComponent<ScottController>() != null) {
+                    isScott = true;
+                }
+                if (scottPlayer.GetComponent<DragonController>() != null) {
+                    isDragon = true;
+                }
+                if (scottPlayer.GetComponent<NinjaController>() != null) {
+                    isNinja = true;
+                }
             }
 
-            scottPlayer.GetComponent<ScottController>().takeDamage(damageGiven);
+            if (isScott) {
+                scottPlayer.GetComponent<ScottController>().takeDamage(damageGiven);
+            } else if (isDragon) {
+                scottPlayer.GetComponent<DragonController>().takeDamage(damageGiven);
+            } else if (isNinja) {
+                scottPlayer.GetComponent<NinjaController>().takeDamage(damageGiven);
+            } else {
+                Debug.Log("WE've DONE MUCKED up");
+            }
+
+            // scottPlayer.GetComponent<ScottController>().takeDamage(damageGiven);
             hitScan = false;
             Invoke("hitScanTrue", 1.0f);
         }
@@ -41,26 +76,41 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("basicAttack"))
         {
             hit();
-            // Invoke("hitScanFalse", 1.0f);
         }
         if (other.gameObject.CompareTag("strike"))
         {
             hit();
-            // Invoke("hitScanFalse", 1.0f);
         }
-        // if(other.gameObject.CompareTag("Player") && hitScan == true)
-        // {
-        //     scottPlayer.GetComponent<ScottController>().takeDamage(damageGiven);
-        //     // Invoke("hitScanFalse", 1.0f);
-        //     hitScan = false;
-        // }
     }
     
     protected void hit() {
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 150);
         gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
 
-        healthPoints -= scottPlayer.GetComponent<ScottController>().getScottDamage(); 
+        if (scottPlayer == null) {
+            scottPlayer = GameObject.FindGameObjectWithTag("Player");
+            if (scottPlayer.GetComponent<ScottController>() != null) {
+                isScott = true;
+            }
+            if (scottPlayer.GetComponent<DragonController>() != null) {
+                isDragon = true;
+            }
+            if (scottPlayer.GetComponent<NinjaController>() != null) {
+                isNinja = true;
+            }
+        }
+
+        if (isScott) {
+            healthPoints -= scottPlayer.GetComponent<ScottController>().getScottDamage(); 
+        } else if (isDragon) {
+            healthPoints -= scottPlayer.GetComponent<DragonController>().getScottDamage(); 
+        } else if (isNinja) {
+            healthPoints -= scottPlayer.GetComponent<NinjaController>().getScottDamage(); 
+        } else {
+            Debug.Log("WE've DONE MUCKED up");
+        }
+
+        // healthPoints -= scottPlayer.GetComponent<ScottController>().getScottDamage(); 
         Debug.Log("HealthPoints: " + healthPoints);
     }
 
@@ -68,7 +118,30 @@ public class Enemy : MonoBehaviour
         if(healthPoints <= 0)
         {
             Destroy(gameObject);
-            scottPlayer.GetComponent<ScottController>().gainExp(expPointsGiven);
+            // scottPlayer.GetComponent<ScottController>().gainExp(expPointsGiven);
+
+            if (scottPlayer == null) {
+                scottPlayer = GameObject.FindGameObjectWithTag("Player");
+                if (scottPlayer.GetComponent<ScottController>() != null) {
+                    isScott = true;
+                }
+                if (scottPlayer.GetComponent<DragonController>() != null) {
+                    isDragon = true;
+                }
+                if (scottPlayer.GetComponent<NinjaController>() != null) {
+                    isNinja = true;
+                }
+            }
+
+            if (isScott) {
+                scottPlayer.GetComponent<ScottController>().gainExp(expPointsGiven);
+            } else if (isDragon) {
+                scottPlayer.GetComponent<DragonController>().gainExp(expPointsGiven);
+            } else if (isNinja) {
+                scottPlayer.GetComponent<NinjaController>().gainExp(expPointsGiven); 
+            } else {
+                Debug.Log("WE've DONE MUCKED up");
+            }
         }
     }
 

@@ -16,6 +16,7 @@ public class DragonController : MonoBehaviour
     public float _healthPoints;
     public GameObject fireballPrefab;
     private float _expPoints = 1f;
+    private float _expLevel = 1f;
     private LevelManager _script;
     private bool _inPortal1 = false;
     private bool _inPortal0 = false;
@@ -257,6 +258,26 @@ public class DragonController : MonoBehaviour
             _inPortal1 = false;
             _inPortal0 = false;
         }
+    }
+
+    public void gainExp(float points)
+    {
+        _expPoints += points;
+        // Debug.Log("_expPoints = " + _expPoints);
+
+        if (_expPoints >= 100) {
+            // Debug.Log("old jump: " + jump + ", old speed: " + speed + ", old damage: " + damageToEnemy);
+            _expPoints -= 100;
+            _expLevel += 1;  // implement a switch statement or smt to make this relavent
+            speed += 1;
+            // jump += 1;
+            damageToEnemy += 1;
+            _healthPoints = 100f;
+            GetComponent<HealthManager>().healthUpdate(_healthPoints);
+            // Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
+        }
+
+        GetComponent<ExpManager>().expUpdate(_expPoints);
     }
 
     public float getScottDamage()
