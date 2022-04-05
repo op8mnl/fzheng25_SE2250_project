@@ -16,6 +16,7 @@ public class MullerController : Enemy
     public GameObject f;
     private bool isOnGround = false;
     public bool isScottOnRight;
+    private PolygonCollider2D swing;
     // private float ySpeed = 0f;
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class MullerController : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        swing = GameObject.FindGameObjectWithTag("mullerSwing").GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -79,7 +81,9 @@ public class MullerController : Enemy
                 {
 
                     anim.SetBool("isSwing", true);
+                    swing.enabled = true;
                     swingCooldown = true;
+                    Invoke("shortSwing", 1f);
                     Invoke("cooldownS", cds);
 
                 }
@@ -151,6 +155,10 @@ public class MullerController : Enemy
 
     }
     */
+    void shortSwing()
+    {
+        swing.enabled = false;
+    }
     void cooldownS()
     {
 

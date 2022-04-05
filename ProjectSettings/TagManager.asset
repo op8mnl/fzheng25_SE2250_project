@@ -26,6 +26,7 @@ TagManager:
   - Slash
   - birdy
   - levelScript
+  - mullerSwing
   layers:
   - Default
   - TransparentFX

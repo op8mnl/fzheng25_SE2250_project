@@ -200,8 +200,6 @@ public class ScottController : MonoBehaviour
         {
             
             Instantiate(swordWave, new Vector2(transform.position.x+0.9f, transform.position.y - 0.7f), swordWave.transform.rotation * Quaternion.Euler(0f, 0f, 0f));
-     
-
         }
 
         if (!_facingRight)
