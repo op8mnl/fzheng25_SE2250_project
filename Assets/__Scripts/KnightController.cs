@@ -127,18 +127,12 @@ public class KnightController : Enemy
         if (other.gameObject.CompareTag("Hill")) {
             isOnHill = true;
         }
-        // if (other.gameObject.CompareTag("Ground")) {
-        //     isOnGround = true;
-        // }
     }
 
     void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.CompareTag("Hill")) {
             isOnHill = false;
         }
-        // if (other.gameObject.CompareTag("Ground")) {
-        //     isOnGround = false;
-        // }
     }
 
     void cooldown()
