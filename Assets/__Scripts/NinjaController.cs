@@ -133,6 +133,7 @@ public class NinjaController : MonoBehaviour
             _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
         }
 
+        // prevents user from using the first ability if it was selected to be disabled in the menu
         if (_abilitySelector.getDisabled1() == false)
         {
             //Attack 1 Animations
@@ -144,6 +145,7 @@ public class NinjaController : MonoBehaviour
             }
         }
 
+        // prevents user from using the second ability if it was selected to be disabled in the menu
         if (_abilitySelector.getDisabled2() == false)
         {
             //Attack 2 Animations
@@ -201,7 +203,7 @@ public class NinjaController : MonoBehaviour
 
 
 
-
+    // reduces the health of the player
     public void takeDamage(float damage)
     {
         if (true)
@@ -211,6 +213,7 @@ public class NinjaController : MonoBehaviour
         }
     }
 
+    // increases health points
     public void gainHealth(float hp)
     {
         _healthPoints += hp;
@@ -222,6 +225,7 @@ public class NinjaController : MonoBehaviour
     {
         if (_healthPoints <= 0)
         {
+            // destroys player, but sets main camera parent to null so as not to destroy the camera too
             Camera.main.transform.parent = null;
             Destroy(player);
         }
@@ -233,6 +237,7 @@ public class NinjaController : MonoBehaviour
         return damageToEnemy;
     }
 
+    // updates experience points, and buffs player if experience meets or exceeds 100
     public void gainExp(float points)
     {
         _expPoints += points;
@@ -266,6 +271,7 @@ public class NinjaController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("birdy"))
         {
+            // if player collides with the small bird, gain 1 experience point and 2 health points
             gainExp(1f);
             gainHealth(2f);
         }
@@ -320,7 +326,9 @@ public class NinjaController : MonoBehaviour
                 transform.position = new Vector3(-10.07f, -2.69f, 0);
                 _inPortal1 = false;
                 _inPortal0 = false;
-                _levelScript.setLevelText(1);
+
+            // sets level display text and font color
+            _levelScript.setLevelText(1);
                 _levelScript.setTextBlack();
             }
             else if (level == 2)
@@ -328,7 +336,9 @@ public class NinjaController : MonoBehaviour
                 transform.position = new Vector3(-20.08054f, -3.560295f, 0);
                 _inPortal1 = false;
                 _inPortal0 = false;
-                _levelScript.setLevelText(2);
+
+            // sets level display text and font color
+            _levelScript.setLevelText(2);
                 _levelScript.setTextWhite();
             }
             else if (level == 3)
@@ -336,7 +346,9 @@ public class NinjaController : MonoBehaviour
                 transform.position = new Vector3(22.91002f, -2.755001f, 0);
                 _inPortal1 = false;
                 _inPortal0 = false;
-                _levelScript.setLevelText(3);
+
+            // sets level display text and font color
+            _levelScript.setLevelText(3);
                 _levelScript.setTextWhite();
             }  
         }

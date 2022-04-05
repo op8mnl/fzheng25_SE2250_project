@@ -127,7 +127,8 @@ public class DragonController : MonoBehaviour
         if (_abilitySelector == null) {
             _abilitySelector = GameObject.FindGameObjectWithTag("Script").GetComponent<AbilitySelector>();
         }
-        
+
+        // prevents user from using the first ability if it was selected to be disabled in the menu
         if (_abilitySelector.getDisabled1() == false)
         {
             //Attack 1 Animations
@@ -139,6 +140,7 @@ public class DragonController : MonoBehaviour
             }
         }
 
+        // prevents user from using the second ability if it was selected to be disabled in the menu
         if (_abilitySelector.getDisabled2() == false)
         {
             //Attack 2 Animations
@@ -152,7 +154,7 @@ public class DragonController : MonoBehaviour
             }
         }
 
-            
+        // prevents user from using the third ability if it was selected to be disabled in the menu
         if (_abilitySelector.getDisabled3() == false)
         {
             //Fireball Ability Stuff
@@ -222,12 +224,13 @@ public class DragonController : MonoBehaviour
         }
     }
 
-
+    // reduces the health of the player
     public void takeDamage(float damage)
     {
         _healthPoints -= damage;
         GetComponent<HealthManager>().healthUpdate(_healthPoints);
     }
+
     void Beam()
     {
         if ((_inPortal1 == true) && Input.GetButtonDown("Down"))
@@ -253,6 +256,8 @@ public class DragonController : MonoBehaviour
         {
             _inPortal0 = true;
         }
+
+        // if player collides with the small bird, gain 1 experience point and 2 health points
         if (other.gameObject.CompareTag("birdy"))
         {
             gainExp(1f);
@@ -269,6 +274,7 @@ public class DragonController : MonoBehaviour
         }
     }
 
+    // updates experience points, and buffs player if experience meets or exceeds 100
     public void gainExp(float points)
     {
         _expPoints += points;
@@ -294,6 +300,7 @@ public class DragonController : MonoBehaviour
         return damageToEnemy;
     }
 
+    // increases health points
     public void gainHealth(float hp)
     {
         _healthPoints += hp;
@@ -305,6 +312,7 @@ public class DragonController : MonoBehaviour
     {
         if (_healthPoints <= 0)
         {
+            // destroys player, but sets main camera parent to null so as not to destroy the camera too
             Camera.main.transform.parent = null;
             Destroy(player);
         }
@@ -336,6 +344,8 @@ public class DragonController : MonoBehaviour
             transform.position = new Vector3(-10.07f, -2.69f, 0);
             _inPortal1 = false;
             _inPortal0 = false;
+
+            // sets level display text and font color
             _levelScript.setLevelText(1);
             _levelScript.setTextBlack();
         }
@@ -344,6 +354,8 @@ public class DragonController : MonoBehaviour
             transform.position = new Vector3(-20.08054f, -3.560295f, 0);
             _inPortal1 = false;
             _inPortal0 = false;
+
+            // sets level display text and font color
             _levelScript.setLevelText(2);
             _levelScript.setTextWhite();
         }
@@ -352,6 +364,8 @@ public class DragonController : MonoBehaviour
             transform.position = new Vector3(22.91002f, -2.755001f, 0);
             _inPortal1 = false;
             _inPortal0 = false;
+
+            // sets level display text and font color
             _levelScript.setLevelText(3);
             _levelScript.setTextWhite();
 

@@ -16,6 +16,7 @@ public class HealthManager : MonoBehaviour
         mSlider.value = 100f;
     }
 
+    // adjusts slider value
     public void healthUpdate(float healthVal)
     {
         _sliderValue = healthVal;
@@ -30,6 +31,7 @@ public class HealthManager : MonoBehaviour
         // Debug.Log(_sliderValue);
     }
 
+    // sets _sliderValue value
     public void setHealth(float health) { _sliderValue = health; }
     
 

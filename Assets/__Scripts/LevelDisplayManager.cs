@@ -16,27 +16,22 @@ public class LevelDisplayManager : MonoBehaviour
         levelText.color = Color.black;
     }
 
+    // sets text value
     internal void setLevelText(int level)
     {
         levelText.text = "Level " + level;
     }
 
-    //internal void setTextColor(String color)
-    //{
-    //    scottLevelText.text = "Level " + level;
-    //}
-
+    // changes text font color to white
     internal void setTextWhite()
     {
         levelText.color = Color.white;
     }
 
+    // changes text font color to black
     internal void setTextBlack()
     {
         levelText.color = Color.black;
     }
 }
 
-
-// attach text to this GameObject
-// in player controllers, change text

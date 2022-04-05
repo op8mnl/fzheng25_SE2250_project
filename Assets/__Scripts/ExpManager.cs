@@ -10,11 +10,13 @@ public class ExpManager : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        // sets initial value of slider
         xSlider = GameObject.FindGameObjectWithTag("slider2").GetComponent<Slider>();
         xSlider.value = 0.01f;
         _sliderValue = 0.01f;
     }
 
+    // adjusts slider value
     public void expUpdate(float expVal)
     {
         Debug.Log(expVal);
@@ -29,6 +31,7 @@ public class ExpManager : MonoBehaviour
       
     }
 
+    // sets _sliderValue value
     public void setExp(float exp) { _sliderValue = exp; }
 
 
