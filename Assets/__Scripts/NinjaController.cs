@@ -21,6 +21,8 @@ public class NinjaController : MonoBehaviour
     private LevelManager _script;
     private AbilitySelector _abilitySelector;
     private LevelDisplayManager _levelScript;
+    public GameObject arrowPrefab;
+
 
 
 
@@ -154,6 +156,26 @@ public class NinjaController : MonoBehaviour
                 ninjaAnim.SetTrigger("Strike");
                 strike.enabled = true;
                 StartCoroutine(DisableStrikeCollider());
+            }
+        }
+
+        // prevents user from using the third ability if it was selected to be disabled in the menu
+        if (_abilitySelector.getDisabled3() == false)
+        {
+            //Arrow Ability Stuff
+            if (Input.GetButtonDown("Attack3"))
+            {
+
+                if (_facingRight)
+                {
+                    Instantiate(arrowPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.5f), arrowPrefab.transform.rotation);
+                }
+
+                if (!_facingRight)
+                {
+                    Instantiate(arrowPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.5f), arrowPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 180f));
+                }
+
             }
         }
 
