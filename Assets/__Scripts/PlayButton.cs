@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class PlayButton : MonoBehaviour
 {
-    public GameObject script;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // public GameObject script;
 
     public void playGame()
     {

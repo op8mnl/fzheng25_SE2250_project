@@ -26,7 +26,7 @@ public class MullerController : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         getShouldUltimate();
         //Attack();
@@ -54,7 +54,6 @@ public class MullerController : Enemy
                 transform.localScale = new Vector3(1, 1, 1);
 
                 moveDir = new Vector2(-speed, 0f);    // move to the left if needed      
-                Debug.Log("Should be moving left");  
             }
         }
 
@@ -107,7 +106,7 @@ public class MullerController : Enemy
             }
         }
     }
-    
+
     void getShouldUltimate()
     {
         float rand = Random.Range(1, 500);
@@ -179,5 +178,12 @@ public class MullerController : Enemy
         Instantiate(f, new Vector2(transform.position.x + 14f, transform.position.y + 24f), f.transform.rotation);
         Instantiate(f, new Vector2(transform.position.x + -14f, transform.position.y + 24f), f.transform.rotation);
     }
-    
+
+    void OnTriggerEnter2D(Collider2D other) {
+        onTrigEnter(other);
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        onTrigExit(other);
+    }
 }

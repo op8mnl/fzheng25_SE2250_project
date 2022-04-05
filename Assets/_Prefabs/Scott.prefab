@@ -1132,7 +1132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4346057336252885871}
-  - component: {fileID: 1959056744372709786}
+  - component: {fileID: 576469896933820171}
   m_Layer: 0
   m_Name: LevelScript
   m_TagString: levelScript
@@ -1154,7 +1154,7 @@ Transform:
   m_Father: {fileID: 3114250723668659135}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1959056744372709786
+--- !u!114 &576469896933820171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6799553337398694240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d201b7d2d1494ed8b9f1d67fae1743b, type: 3}
+  m_Script: {fileID: 11500000, guid: f392b3b7a10ff4d44aeb2d9f6bfa8e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelText: {fileID: 5874167112476854007}
