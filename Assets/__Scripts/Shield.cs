@@ -12,6 +12,7 @@ public class Shield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // initial conditions for shield
         activeShield = false;
         shield.SetActive(false);
         
@@ -20,6 +21,8 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // when "Shield" button is pressed, shield is set active/deactive
         if(Input.GetButtonDown("Shield"))
         {
             if (!activeShield)
@@ -35,6 +38,7 @@ public class Shield : MonoBehaviour
         }
     }
 
+    // returns if shield is active or not
     public bool ActiveShield
     {
         get
