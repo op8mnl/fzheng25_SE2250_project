@@ -206,6 +206,14 @@ public class NinjaController : MonoBehaviour
             GetComponent<HealthManager>().healthUpdate(_healthPoints);
         }
     }
+
+    public void gainHealth(float hp)
+    {
+        _healthPoints += hp;
+        GetComponent<HealthManager>().healthUpdate(_healthPoints);
+
+    }
+
     public void DeathToNinja()
     {
         if (_healthPoints <= 0)
@@ -234,8 +242,8 @@ public class NinjaController : MonoBehaviour
             speed += 1;
             // jump += 1;
             damageToEnemy += 1;
-            _healthPoints = 100f;
-            GetComponent<HealthManager>().healthUpdate(_healthPoints);
+            //_healthPoints = 100f;
+            //GetComponent<HealthManager>().healthUpdate(_healthPoints);
             // Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
         }
 
@@ -251,6 +259,11 @@ public class NinjaController : MonoBehaviour
         if (other.gameObject.CompareTag("portal0"))
         {
             _inPortal0 = true;
+        }
+        if (other.gameObject.CompareTag("birdy"))
+        {
+            gainExp(1f);
+            gainHealth(2f);
         }
 
     }

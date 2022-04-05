@@ -249,6 +249,11 @@ public class DragonController : MonoBehaviour
         {
             _inPortal0 = true;
         }
+        if (other.gameObject.CompareTag("birdy"))
+        {
+            gainExp(1f);
+            gainHealth(2f);
+        }
 
     }
     void OnTriggerExit2D(Collider2D other)
@@ -272,8 +277,8 @@ public class DragonController : MonoBehaviour
             speed += 1;
             // jump += 1;
             damageToEnemy += 1;
-            _healthPoints = 100f;
-            GetComponent<HealthManager>().healthUpdate(_healthPoints);
+            //_healthPoints = 100f;
+            //GetComponent<HealthManager>().healthUpdate(_healthPoints);
             // Debug.Log("NEW _expPoints: " + _expPoints + ", new jump: " + jump + ", new speed: " + speed + ", new damage: " + damageToEnemy);
         }
 
@@ -283,6 +288,13 @@ public class DragonController : MonoBehaviour
     public float getScottDamage()
     {
         return damageToEnemy;
+    }
+
+    public void gainHealth(float hp)
+    {
+        _healthPoints += hp;
+        GetComponent<HealthManager>().healthUpdate(_healthPoints);
+
     }
 
     public void DeathToDragon()
