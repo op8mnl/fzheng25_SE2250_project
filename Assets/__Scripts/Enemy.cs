@@ -80,9 +80,6 @@ public class Enemy : MonoBehaviour
     }
     
     protected void hit() {
-        gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 150);
-        gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
-
         if (scottPlayer == null) {
             scottPlayer = GameObject.FindGameObjectWithTag("Player");
             if (scottPlayer.GetComponent<ScottController>() != null) {
@@ -94,6 +91,14 @@ public class Enemy : MonoBehaviour
             if (scottPlayer.GetComponent<NinjaController>() != null) {
                 isNinja = true;
             }
+        }
+
+        if (scottPlayer.transform.position.x < transform.position.x) {  // Scott is looking right
+            gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 150);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
+        } else {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * -150);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200);
         }
 
         if (isScott) {

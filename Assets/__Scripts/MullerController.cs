@@ -88,7 +88,6 @@ public class MullerController : Enemy
                 }
                 if (triggerFinalExam == true && !ultCooldown && !anim.GetBool("isSwing"))
                 {
-
                     ultCooldown = true;
                     Invoke("shortUlt", 3f);
                     Invoke("cooldownU", cd);
