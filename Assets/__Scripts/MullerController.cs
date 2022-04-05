@@ -15,7 +15,7 @@ public class MullerController : Enemy
     Rigidbody2D rb;
     public GameObject f;
     private bool isOnGround = false;
-    public bool isScottOnRight = false;
+    public bool isScottOnRight;
     // private float ySpeed = 0f;
 
     // Start is called before the first frame update
