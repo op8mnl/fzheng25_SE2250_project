@@ -189,10 +189,8 @@ public class ScottController : MonoBehaviour
 
             }
         }
-
-
-
     }
+    
     private IEnumerator DisableStrikeCollider()
     {
         yield return new WaitForSeconds(0.03f);

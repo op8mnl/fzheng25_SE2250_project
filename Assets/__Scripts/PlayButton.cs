@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PlayButton : MonoBehaviour
 {
-    // public GameObject script;
-
     public void playGame()
     {
         GameObject.FindGameObjectWithTag("Script").GetComponent<LevelManager>().getNextLevel("right");
         GameObject.FindGameObjectWithTag("Script").GetComponent<LoadCharacter>().loadPlayer();
     }
-    
 }

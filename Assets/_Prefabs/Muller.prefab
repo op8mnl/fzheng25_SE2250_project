@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 4109435193045456017}
   m_Layer: 0
   m_Name: Swing
-  m_TagString: Untagged
+  m_TagString: mullerSwing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1006,10 +1006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94abdadf4993158428c9ff0cdcf25591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 550
+  healthPoints: 1000
   speed: 3
   expPointsGiven: 0
-  damageGiven: 10
+  damageGiven: 30
   cd: 15
   cds: 5
   maxDistance: 10

@@ -10,7 +10,6 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // slider = GameObject.Find("HealthContainer").GetComponent<Slider>();
         mSlider = GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>();
         _sliderValue = 100f;
         mSlider.value = 100f;
@@ -24,15 +23,6 @@ public class HealthManager : MonoBehaviour
         mSlider.value = (float)_sliderValue;
     }
 
-    private void Update()
-    {
-        // mSlider = GameObject.FindGameObjectWithTag("slider").GetComponent<Slider>();
-        // mSlider.value = (float)_sliderValue;
-        // Debug.Log(_sliderValue);
-    }
-
     // sets _sliderValue value
     public void setHealth(float health) { _sliderValue = health; }
-    
-
 }

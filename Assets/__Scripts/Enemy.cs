@@ -18,8 +18,6 @@ public class Enemy : MonoBehaviour
     void Awake () {
         scottPlayer = GameObject.FindGameObjectWithTag("Player");
 
-        // var scottPrefab = PrefabUtility.GetCorrespondingObjectFromSource(scottPlayer);
-
         if (scottPlayer.GetComponent<ScottController>() != null) {
             Debug.Log("We are officially Scott");
             isScott = true;
@@ -65,7 +63,6 @@ public class Enemy : MonoBehaviour
                 Debug.Log("WE've DONE MUCKED up");
             }
 
-            // scottPlayer.GetComponent<ScottController>().takeDamage(damageGiven);
             hitScan = false;
             Invoke("hitScanTrue", 1.0f);
         }
@@ -111,7 +108,6 @@ public class Enemy : MonoBehaviour
             Debug.Log("WE've DONE MUCKED up");
         }
 
-        // healthPoints -= scottPlayer.GetComponent<ScottController>().getScottDamage(); 
         Debug.Log("HealthPoints: " + healthPoints);
     }
 
@@ -119,7 +115,6 @@ public class Enemy : MonoBehaviour
         if(healthPoints <= 0)
         {
             Destroy(gameObject);
-            // scottPlayer.GetComponent<ScottController>().gainExp(expPointsGiven);
 
             if (scottPlayer == null) {
                 scottPlayer = GameObject.FindGameObjectWithTag("Player");

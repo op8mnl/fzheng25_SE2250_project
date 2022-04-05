@@ -23,12 +23,6 @@ public class FireballController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void Destroy()
     {
         Destroy(gameObject);
