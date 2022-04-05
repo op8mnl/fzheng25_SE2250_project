@@ -165,21 +165,23 @@ public class NinjaController : MonoBehaviour
             //Arrow Ability Stuff
             if (Input.GetButtonDown("Attack3"))
             {
-
+                ninjaAnim.SetTrigger("Arrow");
                 if (_facingRight)
                 {
-                    Instantiate(arrowPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.5f), arrowPrefab.transform.rotation);
+                    Instantiate(arrowPrefab, new Vector2(transform.position.x + 0.2f, transform.position.y - 0.2f), arrowPrefab.transform.rotation);
                 }
 
                 if (!_facingRight)
                 {
-                    Instantiate(arrowPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.5f), arrowPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 180f));
+                    
+                    Instantiate(arrowPrefab, new Vector2(transform.position.x - 0.2f, transform.position.y - 0.2f), arrowPrefab.transform.rotation * Quaternion.Euler(0f, 0f, 180f));
                 }
 
             }
         }
 
     }
+
 
     private IEnumerator DisableStrikeCollider()
     {
