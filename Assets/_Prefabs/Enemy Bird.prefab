@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f051f07d1c2784ded9e3023b2f13b92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 20
+  healthPoints: 200
   speed: 4
-  expPointsGiven: 50
+  expPointsGiven: 20
   damageGiven: 10
   maxDistance: 15
   minDistance: 4
