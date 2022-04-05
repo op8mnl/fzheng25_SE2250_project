@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public int currentLevel;
-    //public GameObject scott;
 
     public void Awake()
     {

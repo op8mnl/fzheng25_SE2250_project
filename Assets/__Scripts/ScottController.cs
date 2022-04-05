@@ -267,14 +267,14 @@ public class ScottController : MonoBehaviour
         {
             scottAnim.SetTrigger("Beam");
             StartCoroutine(nextLevel(1.5f, "right"));
-            Debug.Log("Right");
+           
             
         }
         if ((_inPortal0 == true) && Input.GetButtonDown("Down"))
         {
             scottAnim.SetTrigger("Beam");
             StartCoroutine(nextLevel(1.5f, "left"));
-            Debug.Log("Left");
+           
         }
     }
 
