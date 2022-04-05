@@ -15,8 +15,9 @@ public class MullerController : Enemy
     Rigidbody2D rb;
     public GameObject f;
     private bool isOnGround = false;
-    public bool isRightFacing;
-    private float ySpeed = 0f;
+    public bool isScottOnRight = false;
+    // private float ySpeed = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,92 +34,80 @@ public class MullerController : Enemy
     }
     private void FixedUpdate()
     {
-        Vector2 moveDir;    // force that will move the enemy in the desired direction
+        Vector2 moveDir = new Vector2(0f, 0f);;    // force that will move the enemy in the desired direction
 
-        if (transform.position.x > scottPlayer.transform.position.x)
-        {
-            // face left
-            transform.localScale = new Vector3(isRightFacing ? -1 : 1, 1, 1);
+        // Do this to turn Muller. Should be switching when Scott is OUTSIDE of Muller's range
+        if (!isScottOnRight) { // player on left side of Muller
+            if (transform.position.x < scottPlayer.transform.position.x - 6) {  // player actually should be on right side
+                isScottOnRight = true;
 
+                // face right
+                transform.localScale = new Vector3(-1, 1, 1);
 
-            if (!isOnGround)
-            {
-                ySpeed = -speed;
+                moveDir = new Vector2(speed, 0f);    // move to the right if needed  
             }
-            else
-            {
-                ySpeed = 0f;
-            }
+        } else {    // player on right side of Muller
+            if (transform.position.x > scottPlayer.transform.position.x + 6) {  // player actually should be on left side
+                isScottOnRight = false;
 
-            moveDir = new Vector2(-speed, ySpeed);   // move to the left if needed, and if on a hill, move accordingly
-            
-            if (Vector3.Distance(transform.position, scottPlayer.transform.position) >= minDistance)
-            {
-                // only move if greater than minimum distance
-                rb.velocity = moveDir;
-                if (rb == null)
-                {
-                    rb = GetComponent<Rigidbody2D>();
-                }
+                // face right
+                transform.localScale = new Vector3(1, 1, 1);
 
-                if (Vector3.Distance(transform.position, scottPlayer.transform.position) <= maxDistance)
-                {
-                    //call functions like a shoot or swing function at here or something
-                    if (anim == null)
-                    {
-                        anim = GetComponent<Animator>();
-                    }
-
-                    if (!swingCooldown && !triggerFinalExam) 
-                    {
-
-                        anim.SetBool("isSwing", true);
-                        swingCooldown = true;
-                        Invoke("cooldownS", cds);
-
-                    }
-                    else
-                    {
-                        anim.SetBool("isSwing", false);
-                    }
-                    if (triggerFinalExam == true && !ultCooldown && !anim.GetBool("isSwing"))
-                    {
-
-                        ultCooldown = true;
-                        Invoke("shortUlt", 3f);
-                        Invoke("cooldownU", cd);
-                        Invoke("spawnF", 1.25f);
-                        Debug.Log("Ult");
-                        anim.SetBool("isUlt", true);
-                        GetComponent<Rigidbody2D>().AddForce(transform.up * 400);
-                        GetComponent<Rigidbody2D>().AddForce(transform.right * -400);
-
-                    }
-                    else
-                    {
-                        anim.SetBool("isUlt", false);
-                    }
-
-                }
+                moveDir = new Vector2(-speed, 0f);    // move to the left if needed      
+                Debug.Log("Should be moving left");  
             }
         }
-        else
-        {
-            // face right
-            transform.localScale = new Vector3(isRightFacing ? 1 : -1, 1, 1);
 
-            if (!isOnGround)
+        // Do this to let Muller attack. Should be attacking when Scott is INSIDE of Muller's range
+        if ((!isScottOnRight && transform.position.x > scottPlayer.transform.position.x - 6) || (isScottOnRight && transform.position.x < scottPlayer.transform.position.x + 6)) {
+            // only move if greater than minimum distance
+            rb.velocity = moveDir;
+            if (rb == null)
             {
-                ySpeed = -speed;
-            }
-            else
-            {
-                ySpeed = 0f;
+                rb = GetComponent<Rigidbody2D>();
             }
 
-            moveDir = new Vector2(speed, ySpeed);    // move to the right if needed        }
+            if (Vector3.Distance(transform.position, scottPlayer.transform.position) <= maxDistance)
+            {
+                //call functions like a shoot or swing function at here or something
+                if (anim == null)
+                {
+                    anim = GetComponent<Animator>();
+                }
+
+                if (!swingCooldown && !triggerFinalExam) 
+                {
+
+                    anim.SetBool("isSwing", true);
+                    swingCooldown = true;
+                    Invoke("cooldownS", cds);
+
+                }
+                else
+                {
+                    anim.SetBool("isSwing", false);
+                }
+                if (triggerFinalExam == true && !ultCooldown && !anim.GetBool("isSwing"))
+                {
+
+                    ultCooldown = true;
+                    Invoke("shortUlt", 3f);
+                    Invoke("cooldownU", cd);
+                    Invoke("spawnF", 1.25f);
+                    Debug.Log("Ult");
+                    anim.SetBool("isUlt", true);
+                    GetComponent<Rigidbody2D>().AddForce(transform.up * 400);
+                    GetComponent<Rigidbody2D>().AddForce(transform.right * -400);
+
+                }
+                else
+                {
+                    anim.SetBool("isUlt", false);
+                }
+            }
         }
     }
+    
     void getShouldUltimate()
     {
         float rand = Random.Range(1, 500);

@@ -277,7 +277,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.8448589, y: 0.01831913}
@@ -814,6 +814,7 @@ GameObject:
   - component: {fileID: 1788767099}
   - component: {fileID: 1788767100}
   - component: {fileID: 1788767103}
+  - component: {fileID: 1946158446896514713}
   m_Layer: 0
   m_Name: Muller
   m_TagString: Untagged
@@ -892,7 +893,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.31945, y: 7.214715}
@@ -908,7 +909,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.270621, y: 4.614488}
@@ -936,10 +937,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94abdadf4993158428c9ff0cdcf25591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 100
+  speed: 3
+  expPointsGiven: 75
+  damageGiven: 10
   cd: 15
   cds: 5
+  maxDistance: 10
+  minDistance: 5
   anim: {fileID: 1291686421616901082}
   f: {fileID: 6317648341200986621, guid: 6c16abe647d22894cbfdd7ac2b8788bb, type: 3}
+  isRightFacing: 0
+--- !u!61 &1946158446896514713
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8936681550471005346}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.2, y: 1.55}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.003}
+  m_EdgeRadius: 0
 --- !u!1 &9008475662241214059
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +1015,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.7785733, y: -0.0067620873}
